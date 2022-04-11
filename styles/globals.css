@@ -14,3 +14,31 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.gradient-blue {
+  color: hsla(263, 82%, 37%, 1);
+
+  color: linear-gradient(
+    90deg,
+    hsla(263, 82%, 37%, 1) 0%,
+    hsla(318, 40%, 55%, 1) 52%,
+    hsla(358, 100%, 78%, 1) 100%
+  );
+
+  color: -moz-linear-gradient(
+    90deg,
+    hsla(263, 82%, 37%, 1) 0%,
+    hsla(318, 40%, 55%, 1) 52%,
+    hsla(358, 100%, 78%, 1) 100%
+  );
+
+  color: -webkit-linear-gradient(
+    90deg,
+    hsla(263, 82%, 37%, 1) 0%,
+    hsla(318, 40%, 55%, 1) 52%,
+    hsla(358, 100%, 78%, 1) 100%
+  );
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#4E11AD", endColorstr="#BA5F9E", GradientType=1 );
+}
+.
