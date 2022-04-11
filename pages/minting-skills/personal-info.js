@@ -58,7 +58,7 @@ export default function ContactFormWithSocialButtons() {
               md: "2xl",
             }}
           >
-            Let's start with your personal information
+            Let&apos;s start with your personal information
           </Heading>
 
           <Stack
@@ -71,12 +71,16 @@ export default function ContactFormWithSocialButtons() {
                   src={"/images/Group 1.png"}
                   boxSize="150px"
                   m={5}
+                  alt={"Just a robot"}
                 ></Image>
                 <FormControl isRequired>
                   <FormLabel fontSize={"sm"}>Name</FormLabel>
 
                   <InputGroup>
-                    <InputLeftElement children={<BsPerson />} />
+                    <InputLeftElement>
+                      <BsPerson />
+                    </InputLeftElement>
+
                     <Input type="text" name="name" placeholder="Your Name" />
                   </InputGroup>
                 </FormControl>
@@ -85,7 +89,9 @@ export default function ContactFormWithSocialButtons() {
                   <FormLabel fontSize={"sm"}>Username</FormLabel>
 
                   <InputGroup>
-                    <InputLeftElement children={<AiOutlineRobot />} />
+                    <InputLeftElement>
+                      <AiOutlineRobot />
+                    </InputLeftElement>
                     <Input type="text" name="userName" placeholder="youruser" />
                   </InputGroup>
                 </FormControl>
@@ -94,7 +100,11 @@ export default function ContactFormWithSocialButtons() {
                   <FormLabel fontSize={"sm"}>Password</FormLabel>
 
                   <InputGroup>
-                    <InputLeftElement children={<MdPassword />} />
+                    <InputLeftElement>
+                      {" "}
+                      <MdPassword />
+                    </InputLeftElement>
+
                     <Input
                       type="password"
                       name="password"
