@@ -1,8 +1,7 @@
 import { Box, Flex, Heading } from "@chakra-ui/react";
 import Link from "next/link";
 
-import ThemeToggle from "./ThemeToggle";
-
+import ThemeToggle from "./themetoggle";
 const Header = () => {
   return (
     <Flex as="header" width="full" align="center">
