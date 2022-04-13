@@ -46,10 +46,15 @@ export default function SliderInput() {
         value={value}
         onChange={handleChange}
         fontSize={"sm"}
-        pl="16px"
+        alignContent={"center"}
+        justify={"center"}
       >
         <Center>
-          <NumberInputField px="0" alignContent={"center"} justify={"center"} />
+          <NumberInputField
+            px="0"
+            pl="10px"
+            fontSize={{ base: "12px", md: "16px" }}
+          />
         </Center>
       </NumberInput>
     </HStack>
