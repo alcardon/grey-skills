@@ -33,10 +33,10 @@
   right: 0;
   animation: starTwinkle 3s infinite linear;
 }
-.astronaut img {
-  width: 100px;
+.astronautimg {
+  width: 180px;
   position: absolute;
-  top: 55%;
+  top: 35%;
   animation: astronautFly 6s infinite linear;
 }
 @keyframes astronautFly {
@@ -44,19 +44,19 @@
     left: -100px;
   }
   25% {
-    top: 50%;
+    top: 35%;
     transform: rotate(30deg);
   }
   50% {
     transform: rotate(45deg);
-    top: 55%;
+    top: 40%;
   }
   75% {
-    top: 60%;
+    top: 50%;
     transform: rotate(30deg);
   }
   100% {
-    left: 110%;
+    left: 100%;
     transform: rotate(45deg);
   }
 }

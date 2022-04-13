@@ -1,24 +1,44 @@
-import styles from "../components/404styles.module.css";
-
+import styles from "../components/styles/404styles.module.css";
+import { Box, Heading, Image, VStack } from "@chakra-ui/react";
 const Page404 = () => {
   return (
     <>
-      <div className="{styles.body}">
-        <div className="{styles.text404}">
-          <div>ERROR</div>
-          <h1 className="{styles.h1}">404</h1>
+      <Box
+        m={0}
+        p={0}
+        h={"50vh"}
+        display={"flex"}
+        justifyContent={"center"}
+        alignItems={"center"}
+        overflow={"hidden"}
+      >
+        <VStack
+          justifyContent={"center"}
+          alignItems={"center"}
+          position={"absolute"}
+          top={"10%"}
+        >
+          <Heading as={"h2"} size={"xl"}>
+            ERROR
+          </Heading>
+          <Heading as={"h2"} size={"xl"}>
+            404
+          </Heading>
           <hr />
-          <div>Page Not Found</div>
-        </div>
+          <Heading as={"h3"} size={"lg"}>
+            {" "}
+            Page Not Found
+          </Heading>
+        </VStack>
 
-        <div className="{styles.astronaut}">
-          <img
+        <div className={styles.astronaut}>
+          <Image
             src="https://images.vexels.com/media/users/3/152639/isolated/preview/506b575739e90613428cdb399175e2c8-space-astronaut-cartoon-by-vexels.png"
-            alt=""
-            className="{styles.src}"
+            alt="astronaut"
+            className={styles.astronautimg}
           />
         </div>
-      </div>
+      </Box>
     </>
   );
 };
