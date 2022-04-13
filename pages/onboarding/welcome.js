@@ -25,7 +25,7 @@ export default function Welcome() {
           lineHeight="110%"
         >
           Create your{" "}
-          <Text as="span" color="orange.400">
+          <Text as="span" color="blue.400">
             Grey skill
           </Text>
           <Text as="span"> identity</Text>
@@ -39,9 +39,9 @@ export default function Welcome() {
             <Button
               rounded="full"
               px={6}
-              colorScheme="orange"
-              bg="orange.400"
-              _hover={{ bg: "orange.500" }}
+              colorScheme="blue"
+              bg="blue.400"
+              _hover={{ bg: "blue.500" }}
             >
               Get started
             </Button>
