@@ -4,7 +4,7 @@ import Link from "next/link";
 import ThemeToggle from "./themetoggle";
 const Header = () => {
   return (
-    <Flex as="header" width="full" align="center">
+    <Flex as="header" width="full" align="center" pb={"16px"}>
       <Heading as="h1" size="md">
         <Link href="/">GREY</Link>
       </Heading>

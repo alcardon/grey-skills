@@ -18,17 +18,19 @@ import {
   useColorModeValue,
   VStack,
 } from "@chakra-ui/react";
+import SliderInput from "../../components/general/number-input";
 import {
   AsyncCreatableSelect,
   AsyncSelect,
   CreatableSelect,
   Select,
 } from "chakra-react-select";
-import React from "react";
+
 import {
   areas,
   SoftwareDevelopment,
 } from "../../components/options-data/options";
+
 import { BsGithub, BsLinkedin, BsPerson, BsTwitter } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 import { FaIndustry, FaDumbbell } from "react-icons/fa";
@@ -51,8 +53,6 @@ const CONFETTI_DARK = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2
 export default function SkillsInfo() {
   const { hasCopied, onCopy } = useClipboard("example@example.com");
 
-  console.log(JSON.stringify(SoftwareDevelopment));
-
   return (
     <Box
       borderRadius="lg"
@@ -63,7 +63,7 @@ export default function SkillsInfo() {
       shadow="base"
     >
       <Box>
-        <VStack spacing={{ base: 4, md: 8, lg: 20 }}>
+        <VStack spacing={{ base: 8, md: 8, lg: 10 }}>
           <Box display={"table"} justifyContent={"center"} align={"center"}>
             {" "}
             <Heading
@@ -77,53 +77,42 @@ export default function SkillsInfo() {
               Mint your skills.
             </Heading>
           </Box>
-          <Stack
-            spacing={{ base: 4, md: 8, lg: 20 }}
-            direction={{ base: "column", md: "row" }}
-          >
-            <Box>
-              <VStack spacing={5}>
-                <Image
-                  src={"/images/Group2.png"}
-                  boxSize="150px"
-                  m={5}
-                  alt={"Just a robot"}
-                ></Image>
-                <FormControl isRequired>
-                  <FormLabel fontSize={"sm"}>
-                    What&apos;re your interest areas?
-                  </FormLabel>
 
-                  <Select isSearchable options={areas} />
-                </FormControl>
+          <Image
+            src={"/images/Group2.png"}
+            boxSize="150px"
+            m={5}
+            alt={"Just a robot"}
+          ></Image>
+          <FormControl isRequired>
+            <FormLabel fontSize={"sm"}>What skills do you have?</FormLabel>
 
-                <FormControl isRequired>
-                  <FormLabel fontSize={"sm"}>
-                    What skills are you developed in this area?
-                  </FormLabel>
+            <Select isSearchable options={SoftwareDevelopment} />
+          </FormControl>
+          <FormControl isRequired>
+            <FormLabel fontSize={"sm"}>
+              How experienced are you in this skill?
+            </FormLabel>
 
-                  <Select isMulti isSearchable options={SoftwareDevelopment} />
-                </FormControl>
-              </VStack>
-              <Box pt={10}>
-                <Link href={"/minting-skills/industry-info"}>
-                  <Button
-                    colorScheme="blue"
-                    bg="blue.400"
-                    color="white"
-                    _hover={{
-                      bg: "blue.500",
-                    }}
-                    isFullWidth
-                    rounded="full"
-                  >
-                    Mint my skills
-                  </Button>
-                </Link>
-              </Box>
-            </Box>
-          </Stack>
+            <SliderInput></SliderInput>
+          </FormControl>
         </VStack>
+        <Box pt={5}>
+          <Link href={"/minting-skills/mint-skill"}>
+            <Button
+              colorScheme="blue"
+              bg="blue.400"
+              color="white"
+              _hover={{
+                bg: "blue.500",
+              }}
+              isFullWidth
+              rounded="full"
+            >
+              Mint my skills
+            </Button>
+          </Link>
+        </Box>
       </Box>
     </Box>
   );
