@@ -33,7 +33,7 @@ import {
 import React from "react";
 
 import { AddIcon } from "@chakra-ui/icons";
-import { BiRocket } from "react-icons/Bi";
+import { BiRocket } from "react-icons/bi";
 
 import MainBox from "../../components/layout/app-box";
 
