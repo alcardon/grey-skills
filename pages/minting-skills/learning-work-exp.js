@@ -31,19 +31,14 @@ import {
   Select,
 } from "chakra-react-select";
 import React from "react";
-import { industries, roles } from "../../components/options-data/options";
-import { BsGithub, BsLinkedin, BsPerson, BsTwitter } from "react-icons/bs";
-import { MdEmail } from "react-icons/md";
+
 import { AddIcon } from "@chakra-ui/icons";
 import { BiRocket } from "react-icons/Bi";
-import { GrAdd } from "react-icons/Gr";
 
 import MainBox from "../../components/layout/app-box";
 
 export default function LearningWorkExp() {
   const { hasCopied, onCopy } = useClipboard("example@example.com");
-  /* 
-  console.log(JSON.stringify(SoftwareDevelopment)); */
 
   return (
     <MainBox>
