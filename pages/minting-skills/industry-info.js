@@ -29,6 +29,7 @@ import { industries, roles } from "../../components/options-data/options";
 import { BsGithub, BsLinkedin, BsPerson, BsTwitter } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 import { FaIndustry, FaDumbbell } from "react-icons/fa";
+import MainBox from "../../components/layout/app-box";
 
 const confetti = {
   light: {
@@ -51,14 +52,7 @@ export default function IndustryInfo() {
   console.log(JSON.stringify(SoftwareDevelopment)); */
 
   return (
-    <Box
-      borderRadius="lg"
-      m={{ base: 5, md: 16, lg: 10 }}
-      p={{ base: 5, lg: 16 }}
-      bg={useColorModeValue("white", "gray.700")}
-      color={useColorModeValue("gray.700", "whiteAlpha.900")}
-      shadow="base"
-    >
+    <MainBox>
       <Box>
         <VStack spacing={{ base: 4, md: 8, lg: 20 }}>
           <Box display={"table"} justifyContent={"center"} align={"center"}>
@@ -122,6 +116,6 @@ export default function IndustryInfo() {
           </Stack>
         </VStack>
       </Box>
-    </Box>
+    </MainBox>
   );
 }

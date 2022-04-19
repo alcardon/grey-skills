@@ -13,6 +13,7 @@ import {
   NumberDecrementStepper,
   HStack,
   Center,
+  useColorModeValue,
 } from "@chakra-ui/react";
 
 import { MdGraphicEq } from "react-icons/md";
@@ -22,7 +23,7 @@ export default function SliderInput() {
   const handleChange = (value) => setValue(value);
 
   return (
-    <HStack direction={"row"}>
+    <HStack direction={"row"} spacing={7}>
       <Slider
         aria-label="slider-ex-4"
         flex="1"
@@ -31,8 +32,8 @@ export default function SliderInput() {
         onChange={handleChange}
         defaultValue={70}
       >
-        <SliderTrack bg="green.100">
-          <SliderFilledTrack bg="green.400" />
+        <SliderTrack bg={useColorModeValue("green.300", "green.100")}>
+          <SliderFilledTrack bg={useColorModeValue("green.500", "green.400")} />
         </SliderTrack>
         <SliderThumb boxSize={6} zIndex={0}>
           <Box color="green.400" as={MdGraphicEq}>

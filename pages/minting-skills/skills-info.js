@@ -19,6 +19,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import SliderInput from "../../components/general/number-input";
+import MainBox from "../../components/layout/app-box";
 import {
   AsyncCreatableSelect,
   AsyncSelect,
@@ -54,66 +55,57 @@ export default function SkillsInfo() {
   const { hasCopied, onCopy } = useClipboard("example@example.com");
 
   return (
-    <Box
-      borderRadius="lg"
-      m={{ base: 5, md: 16, lg: 10 }}
-      p={{ base: 5, lg: 16 }}
-      bg={useColorModeValue("white", "gray.700")}
-      color={useColorModeValue("gray.700", "whiteAlpha.900")}
-      shadow="base"
-    >
-      <Box>
-        <VStack spacing={{ base: 8, md: 8, lg: 10 }}>
-          <Box display={"table"} justifyContent={"center"} align={"center"}>
-            {" "}
-            <Heading
-              display={"table-cell"}
-              verticalAlign="middle"
-              fontSize={{
-                base: "xl",
-                md: "2xl",
-              }}
-            >
-              Mint your skills.
-            </Heading>
-          </Box>
-
-          <Image
-            src={"/images/Group2.png"}
-            boxSize="150px"
-            m={5}
-            alt={"Just a robot"}
-          ></Image>
-          <FormControl isRequired>
-            <FormLabel fontSize={"sm"}>What skills do you have?</FormLabel>
-
-            <Select isSearchable options={SoftwareDevelopment} />
-          </FormControl>
-          <FormControl isRequired>
-            <FormLabel fontSize={"sm"}>
-              How experienced are you in this skill?
-            </FormLabel>
-
-            <SliderInput></SliderInput>
-          </FormControl>
-        </VStack>
-        <Box pt={5}>
-          <Link href={"/minting-skills/mint-skill"}>
-            <Button
-              colorScheme="blue"
-              bg="blue.400"
-              color="white"
-              _hover={{
-                bg: "blue.500",
-              }}
-              isFullWidth
-              rounded="full"
-            >
-              Mint my skills
-            </Button>
-          </Link>
+    <MainBox>
+      <VStack spacing={{ base: 8, md: 8, lg: 10 }}>
+        <Box display={"table"} justifyContent={"center"} align={"center"}>
+          {" "}
+          <Heading
+            display={"table-cell"}
+            verticalAlign="middle"
+            fontSize={{
+              base: "xl",
+              md: "2xl",
+            }}
+          >
+            Mint your skills.
+          </Heading>
         </Box>
+
+        <Image
+          src={"/images/Group2.png"}
+          boxSize="150px"
+          m={5}
+          alt={"Just a robot"}
+        ></Image>
+        <FormControl isRequired>
+          <FormLabel fontSize={"sm"}>What skills do you have?</FormLabel>
+
+          <Select isSearchable options={SoftwareDevelopment} />
+        </FormControl>
+        <FormControl isRequired>
+          <FormLabel fontSize={"sm"}>
+            How experienced are you in this skill?
+          </FormLabel>
+
+          <SliderInput></SliderInput>
+        </FormControl>
+      </VStack>
+      <Box pt={5}>
+        <Link href={"/minting-skills/learning-work-exp"}>
+          <Button
+            colorScheme="blue"
+            bg="blue.400"
+            color="white"
+            _hover={{
+              bg: "blue.500",
+            }}
+            isFullWidth
+            rounded="full"
+          >
+            Mint my skill
+          </Button>
+        </Link>
       </Box>
-    </Box>
+    </MainBox>
   );
 }

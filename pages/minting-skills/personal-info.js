@@ -22,7 +22,7 @@ import React from "react";
 import { BsGithub, BsLinkedin, BsPerson, BsTwitter } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 import { AiOutlineRobot } from "react-icons/ai";
-
+import MainBox from "../../components/layout/app-box";
 const confetti = {
   light: {
     primary: "4299E1", // blue.400
@@ -42,98 +42,89 @@ export default function PersonalInfo() {
   const { hasCopied, onCopy } = useClipboard("example@example.com");
 
   return (
-    <Box
-      borderRadius="lg"
-      m={{ base: 5, md: 16, lg: 10 }}
-      p={{ base: 5, lg: 16 }}
-      bg={useColorModeValue("white", "gray.700")}
-      color={useColorModeValue("gray.700", "whiteAlpha.900")}
-      shadow="base"
-    >
-      <Box>
-        <VStack spacing={{ base: 4, md: 8, lg: 20 }}>
-          <Box display={"table"} justifyContent={"center"} align={"center"}>
-            {" "}
-            <Heading
-              display={"table-cell"}
-              verticalAlign="middle"
-              fontSize={{
-                base: "xl",
-                md: "2xl",
-              }}
-            >
-              Let&apos;s start with your personal information
-            </Heading>
-          </Box>
-
-          <Stack
-            spacing={{ base: 4, md: 8, lg: 20 }}
-            direction={{ base: "column", md: "row" }}
+    <MainBox>
+      <VStack spacing={{ base: 4, md: 8, lg: 20 }}>
+        <Box display={"table"} justifyContent={"center"} align={"center"}>
+          {" "}
+          <Heading
+            display={"table-cell"}
+            verticalAlign="middle"
+            fontSize={{
+              base: "xl",
+              md: "2xl",
+            }}
           >
-            <Box>
-              <VStack spacing={5}>
-                <Image
-                  src={"/images/Group1.png"}
-                  boxSize="150px"
-                  m={5}
-                  alt={"Just a robot"}
-                ></Image>
-                <FormControl isRequired>
-                  <FormLabel fontSize={"sm"}>Name</FormLabel>
+            Let&apos;s start with your personal information
+          </Heading>
+        </Box>
 
-                  <InputGroup>
-                    <InputLeftElement>
-                      <BsPerson />
-                    </InputLeftElement>
+        <Stack
+          spacing={{ base: 4, md: 8, lg: 20 }}
+          direction={{ base: "column", md: "row" }}
+        >
+          <Box>
+            <VStack spacing={5}>
+              <Image
+                src={"/images/Group1.png"}
+                boxSize="150px"
+                m={5}
+                alt={"Just a robot"}
+              ></Image>
+              <FormControl isRequired>
+                <FormLabel fontSize={"sm"}>Name</FormLabel>
 
-                    <Input type="text" name="name" placeholder="Your Name" />
-                  </InputGroup>
-                </FormControl>
+                <InputGroup>
+                  <InputLeftElement>
+                    <BsPerson />
+                  </InputLeftElement>
 
-                <FormControl isRequired>
-                  <FormLabel fontSize={"sm"}>Username</FormLabel>
+                  <Input type="text" name="name" placeholder="Your Name" />
+                </InputGroup>
+              </FormControl>
 
-                  <InputGroup>
-                    <InputLeftElement>
-                      <AiOutlineRobot />
-                    </InputLeftElement>
-                    <Input type="text" name="userName" placeholder="youruser" />
-                  </InputGroup>
-                </FormControl>
+              <FormControl isRequired>
+                <FormLabel fontSize={"sm"}>Username</FormLabel>
 
-                <FormControl isRequired>
-                  <FormLabel fontSize={"sm"}>Email</FormLabel>
+                <InputGroup>
+                  <InputLeftElement>
+                    <AiOutlineRobot />
+                  </InputLeftElement>
+                  <Input type="text" name="userName" placeholder="youruser" />
+                </InputGroup>
+              </FormControl>
 
-                  <InputGroup>
-                    <InputLeftElement>
-                      {" "}
-                      <MdEmail />
-                    </InputLeftElement>
+              <FormControl isRequired>
+                <FormLabel fontSize={"sm"}>Email</FormLabel>
 
-                    <Input type="email" name="email" placeholder="Your email" />
-                  </InputGroup>
-                </FormControl>
-              </VStack>
-              <Box pt={8} pb={3}>
-                <Link href={"/minting-skills/industry-info"}>
-                  <Button
-                    colorScheme="blue"
-                    bg="blue.400"
-                    color="white"
-                    _hover={{
-                      bg: "blue.500",
-                    }}
-                    isFullWidth
-                    rounded="full"
-                  >
-                    Continue
-                  </Button>
-                </Link>
-              </Box>
+                <InputGroup>
+                  <InputLeftElement>
+                    {" "}
+                    <MdEmail />
+                  </InputLeftElement>
+
+                  <Input type="email" name="email" placeholder="Your email" />
+                </InputGroup>
+              </FormControl>
+            </VStack>
+            <Box pt={8} pb={3}>
+              <Link href={"/minting-skills/industry-info"}>
+                <Button
+                  colorScheme="blue"
+                  bg="blue.400"
+                  color="white"
+                  _hover={{
+                    bg: "blue.500",
+                  }}
+                  isFullWidth
+                  rounded="full"
+                >
+                  Continue
+                </Button>
+              </Link>
             </Box>
-          </Stack>
-        </VStack>
-      </Box>
-    </Box>
+          </Box>
+        </Stack>
+      </VStack>
+    </MainBox>
   );
 }
