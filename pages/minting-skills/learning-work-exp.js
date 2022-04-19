@@ -65,7 +65,6 @@ export default function LearningWorkExp() {
             </Text>
             <HStack spacing={5}>
               <Circle size="10" bgColor={"orange.500"}>
-                {" "}
                 <Icon as={BiRocket} w={5} h={5} color={"white"} />
               </Circle>
 
