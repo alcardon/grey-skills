@@ -3,6 +3,8 @@ import { ChakraProvider } from "@chakra-ui/react";
 import Layout from "../components/layout";
 import theme from "../lib/theme";
 
+import { UserProvider } from "../context/user-context";
+
 export default function myApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
@@ -27,7 +29,9 @@ export default function myApp({ Component, pageProps }) {
       </Head>
 
       <Layout>
-        <Component {...pageProps} />
+        <UserProvider>
+          <Component {...pageProps} />
+        </UserProvider>
       </Layout>
     </ChakraProvider>
   );

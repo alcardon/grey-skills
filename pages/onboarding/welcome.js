@@ -10,7 +10,10 @@ import {
   Link,
 } from "@chakra-ui/react";
 
+import { useRouter } from "next/router";
+
 export default function Welcome() {
+  const router = useRouter();
   return (
     <Container maxW="5xl">
       <Stack
@@ -35,22 +38,24 @@ export default function Welcome() {
           empowerment
         </Text>
         <Stack spacing={6} direction="row">
-          <Link href="minting-skills/personal-info">
-            <Button
-              rounded="full"
-              px={6}
-              colorScheme="blue"
-              bg="blue.400"
-              _hover={{ bg: "blue.500" }}
-            >
-              Get started
-            </Button>
-          </Link>
-          <Link href="/onboarding/basic-info">
-            <Button rounded="full" px={6}>
-              Learn more
-            </Button>
-          </Link>
+          <Button
+            rounded="full"
+            px={6}
+            colorScheme="blue"
+            bg="blue.400"
+            _hover={{ bg: "blue.500" }}
+            onClick={() => router.push("minting-skills/personal-info")}
+          >
+            Get started
+          </Button>
+
+          <Button
+            rounded="full"
+            px={6}
+            onClick={() => router.push("/onboarding/basic-info")}
+          >
+            Learn more
+          </Button>
         </Stack>
         <Flex w="full">
           <Illustration
