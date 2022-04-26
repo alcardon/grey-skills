@@ -31,6 +31,7 @@ import { MdEmail } from "react-icons/md";
 import { FaIndustry, FaDumbbell } from "react-icons/fa";
 import MainBox from "../../components/layout/app-box";
 
+import { chakraStyles } from "../../components/styles/react-select";
 import { useUserInfo } from "../../context/user-context";
 import { useRouter } from "next/router";
 
@@ -62,18 +63,18 @@ export default function IndustryInfo() {
           >
             <Box>
               <VStack spacing={5}>
-                <Image
-                  src={"/images/Group3.png"}
-                  boxSize="150px"
-                  m={5}
-                  alt={"Just a robot"}
-                ></Image>
                 <FormControl isRequired>
                   <FormLabel fontSize={"sm"}>
                     What industry do you have experience in?
                   </FormLabel>
 
-                  <Select isSearchable options={industries} />
+                  <Select
+                    size="sm"
+                    isSearchable
+                    options={industries}
+                    chakraStyles={chakraStyles}
+                    selectedOptionStyle="check"
+                  />
                 </FormControl>
 
                 <FormControl isRequired>
@@ -81,7 +82,13 @@ export default function IndustryInfo() {
                     What&apos;s your role in this industry?
                   </FormLabel>
 
-                  <Select isMulti isSearchable options={roles} />
+                  <Select
+                    size="sm"
+                    isSearchable
+                    options={roles}
+                    selectedOptionStyle="check"
+                    chakraStyles={chakraStyles}
+                  />
                 </FormControl>
               </VStack>
               <Box pt={10}>

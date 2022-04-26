@@ -1,9 +1,11 @@
-import { Box, Image, Container, Flex } from "@chakra-ui/react";
+import { Box, Image, Container, Flex, Progress } from "@chakra-ui/react";
+
+import { ArrowBackIcon } from "@chakra-ui/icons";
 
 import Footer from "./footer";
 import Header from "./header";
 
-const Layout = ({ children }) => {
+const ProgressLayout = ({ children }) => {
   return (
     <Box
       maxW={{ md: "390px" }}
@@ -17,6 +19,16 @@ const Layout = ({ children }) => {
       bgSize={"cover"}
       position={"relative"}
     >
+      <Progress size="xs" isIndeterminate />
+      <Box h={"12%"} w={"100%"} bgColor="#222021" position={"absolute"} top={0}>
+        <Flex direction={"row"}>
+          {/*  <ArrowBackIcon /> */}
+          <Box bgColor={"white"}>
+            {" "}
+            <Progress value={80} zIndex={20} position={"absolute"} />
+          </Box>
+        </Flex>
+      </Box>
       {/*  <Header /> */}
       <Image
         src={"/images/general/cover.png"}
@@ -34,4 +46,4 @@ const Layout = ({ children }) => {
   );
 };
 
-export default Layout;
+export default ProgressLayout;

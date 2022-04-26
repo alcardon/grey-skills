@@ -21,17 +21,12 @@ import { MdEmail } from "react-icons/md";
 import { AiOutlineRobot } from "react-icons/ai";
 import MainBox from "../../components/layout/app-box";
 
+import ButtonGradient from "../../components/general/gradient-button";
 import { useUserInfo } from "../../context/user-context";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 
 export default function PersonalInfo() {
-  const initialValues = {
-    name: "",
-    userName: "",
-    email: "",
-  };
-
   const { userInfo, createUser } = useUserInfo();
   const router = useRouter();
 
@@ -83,12 +78,6 @@ export default function PersonalInfo() {
             >
               <Box>
                 <VStack spacing={5}>
-                  <Image
-                    src={"/images/Group1.png"}
-                    boxSize="150px"
-                    m={5}
-                    alt={"Just a robot"}
-                  ></Image>
                   <Field name="name">
                     {({
                       field,
@@ -104,12 +93,15 @@ export default function PersonalInfo() {
 
                         <InputGroup>
                           <InputLeftElement>
-                            <BsPerson />
+                            <BsPerson color={"black"} />
                           </InputLeftElement>
 
                           <Input
                             type="text"
                             placeholder="Your Name"
+                            _placeholder={{ color: "gray.500" }}
+                            bgColor={"white"}
+                            color={"black"}
                             {...field}
                           />
                         </InputGroup>
@@ -128,11 +120,14 @@ export default function PersonalInfo() {
 
                         <InputGroup>
                           <InputLeftElement>
-                            <AiOutlineRobot />
+                            <AiOutlineRobot color={"black"} />
                           </InputLeftElement>
                           <Input
                             type="text"
                             placeholder="your user"
+                            _placeholder={{ color: "gray.500" }}
+                            bgColor={"white"}
+                            color={"black"}
                             {...field}
                           />
                         </InputGroup>
@@ -151,12 +146,15 @@ export default function PersonalInfo() {
 
                         <InputGroup>
                           <InputLeftElement>
-                            <MdEmail />
+                            <MdEmail color={"black"} />
                           </InputLeftElement>
 
                           <Input
                             type="email"
                             placeholder="Your email"
+                            _placeholder={{ color: "gray.500" }}
+                            bgColor={"white"}
+                            color={"black"}
                             {...field}
                           />
                         </InputGroup>
@@ -166,19 +164,7 @@ export default function PersonalInfo() {
                   </Field>
                 </VStack>
                 <Box pt={8} pb={3}>
-                  <Button
-                    colorScheme="blue"
-                    bg="blue.400"
-                    color="white"
-                    _hover={{
-                      bg: "blue.500",
-                    }}
-                    isFullWidth
-                    rounded="full"
-                    type="submit"
-                  >
-                    Continue
-                  </Button>
+                  {/* <ButtonGradient label={"Continue"}></ButtonGradient> */}
                 </Box>
               </Box>
             </Stack>

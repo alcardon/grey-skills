@@ -1,12 +1,6 @@
-import Head from "next/head";
-import { ChakraProvider } from "@chakra-ui/react";
-import Layout from "../components/layout";
-import theme from "../lib/theme";
+import Head from "next/Head";
 
-import { UserProvider } from "../context/user-context";
-import ProgressLayout from "../components/layout/progres-layout";
-
-export function HeadTags() {
+export default function HeadTags() {
   return (
     <Head>
       <meta
@@ -31,30 +25,4 @@ export function HeadTags() {
       <title>Grey skills</title>
     </Head>
   );
-}
-
-export default function myApp({ Component, pageProps, router }) {
-  if (router.pathname.startsWith("/minting-skills/")) {
-    return (
-      <ChakraProvider theme={theme}>
-        <HeadTags />
-        <UserProvider>
-          <ProgressLayout>
-            <Component {...pageProps} />
-          </ProgressLayout>
-        </UserProvider>
-      </ChakraProvider>
-    );
-  } else {
-    return (
-      <ChakraProvider theme={theme}>
-        <HeadTags />
-        <UserProvider>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </UserProvider>
-      </ChakraProvider>
-    );
-  }
 }
