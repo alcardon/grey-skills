@@ -115,6 +115,7 @@ export default function BasicInfo() {
               fontSize={{ base: "30", sm: "60", md: "6xl" }}
               lineHeight="107%"
               textAlign={"left"}
+              color={"white"}
             >
               Connect your Polkadot JS Wallet
             </Heading>

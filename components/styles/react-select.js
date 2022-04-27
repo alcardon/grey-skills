@@ -3,6 +3,7 @@ export const chakraStyles = {
     ...provided,
     background: "whiteAlpha.900",
     borderColor: "gray.100",
+    borderRadius: "md",
   }),
   input: (provided, state) => ({
     ...provided,
@@ -10,7 +11,7 @@ export const chakraStyles = {
   }),
   valueContainer: (provided, state) => ({
     ...provided,
-    color: "black",
+    color: "gray.800",
   }),
   placeholder: (provided, state) => ({
     ...provided,
@@ -28,5 +29,9 @@ export const chakraStyles = {
   dropdownIndicator: (provided, state) => ({
     ...provided,
     color: "black",
+  }),
+  menu: (provided, state) => ({
+    ...provided,
+    borderRadius: "md",
   }),
 };

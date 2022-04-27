@@ -130,6 +130,7 @@ export default function BasicInfo() {
               fontSize={{ base: "30", sm: "60", md: "6xl" }}
               lineHeight="107%"
               textAlign={"left"}
+              color={"white"}
             >
               Get to know Grey
             </Heading>
@@ -157,7 +158,7 @@ export default function BasicInfo() {
               label={"Let's Get Started"}
               size="lg"
               onClick={() => {
-                router.push("/minting-skills/connect");
+                router.push("/onboarding/connect");
                 console.log("hola mundo");
               }}
             />

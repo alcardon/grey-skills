@@ -17,13 +17,17 @@ import {
   Center,
 } from "@chakra-ui/react";
 
+import { useEffect } from "react";
 import { useRouter } from "next/router";
 
 export default function Welcome() {
   const router = useRouter();
-  setTimeout(() => {
-    router.push("/onboarding/basic-info-v");
-  }, 2000);
+
+  useEffect(() => {
+    setTimeout(() => {
+      router.push("/onboarding/basic-info-v");
+    }, 2000);
+  });
 
   return (
     <>
@@ -93,9 +97,10 @@ export default function Welcome() {
         >
           <Heading
             fontWeight={"600"}
-            fontSize={{ base: "52", sm: "60", md: "6xl" }}
+            fontSize={{ base: "46", sm: "55", md: "6xl" }}
             lineHeight="107%"
             textAlign={"left"}
+            color={"white"}
           >
             Professional Growth Redefined
           </Heading>

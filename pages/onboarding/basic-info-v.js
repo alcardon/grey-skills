@@ -75,6 +75,7 @@ export default function BasicInfo() {
               fontSize={{ base: "32", sm: "60", md: "6xl" }}
               lineHeight="107%"
               textAlign={"left"}
+              color={"white"}
             >
               Create your <br></br> Grey Skills Identity
             </Heading>
@@ -99,6 +100,7 @@ export default function BasicInfo() {
               textAlign={"left"}
               fontWeight={"500"}
               fontSize={"sm"}
+              color={"white"}
             >
               Your Grey Skills Identity will allow you to:
             </Heading>

@@ -5,7 +5,7 @@ export const UserContext = createContext();
 export const useUserInfo = () => useContext(UserContext);
 
 export const UserProvider = ({ children }) => {
-  /**UserInfo */
+  const [progress, setProgress] = useState(0);
 
   const [userInfo, setUserInfo] = useState({
     name: "",
@@ -123,6 +123,8 @@ export const UserProvider = ({ children }) => {
         setIndustryInfo,
         skillInfo,
         setSkillInfo,
+        progress,
+        setProgress,
       }}
     >
       {children}

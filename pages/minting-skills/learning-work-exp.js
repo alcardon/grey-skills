@@ -1,38 +1,55 @@
 import {
+  Box,
+  FormControl,
+  FormLabel,
+  Heading,
+  Input,
+  InputGroup,
+  FormErrorMessage,
+  Grid,
+  Center,
+  GridItem,
   Button,
+  Text,
   Modal,
   ModalOverlay,
   ModalContent,
-  ModalCloseButton,
+  ModalHeader,
   ModalFooter,
-  Text,
-  Box,
+  ModalBody,
+  ModalCloseButton,
   Flex,
-  Heading,
-  IconButton,
-  Center,
-  Icon,
-  useClipboard,
-  VStack,
-  Circle,
-  Spacer,
-  useDisclosure,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  HStack,
+  useColorModeValue,
 } from "@chakra-ui/react";
 
-import React, { useState } from "react";
-
-import ModalMain from "../../components/general/modal-main";
+import { MdGraphicEq } from "react-icons/md";
 import { AddIcon } from "@chakra-ui/icons";
-import { BiRocket } from "react-icons/bi";
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
 import { useRouter } from "next/router";
 import MainBox from "../../components/layout/app-box";
 import WorkModal from "../../components/modals/work-modal";
 import LearnModal from "../../components/modals/learn-modal";
+import ButtonGradient from "../../components/general/gradient-button";
+import { useUserInfo } from "../../context/user-context";
 
-export default function LearningWorkExp() {
+import { useEffect, useState } from "react";
+import { chakraStyles } from "../../components/styles/react-select";
+import { Select } from "chakra-react-select";
+
+import { SoftwareDevelopment } from "../../components/options-data/options";
+
+export default function PersonalInfo() {
+  const { userInfo, createUser, setProgress } = useUserInfo();
+  const [value, setValue] = useState(70);
+
   const [modalType, setModalType] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { hasCopied, onCopy } = useClipboard("example@example.com");
+
   const router = useRouter();
   const initialRef = React.useRef();
 
@@ -44,8 +61,16 @@ export default function LearningWorkExp() {
     }
   };
 
+  const handleChange = (value) => setValue(value);
+  useEffect(() => {
+    setProgress(60);
+  }, []);
+
+  console.log("User info: ", userInfo);
+
   return (
-    <MainBox>
+    <>
+      {" "}
       <Modal
         onClose={onClose}
         isOpen={isOpen}
@@ -65,7 +90,180 @@ export default function LearningWorkExp() {
             </Button>
           </ModalFooter>
         </ModalContent>
-      </Modal>
+      </Modal>{" "}
+      <Formik
+        initialValues={userInfo}
+        enableReinitialize
+        validationSchema={Yup.object({
+          name: Yup.string()
+            .max(45, "Must be 45 characters or less")
+            .required("Required"),
+          userName: Yup.string()
+            .max(20, "Must be 20 characters or less")
+            .required("Required"),
+          email: Yup.string()
+            .email("Invalid email address")
+            .required("Required"),
+        })}
+        onSubmit={(values, { setSubmitting }) => {
+          setTimeout(() => {
+            createUser(values.name, values.userName, values.email);
+            router.push("/minting-skills/profesional-bg");
+          }, 400);
+        }}
+      >
+        <Form>
+          <Grid
+            templateRows={{
+              base: "repeat(48, 1fr)" /* ,
+    md: "repeat(24, 1fr)",
+    lg: "repeat(48, 1fr)", */,
+            }}
+            templateColumns={{
+              base: "repeat(24, 1fr)" /* ,
+    md: "repeat(20, 1fr)",
+    lg: "repeat(48, 1fr)", */,
+            }}
+            height={{ base: "100vh" /* , md: "100vh"  */ }}
+            width={"100%"}
+            gap={0}
+          >
+            <GridItem
+              rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
+              colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
+              rowEnd={{ base: 12 /* , md: 19, lg: 28 */ }}
+              colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+              zIndex={7}
+            >
+              {" "}
+              <Heading
+                display={"table-cell"}
+                verticalAlign="middle"
+                fontSize={{
+                  base: "xl",
+                }}
+                color={"white"}
+              >
+                Mint your skill
+              </Heading>
+              <Text color="gray.300" textAlign={"left"} fontSize={16} pt={2}>
+                Search for a skill you want to mint.{" "}
+              </Text>
+            </GridItem>
+            <GridItem
+              rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
+              colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
+              rowEnd={{ base: 20 /* , md: 19, lg: 28 */ }}
+              colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+              zIndex={7}
+            >
+              <Center>
+                {" "}
+                <Text color="gray.600" textAlign={"left"} fontSize={14} pt={2}>
+                  Your Skill badge will appear here.
+                </Text>
+              </Center>
+            </GridItem>
+
+            <GridItem
+              rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
+              colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
+              rowEnd={{ base: 27 /* , md: 19, lg: 28 */ }}
+              colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+              zIndex={7}
+            >
+              <Field name="userName">
+                {({
+                  field, // { name, value, onChange, onBlur }
+                  form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+                  meta,
+                }) => (
+                  <FormControl isInvalid={meta.error && meta.touched}>
+                    <FormLabel
+                      fontSize={"sm"}
+                      fontFamily={"Roboto"}
+                      fontWeight={"regular"}
+                    >
+                      Search your skill*
+                    </FormLabel>
+
+                    <Select
+                      isSearchable
+                      options={SoftwareDevelopment}
+                      size="sm"
+                      chakraStyles={chakraStyles}
+                      selectedOptionStyle="check"
+                    />
+
+                    <FormErrorMessage>{meta.error}</FormErrorMessage>
+                  </FormControl>
+                )}
+              </Field>
+            </GridItem>
+
+            <GridItem
+              rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
+              colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
+              rowEnd={{ base: 34 /* , md: 19, lg: 28 */ }}
+              colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+              zIndex={6}
+            >
+              {" "}
+              <Field name="name">
+                {({
+                  field,
+                  form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+                  meta,
+                }) => (
+                  <FormControl
+                    isInvalid={
+                      meta.error
+                    } /* This could be an option to avoid change of color */
+                  >
+                    <FormLabel
+                      fontSize={"sm"}
+                      fontFamily={"Roboto"}
+                      fontWeight={"regular"}
+                      color={"gray.200"}
+                    >
+                      How experienced are you in this skill?
+                    </FormLabel>
+
+                    <FormErrorMessage>{meta.error}</FormErrorMessage>
+                  </FormControl>
+                )}
+              </Field>
+            </GridItem>
+
+            {/* <ButtonGradient label={"Continue"}></ButtonGradient> */}
+
+            <GridItem
+              rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
+              colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
+              rowEnd={{ base: 46 /* , md: 19, lg: 28 */ }}
+              colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+              zIndex={6}
+            >
+              <Box>
+                <ButtonGradient
+                  label={"Proceed to next step"}
+                  size="lg"
+                  type="submit"
+                />
+              </Box>
+            </GridItem>
+          </Grid>
+        </Form>
+      </Formik>
+    </>
+  );
+}
+
+/* export default function LearningWorkExp() {
+  
+  return (
+    <MainBox>
+     
       <Box p={{ base: 0, md: 10 }}>
         <VStack spacing={{ base: 5, md: 10, lg: 20 }}>
           <VStack spacing={{ base: 5, md: 5, lg: 10 }}>
@@ -188,3 +386,4 @@ export default function LearningWorkExp() {
     </MainBox>
   );
 }
+ */

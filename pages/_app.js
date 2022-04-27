@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { ChakraProvider } from "@chakra-ui/react";
 import Layout from "../components/layout";
+import "antd/dist/antd.css";
 import theme from "../lib/theme";
 
 import { UserProvider } from "../context/user-context";

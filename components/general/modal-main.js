@@ -7,7 +7,6 @@ import {
   ModalCloseButton,
   ModalBody,
   ModalFooter,
-  Lorem,
 } from "@chakra-ui/react";
 
 export default function ModalMain({ onOpen, isOpen, onClose }) {
@@ -20,9 +19,7 @@ export default function ModalMain({ onOpen, isOpen, onClose }) {
         <ModalContent>
           <ModalHeader>Modal Title</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>
-            <Lorem count={2} />
-          </ModalBody>
+          <ModalBody></ModalBody>
           <ModalFooter>
             <Button onClick={onClose}>Close</Button>
           </ModalFooter>

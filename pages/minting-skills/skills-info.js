@@ -1,87 +1,249 @@
 import {
-  Image,
   Box,
-  Button,
   FormControl,
   FormLabel,
   Heading,
-  VStack,
+  Input,
+  InputGroup,
+  FormErrorMessage,
+  Grid,
+  Center,
+  GridItem,
+  Text,
+  Flex,
+  Slider,
+  SliderTrack,
+  SliderFilledTrack,
+  NumberInput,
+  SliderThumb,
+  NumberInputField,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper,
+  HStack,
+  useColorModeValue,
 } from "@chakra-ui/react";
-import SliderInput from "../../components/general/number-input";
-import MainBox from "../../components/layout/app-box";
-import {
-  AsyncCreatableSelect,
-  AsyncSelect,
-  CreatableSelect,
-  Select,
-} from "chakra-react-select";
 
-import {
-  areas,
-  SoftwareDevelopment,
-} from "../../components/options-data/options";
+import { MdGraphicEq } from "react-icons/md";
 
-import { BsGithub, BsLinkedin, BsPerson, BsTwitter } from "react-icons/bs";
-import { MdEmail } from "react-icons/md";
-import { FaIndustry, FaDumbbell } from "react-icons/fa";
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
+
+import ButtonGradient from "../../components/general/gradient-button";
+import { useUserInfo } from "../../context/user-context";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { chakraStyles } from "../../components/styles/react-select";
+import { Select } from "chakra-react-select";
 
-export default function SkillsInfo() {
+import { SoftwareDevelopment } from "../../components/options-data/options";
+
+export default function PersonalInfo() {
+  const { userInfo, createUser, setProgress } = useUserInfo();
+  const [value, setValue] = useState(70);
+  const handleChange = (value) => setValue(value);
+  useEffect(() => {
+    setProgress(60);
+  }, []);
+
   const router = useRouter();
 
+  console.log("User info: ", userInfo);
+
   return (
-    <MainBox>
-      <VStack spacing={{ base: 8, md: 8, lg: 10 }}>
-        <Box display={"table"} justifyContent={"center"} align={"center"}>
-          {" "}
-          <Heading
-            display={"table-cell"}
-            verticalAlign="middle"
-            fontSize={{
-              base: "xl",
-              md: "2xl",
-            }}
-          >
-            Mint your skills.
-          </Heading>
-        </Box>
-
-        <Image
-          src={"/images/Group2.png"}
-          boxSize="150px"
-          m={5}
-          alt={"Just a robot"}
-        ></Image>
-        <FormControl isRequired>
-          <FormLabel fontSize={"sm"}>What skills do you have?</FormLabel>
-
-          <Select isSearchable options={SoftwareDevelopment} />
-        </FormControl>
-        <FormControl isRequired>
-          <FormLabel fontSize={"sm"}>
-            How experienced are you in this skill?
-          </FormLabel>
-
-          <SliderInput></SliderInput>
-        </FormControl>
-      </VStack>
-      <Box pt={5}>
-        <Button
-          colorScheme="blue"
-          bg="blue.400"
-          color="white"
-          _hover={{
-            bg: "blue.500",
+    <Formik
+      initialValues={userInfo}
+      enableReinitialize
+      validationSchema={Yup.object({
+        name: Yup.string()
+          .max(45, "Must be 45 characters or less")
+          .required("Required"),
+        userName: Yup.string()
+          .max(20, "Must be 20 characters or less")
+          .required("Required"),
+        email: Yup.string().email("Invalid email address").required("Required"),
+      })}
+      onSubmit={(values, { setSubmitting }) => {
+        setTimeout(() => {
+          createUser(values.name, values.userName, values.email);
+          router.push("/");
+        }, 400);
+      }}
+    >
+      <Form>
+        <Grid
+          templateRows={{
+            base: "repeat(48, 1fr)" /* ,
+    md: "repeat(24, 1fr)",
+    lg: "repeat(48, 1fr)", */,
           }}
-          isFullWidth
-          rounded="full"
-          onClick={() => {
-            router.push("/minting-skills/learning-work-exp");
+          templateColumns={{
+            base: "repeat(24, 1fr)" /* ,
+    md: "repeat(20, 1fr)",
+    lg: "repeat(48, 1fr)", */,
           }}
+          height={{ base: "100vh" /* , md: "100vh"  */ }}
+          width={"100%"}
+          gap={0}
         >
-          Mint my skill
-        </Button>
-      </Box>
-    </MainBox>
+          <GridItem
+            rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
+            colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
+            rowEnd={{ base: 12 /* , md: 19, lg: 28 */ }}
+            colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+            zIndex={7}
+          >
+            {" "}
+            <Heading
+              display={"table-cell"}
+              verticalAlign="middle"
+              fontSize={{
+                base: "xl",
+              }}
+              color={"white"}
+            >
+              Mint your skill
+            </Heading>
+            <Text color="gray.300" textAlign={"left"} fontSize={16} pt={2}>
+              Search for a skill you want to mint.{" "}
+            </Text>
+          </GridItem>
+          <GridItem
+            rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
+            colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
+            rowEnd={{ base: 20 /* , md: 19, lg: 28 */ }}
+            colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+            zIndex={7}
+          >
+            <Center>
+              {" "}
+              <Text color="gray.600" textAlign={"left"} fontSize={14} pt={2}>
+                Your Skill badge will appear here.
+              </Text>
+            </Center>
+          </GridItem>
+
+          <GridItem
+            rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
+            colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
+            rowEnd={{ base: 27 /* , md: 19, lg: 28 */ }}
+            colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+            zIndex={7}
+          >
+            <Field name="userName">
+              {({
+                field, // { name, value, onChange, onBlur }
+                form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+                meta,
+              }) => (
+                <FormControl isInvalid={meta.error && meta.touched}>
+                  <FormLabel
+                    fontSize={"sm"}
+                    fontFamily={"Roboto"}
+                    fontWeight={"regular"}
+                  >
+                    Search your skill*
+                  </FormLabel>
+
+                  <Select
+                    isSearchable
+                    options={SoftwareDevelopment}
+                    size="sm"
+                    chakraStyles={chakraStyles}
+                    selectedOptionStyle="check"
+                  />
+
+                  <FormErrorMessage>{meta.error}</FormErrorMessage>
+                </FormControl>
+              )}
+            </Field>
+          </GridItem>
+
+          <GridItem
+            rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
+            colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
+            rowEnd={{ base: 34 /* , md: 19, lg: 28 */ }}
+            colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+            zIndex={6}
+          >
+            {" "}
+            <Field name="name">
+              {({
+                field,
+                form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+                meta,
+              }) => (
+                <FormControl
+                  isInvalid={
+                    meta.error
+                  } /* This could be an option to avoid change of color */
+                >
+                  <FormLabel
+                    fontSize={"sm"}
+                    fontFamily={"Roboto"}
+                    fontWeight={"regular"}
+                    color={"gray.200"}
+                  >
+                    How experienced are you in this skill?
+                  </FormLabel>
+
+                  <InputGroup>
+                    <HStack direction={"row"} spacing={7} w={"100%"}>
+                      <Slider
+                        focusThumbOnChange={false}
+                        value={value}
+                        onChange={handleChange}
+                        defaultValue={value}
+                      >
+                        <SliderTrack bg={"gray.100"}>
+                          <SliderFilledTrack bgGradient="linear(to-r,#4b0da9, #fd9193)" />
+                        </SliderTrack>
+                        <SliderThumb boxSize={4} zIndex={0} />
+                      </Slider>
+                      <NumberInput
+                        size="sm"
+                        maxW={{ base: "25%", md: "18%" }}
+                        value={value}
+                        onChange={handleChange}
+                        fontSize={"sm"}
+                        alignContent={"center"}
+                        justify={"center"}
+                      >
+                        <NumberInputField
+                          bgColor={"white"}
+                          color={"gray.800"}
+                          pl="25px"
+                          fontSize={{ base: "14px", md: "16px" }}
+                          borderRadius={"md"}
+                        />
+                      </NumberInput>
+                    </HStack>
+                  </InputGroup>
+                  <FormErrorMessage>{meta.error}</FormErrorMessage>
+                </FormControl>
+              )}
+            </Field>
+          </GridItem>
+
+          {/* <ButtonGradient label={"Continue"}></ButtonGradient> */}
+
+          <GridItem
+            rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
+            colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
+            rowEnd={{ base: 46 /* , md: 19, lg: 28 */ }}
+            colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+            zIndex={6}
+          >
+            <Box>
+              <ButtonGradient
+                label={"Proceed to next step"}
+                size="lg"
+                type="submit"
+              />
+            </Box>
+          </GridItem>
+        </Grid>
+      </Form>
+    </Formik>
   );
 }

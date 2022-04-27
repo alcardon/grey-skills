@@ -18,6 +18,7 @@
     "@fontsource/raleway": "^4.5.5",
     "@fontsource/roboto": "^4.5.5",
     "@fontsource/roboto-condensed": "^4.5.8",
+    "antd": "^4.20.1",
     "chakra-react-select": "^3.1.2",
     "formik": "^2.2.9",
     "framer-motion": "^6.2.9",
