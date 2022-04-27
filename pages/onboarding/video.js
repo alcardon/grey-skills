@@ -26,9 +26,6 @@ import ButtonGradient from "../../components/general/gradient-button";
 
 export default function BasicInfo() {
   const router = useRouter();
-  /* setTimeout(() => {
-    router.push("/minting-skills/personal-info");
-  }, 2000); */
 
   return (
     <>

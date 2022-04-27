@@ -3,8 +3,6 @@ import {
   FormControl,
   FormLabel,
   Heading,
-  Input,
-  InputGroup,
   FormErrorMessage,
   Grid,
   Center,
@@ -14,16 +12,9 @@ import {
   Modal,
   ModalOverlay,
   ModalContent,
-  ModalHeader,
   ModalFooter,
-  ModalBody,
   ModalCloseButton,
-  Flex,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  HStack,
-  useColorModeValue,
+  useDisclosure,
 } from "@chakra-ui/react";
 
 import { MdGraphicEq } from "react-icons/md";
@@ -31,27 +22,23 @@ import { AddIcon } from "@chakra-ui/icons";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { useRouter } from "next/router";
-import MainBox from "../../components/layout/app-box";
+
 import WorkModal from "../../components/modals/work-modal";
 import LearnModal from "../../components/modals/learn-modal";
 import ButtonGradient from "../../components/general/gradient-button";
 import { useUserInfo } from "../../context/user-context";
-
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { chakraStyles } from "../../components/styles/react-select";
 import { Select } from "chakra-react-select";
 
-import { SoftwareDevelopment } from "../../components/options-data/options";
-
 export default function LearningWorkExp() {
   const { userInfo, createUser, setProgress } = useUserInfo();
-  const [value, setValue] = useState(70);
 
   const [modalType, setModalType] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const router = useRouter();
-  const initialRef = React.useRef();
+  const initialRef = useRef();
 
   const ModalRender = () => {
     if (modalType == "work") {
@@ -108,7 +95,7 @@ export default function LearningWorkExp() {
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
             createUser(values.name, values.userName, values.email);
-            router.push("/minting-skills/profesional-bg");
+            router.push("/");
           }, 400);
         }}
       >
@@ -186,14 +173,6 @@ export default function LearningWorkExp() {
                     >
                       Search your skill*
                     </FormLabel>
-
-                    <Select
-                      isSearchable
-                      options={SoftwareDevelopment}
-                      size="sm"
-                      chakraStyles={chakraStyles}
-                      selectedOptionStyle="check"
-                    />
 
                     <FormErrorMessage>{meta.error}</FormErrorMessage>
                   </FormControl>
