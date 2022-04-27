@@ -44,7 +44,7 @@ export default function PersonalInfo() {
   const handleChange = (value) => setValue(value);
   useEffect(() => {
     setProgress(60);
-  }, []);
+  }, [setProgress]);
 
   const router = useRouter();
 
