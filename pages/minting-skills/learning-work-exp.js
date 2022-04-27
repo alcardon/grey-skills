@@ -43,7 +43,7 @@ import { Select } from "chakra-react-select";
 
 import { SoftwareDevelopment } from "../../components/options-data/options";
 
-export default function PersonalInfo() {
+export default function LearningWorkExp() {
   const { userInfo, createUser, setProgress } = useUserInfo();
   const [value, setValue] = useState(70);
 
@@ -64,7 +64,7 @@ export default function PersonalInfo() {
   const handleChange = (value) => setValue(value);
   useEffect(() => {
     setProgress(60);
-  }, []);
+  }, [setProgress]);
 
   console.log("User info: ", userInfo);
 
@@ -258,132 +258,3 @@ export default function PersonalInfo() {
     </>
   );
 }
-
-/* export default function LearningWorkExp() {
-  
-  return (
-    <MainBox>
-     
-      <Box p={{ base: 0, md: 10 }}>
-        <VStack spacing={{ base: 5, md: 10, lg: 20 }}>
-          <VStack spacing={{ base: 5, md: 5, lg: 10 }}>
-            {" "}
-            <Heading
-              fontSize={{
-                base: "xl",
-                md: "2xl",
-              }}
-            >
-              Tell us more about your skill.
-            </Heading>
-            <Text fontSize={{ base: 14, md: 14, lg: 16 }}>
-              Add relevent experience to your skill to gain reputational value
-              for this Skill NFT
-            </Text>
-            <Flex justifyContent={"Center"} align="center">
-              <Circle size="10" bgColor={"orange.500"} m={1}>
-                <Icon as={BiRocket} w={5} h={5} color={"white"} />
-              </Circle>
-              <Spacer />
-              <Center m={1}>
-                <Heading
-                  fontFamily={"revert"}
-                  fontSize={{
-                    base: "xl",
-                    md: "2xl",
-                  }}
-                >
-                  Skill
-                </Heading>
-              </Center>
-            </Flex>
-          </VStack>
-          <VStack spacing={5}>
-            <VStack spacing={2}>
-              <Flex direction="row" width={"100%"}>
-                <Heading
-                  fontSize={{
-                    base: "lg",
-                    md: "xl",
-                  }}
-                >
-                  Learning Experience
-                </Heading>
-                <Spacer />
-                <IconButton
-                  size={"sm"}
-                  colorScheme="green"
-                  bg="green.500"
-                  color="white"
-                  _hover={{
-                    bg: "green.400",
-                  }}
-                  aria-label="Add to friends"
-                  icon={<AddIcon />}
-                  onClick={() => {
-                    setModalType("learn");
-                    onOpen();
-                  }}
-                />
-              </Flex>
-              <Text fontSize={{ base: 12, md: 12, lg: 14 }}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                cursus dictum convallis.
-              </Text>
-            </VStack>
-            <VStack spacing={2}>
-              <Flex direction="row" width={"100%"}>
-                <Heading
-                  fontSize={{
-                    base: "lg",
-                    md: "xl",
-                  }}
-                >
-                  Work Experience
-                </Heading>
-                <Spacer />
-                <IconButton
-                  size={"sm"}
-                  colorScheme="green"
-                  bg="green.500"
-                  color="white"
-                  _hover={{
-                    bg: "green.400",
-                  }}
-                  aria-label="Add to friends"
-                  icon={<AddIcon />}
-                  onClick={() => {
-                    setModalType("work");
-                    onOpen();
-                  }}
-                />
-              </Flex>
-              <Text fontSize={{ base: 12, md: 12, lg: 14 }}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                cursus dictum convallis.
-              </Text>
-            </VStack>
-          </VStack>
-        </VStack>
-        <Box pt={10}>
-          <Button
-            colorScheme="blue"
-            bg="blue.400"
-            color="white"
-            _hover={{
-              bg: "blue.500",
-            }}
-            isFullWidth
-            rounded="full"
-            onClick={() => {
-              router.push("/");
-            }}
-          >
-            Continue
-          </Button>
-        </Box>
-      </Box>
-    </MainBox>
-  );
-}
- */

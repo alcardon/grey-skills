@@ -22,7 +22,7 @@ export default function PersonalInfo() {
   const { userInfo, createUser, setProgress } = useUserInfo();
   useEffect(() => {
     setProgress(20);
-  }, []);
+  }, [setProgress]);
 
   const router = useRouter();
 
