@@ -3,7 +3,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import Layout from "../components/layout";
 import "antd/dist/antd.css";
 import theme from "../lib/theme";
-
+import { Button } from "@chakra-ui/react";
 import { UserProvider } from "../context/user-context";
 import ProgressLayout from "../components/layout/progres-layout";
 

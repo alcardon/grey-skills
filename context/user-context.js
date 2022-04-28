@@ -43,7 +43,7 @@ export const UserProvider = ({ children }) => {
 
   const [skillInfo, setSkillInfo] = useState({
     skillName: "",
-    skillLevel: "",
+    skillLevel: 70,
   });
 
   const createSkillInfo = (skillName, skillLevel) => {
@@ -123,6 +123,7 @@ export const UserProvider = ({ children }) => {
         setIndustryInfo,
         skillInfo,
         setSkillInfo,
+        createSkillInfo,
         progress,
         setProgress,
       }}

@@ -25,8 +25,8 @@ import {
 } from "@chakra-ui/react";
 
 import { MdGraphicEq } from "react-icons/md";
+import { useFormik } from "formik";
 
-import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 
 import ButtonGradient from "../../components/general/gradient-button";
@@ -35,215 +35,196 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { chakraStyles } from "../../components/styles/react-select";
 import { Select } from "chakra-react-select";
-
+import CustomSelect from "../../components/general/CustoSelect";
 import { SoftwareDevelopment } from "../../components/options-data/options";
+import { Field, Form, Formik } from "formik";
 
 export default function PersonalInfo() {
-  const { userInfo, createUser, setProgress } = useUserInfo();
-  const [value, setValue] = useState(70);
-  const handleChange = (value) => setValue(value);
+  const { skillInfo, createSkillInfo, setProgress } = useUserInfo();
+  const [skillLevel, setSkillLevel] = useState(skillInfo.skillLevel);
+  const [isSliderDisabled, setIsSliderDisabled] = useState(true);
+  const handleChange = (value) => setSkillLevel(value);
   useEffect(() => {
     setProgress(60);
-  }, [setProgress]);
+    if (skillInfo.skillName !== "") {
+      setIsSliderDisabled(false);
+    }
+  }, [skillInfo, setProgress, setIsSliderDisabled]);
 
   const router = useRouter();
 
-  console.log("User info: ", userInfo);
+  const onSubmit = (values, actions) => {
+    setTimeout(() => {
+      createSkillInfo(values.skillName, skillLevel);
+      router.push("/minting-skills/learning-work-exp");
+      actions.setSubmitting(false);
+    }, 400);
+  };
+  skillInfo.skillName === "" ? true : false;
 
   return (
     <Formik
-      initialValues={userInfo}
+      initialValues={skillInfo}
       enableReinitialize
-      validationSchema={Yup.object({
-        name: Yup.string()
-          .max(45, "Must be 45 characters or less")
-          .required("Required"),
-        userName: Yup.string()
-          .max(20, "Must be 20 characters or less")
-          .required("Required"),
-        email: Yup.string().email("Invalid email address").required("Required"),
-      })}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          createUser(values.name, values.userName, values.email);
-          router.push("/");
-        }, 400);
-      }}
+      validator={() => ({})}
+      onSubmit={onSubmit}
     >
-      <Form>
-        <Grid
-          templateRows={{
-            base: "repeat(48, 1fr)" /* ,
+      {(props) => (
+        <Form>
+          <Grid
+            templateRows={{
+              base: "repeat(48, 1fr)" /* ,
     md: "repeat(24, 1fr)",
     lg: "repeat(48, 1fr)", */,
-          }}
-          templateColumns={{
-            base: "repeat(24, 1fr)" /* ,
+            }}
+            templateColumns={{
+              base: "repeat(24, 1fr)" /* ,
     md: "repeat(20, 1fr)",
     lg: "repeat(48, 1fr)", */,
-          }}
-          height={{ base: "100vh" /* , md: "100vh"  */ }}
-          width={"100%"}
-          gap={0}
-        >
-          <GridItem
-            rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
-            colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
-            rowEnd={{ base: 12 /* , md: 19, lg: 28 */ }}
-            colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
-            zIndex={7}
+            }}
+            height={{ base: "100vh" /* , md: "100vh"  */ }}
+            width={"100%"}
+            gap={0}
           >
-            {" "}
-            <Heading
-              display={"table-cell"}
-              verticalAlign="middle"
-              fontSize={{
-                base: "xl",
-              }}
-              color={"white"}
+            <GridItem
+              rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
+              colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
+              rowEnd={{ base: 12 /* , md: 19, lg: 28 */ }}
+              colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+              zIndex={7}
             >
-              Mint your skill
-            </Heading>
-            <Text color="gray.300" textAlign={"left"} fontSize={16} pt={2}>
-              Search for a skill you want to mint.{" "}
-            </Text>
-          </GridItem>
-          <GridItem
-            rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
-            colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
-            rowEnd={{ base: 20 /* , md: 19, lg: 28 */ }}
-            colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
-            zIndex={7}
-          >
-            <Center>
               {" "}
-              <Text color="gray.600" textAlign={"left"} fontSize={14} pt={2}>
-                Your Skill badge will appear here.
+              <Heading
+                display={"table-cell"}
+                verticalAlign="middle"
+                fontSize={{
+                  base: "xl",
+                }}
+                color={"white"}
+              >
+                Mint your skill
+              </Heading>
+              <Text color="gray.300" textAlign={"left"} fontSize={16} pt={2}>
+                Search for a skill you want to mint.{" "}
               </Text>
-            </Center>
-          </GridItem>
+            </GridItem>
+            <GridItem
+              rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
+              colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
+              rowEnd={{ base: 20 /* , md: 19, lg: 28 */ }}
+              colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+              zIndex={7}
+            >
+              <Center>
+                {" "}
+                <Text color="gray.600" textAlign={"left"} fontSize={14} pt={2}>
+                  Your Skill badge will appear here.
+                </Text>
+              </Center>
+            </GridItem>
 
-          <GridItem
-            rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
-            colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
-            rowEnd={{ base: 27 /* , md: 19, lg: 28 */ }}
-            colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
-            zIndex={7}
-          >
-            <Field name="userName">
-              {({
-                field, // { name, value, onChange, onBlur }
-                form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
-                meta,
-              }) => (
-                <FormControl isInvalid={meta.error && meta.touched}>
-                  <FormLabel
-                    fontSize={"sm"}
-                    fontFamily={"Roboto"}
-                    fontWeight={"regular"}
-                  >
-                    Search your skill*
-                  </FormLabel>
-
-                  <Select
-                    isSearchable
-                    options={SoftwareDevelopment}
-                    size="sm"
-                    chakraStyles={chakraStyles}
-                    selectedOptionStyle="check"
-                  />
-
-                  <FormErrorMessage>{meta.error}</FormErrorMessage>
-                </FormControl>
-              )}
-            </Field>
-          </GridItem>
-
-          <GridItem
-            rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
-            colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
-            rowEnd={{ base: 34 /* , md: 19, lg: 28 */ }}
-            colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
-            zIndex={6}
-          >
-            {" "}
-            <Field name="name">
-              {({
-                field,
-                form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
-                meta,
-              }) => (
-                <FormControl
-                  isInvalid={
-                    meta.error
-                  } /* This could be an option to avoid change of color */
+            <GridItem
+              rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
+              colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
+              rowEnd={{ base: 27 /* , md: 19, lg: 28 */ }}
+              colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+              zIndex={7}
+            >
+              <FormControl>
+                <FormLabel
+                  fontSize={"md"}
+                  fontFamily={"Roboto"}
+                  fontWeight={"regular"}
                 >
-                  <FormLabel
-                    fontSize={"sm"}
-                    fontFamily={"Roboto"}
-                    fontWeight={"regular"}
-                    color={"gray.200"}
-                  >
-                    How experienced are you in this skill?
-                  </FormLabel>
+                  Search your skill*
+                </FormLabel>
+                <Field
+                  name="skillName"
+                  options={SoftwareDevelopment}
+                  component={CustomSelect}
+                  placeholder="Select a language..."
+                  isMulti={false}
+                  setIsSliderDisabled={setIsSliderDisabled}
+                />
+              </FormControl>
+            </GridItem>
 
-                  <InputGroup>
-                    <HStack direction={"row"} spacing={7} w={"100%"}>
-                      <Slider
-                        focusThumbOnChange={false}
-                        value={value}
-                        onChange={handleChange}
-                        defaultValue={value}
-                      >
-                        <SliderTrack bg={"gray.100"}>
-                          <SliderFilledTrack bgGradient="linear(to-r,#4b0da9, #fd9193)" />
-                        </SliderTrack>
-                        <SliderThumb boxSize={4} zIndex={0} />
-                      </Slider>
-                      <NumberInput
-                        size="sm"
-                        maxW={{ base: "25%", md: "18%" }}
-                        value={value}
-                        onChange={handleChange}
-                        fontSize={"sm"}
-                        alignContent={"center"}
-                        justify={"center"}
-                      >
-                        <NumberInputField
-                          bgColor={"white"}
-                          color={"gray.800"}
-                          pl="25px"
-                          fontSize={{ base: "14px", md: "16px" }}
-                          borderRadius={"md"}
-                        />
-                      </NumberInput>
-                    </HStack>
-                  </InputGroup>
-                  <FormErrorMessage>{meta.error}</FormErrorMessage>
-                </FormControl>
-              )}
-            </Field>
-          </GridItem>
+            <GridItem
+              rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
+              colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
+              rowEnd={{ base: 34 /* , md: 19, lg: 28 */ }}
+              colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+              zIndex={6}
+            >
+              <FormControl>
+                <FormLabel
+                  fontSize={"md"}
+                  fontFamily={"Roboto"}
+                  fontWeight={"regular"}
+                  color={"gray.200"}
+                >
+                  How experienced are you in this skill?
+                </FormLabel>
 
-          {/* <ButtonGradient label={"Continue"}></ButtonGradient> */}
+                <InputGroup>
+                  <HStack direction={"row"} spacing={7} w={"100%"}>
+                    <Slider
+                      focusThumbOnChange={false}
+                      value={skillLevel}
+                      onChange={handleChange}
+                      defaultValue={skillLevel}
+                      isDisabled={isSliderDisabled}
+                    >
+                      <SliderTrack bg={"gray.100"}>
+                        <SliderFilledTrack bgGradient="linear(to-r,#4b0da9, #fd9193)" />
+                      </SliderTrack>
+                      <SliderThumb boxSize={4} zIndex={0} />
+                    </Slider>
 
-          <GridItem
-            rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
-            colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
-            rowEnd={{ base: 46 /* , md: 19, lg: 28 */ }}
-            colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
-            zIndex={6}
-          >
-            <Box>
-              <ButtonGradient
-                label={"Proceed to next step"}
-                size="lg"
-                type="submit"
-              />
-            </Box>
-          </GridItem>
-        </Grid>
-      </Form>
+                    <NumberInput
+                      size="sm"
+                      maxW={{ base: "25%", md: "18%" }}
+                      value={skillLevel}
+                      onChange={handleChange}
+                      fontSize={"md"}
+                      alignContent={"center"}
+                      justify={"center"}
+                      isDisabled={isSliderDisabled}
+                    >
+                      <NumberInputField
+                        bgColor={"white"}
+                        color={"gray.800"}
+                        pl="25px"
+                        fontSize={{ base: "14px", md: "16px" }}
+                        borderRadius={"md"}
+                      />
+                    </NumberInput>
+                  </HStack>
+                </InputGroup>
+                {/* <FormErrorMessage>{meta.error}</FormErrorMessage> */}
+              </FormControl>
+            </GridItem>
+
+            {/* <ButtonGradient label={"Continue"}></ButtonGradient> */}
+
+            <GridItem
+              rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
+              colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
+              rowEnd={{ base: 46 /* , md: 19, lg: 28 */ }}
+              colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+              zIndex={6}
+            >
+              <Box>
+                <ButtonGradient
+                  label={"Proceed to next step"}
+                  size="lg"
+                  type="submit"
+                />
+              </Box>
+            </GridItem>
+          </Grid>
+        </Form>
+      )}
     </Formik>
   );
 }
