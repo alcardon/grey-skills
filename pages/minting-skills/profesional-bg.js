@@ -24,6 +24,8 @@ import ButtonGradient from "../../components/general/gradient-button";
 import { useUserInfo } from "../../context/user-context";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import CustomSelect from "../../components/general/CustoSelect";
+import { industries, roles } from "../../components/options-data/options";
 
 export default function PersonalInfo() {
   const { userInfo, createUser, setProgress } = useUserInfo();
@@ -86,7 +88,7 @@ export default function PersonalInfo() {
               >
                 Hey{" "}
                 <Text as={"span"} color={"#fd9193"}>
-                  {userInfo.name},
+                  {userInfo.name !== "" ? userInfo.name : userInfo.userName},
                 </Text>{" "}
                 <br></br> tell us something about your professional journey.
               </Heading>
@@ -95,7 +97,7 @@ export default function PersonalInfo() {
             <GridItem
               rowSpan={{ base: 5 /* , md: 6, lg: 25 */ }}
               colSpan={{ base: 5 /* , md: 20, lg: 48  */ }}
-              rowEnd={{ base: 21 /* , md: 19, lg: 28 */ }}
+              rowEnd={{ base: 20 /* , md: 19, lg: 28 */ }}
               colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
               zIndex={7}
             >
@@ -113,7 +115,7 @@ export default function PersonalInfo() {
             <GridItem
               rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
               colSpan={{ base: 15 /* , md: 20, lg: 48  */ }}
-              rowEnd={{ base: 21 /* , md: 19, lg: 28 */ }}
+              rowEnd={{ base: 20 /* , md: 19, lg: 28 */ }}
               colStart={{ base: 9 /* , md: 1, lg: 1 */ }}
               zIndex={7}
             >
@@ -123,9 +125,8 @@ export default function PersonalInfo() {
                 direction={"column"}
               >
                 <Heading color={"white"} fontSize={"lg"}>
-                  {" "}
-                  {userInfo.name}
-                </Heading>{" "}
+                  {userInfo.name !== "" ? userInfo.name : userInfo.userName}
+                </Heading>
                 <Spacer />
                 <Text color={"gray.500"}>@{userInfo.userName}</Text>
               </Flex>
@@ -133,9 +134,61 @@ export default function PersonalInfo() {
             <GridItem
               rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
               colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
-              rowEnd={{ base: 27 /* , md: 19, lg: 28 */ }}
+              rowEnd={{ base: 25 /* , md: 19, lg: 28 */ }}
+              colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+              zIndex={8}
+            >
+              {" "}
+              <FormControl>
+                <FormLabel
+                  fontSize={"sm"}
+                  fontFamily={"Roboto"}
+                  fontWeight={"regular"}
+                >
+                  Select your Industry
+                </FormLabel>
+                <Field
+                  name="skillName"
+                  isSearchable
+                  options={industries}
+                  component={CustomSelect}
+                  placeholder="Fintech..."
+                  isMulti={false}
+                />
+              </FormControl>
+            </GridItem>
+            <GridItem
+              rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
+              colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
+              rowEnd={{ base: 30 /* , md: 19, lg: 28 */ }}
               colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
               zIndex={7}
+            >
+              {" "}
+              <FormControl>
+                <FormLabel
+                  fontSize={"sm"}
+                  fontFamily={"Roboto"}
+                  fontWeight={"regular"}
+                >
+                  Select your Role
+                </FormLabel>
+                <Field
+                  name="skillName"
+                  isSearchable
+                  options={roles}
+                  component={CustomSelect}
+                  placeholder="CEO..."
+                  isMulti={false}
+                />
+              </FormControl>
+            </GridItem>
+            <GridItem
+              rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
+              colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
+              rowEnd={{ base: 35 /* , md: 19, lg: 28 */ }}
+              colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+              zIndex={6}
             >
               <Field name="profesionalBg">
                 {({
@@ -149,7 +202,14 @@ export default function PersonalInfo() {
                       fontFamily={"Roboto"}
                       fontWeight={"regular"}
                     >
-                      Give us a brief overview of your professional background:
+                      Give us a brief overview of your professional background.
+                    </FormLabel>
+                    <FormLabel
+                      fontSize="xs"
+                      fontFamily={"Roboto"}
+                      color={"gray.400"}
+                    >
+                      (this will appear at the top of your on-chain resume)
                     </FormLabel>
 
                     <InputGroup>
@@ -190,7 +250,7 @@ export default function PersonalInfo() {
               colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
               rowEnd={{ base: 46 /* , md: 19, lg: 28 */ }}
               colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
-              zIndex={7}
+              zIndex={6}
             >
               <Box>
                 <ButtonGradient

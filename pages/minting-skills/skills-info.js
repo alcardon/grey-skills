@@ -144,6 +144,7 @@ export default function PersonalInfo() {
                   component={CustomSelect}
                   placeholder="Select a language..."
                   isMulti={false}
+                  needSlider={true}
                   setIsSliderDisabled={setIsSliderDisabled}
                 />
               </FormControl>
@@ -219,6 +220,7 @@ export default function PersonalInfo() {
                   label={"Proceed to next step"}
                   size="lg"
                   type="submit"
+                  isDisabled={isSliderDisabled}
                 />
               </Box>
             </GridItem>

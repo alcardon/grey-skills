@@ -35,6 +35,7 @@ const ProgressLayout = ({ children }) => {
       width="100vw"
       bgImage={"url('/images/general/background.png')"}
       className={"main-Lay-progress"}
+      fontFamily={"Kanit, sans-serif"}
     >
       <Box
         h={"100%"}

@@ -1,7 +1,7 @@
 export const chakraStyles = {
   control: (provided, state) => ({
     ...provided,
-    background: "whiteAlpha.900",
+    background: "white",
     borderColor: "gray.100",
     borderRadius: "md",
   }),

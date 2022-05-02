@@ -15,6 +15,7 @@ import {
   VStack,
   Spacer,
   IconButton,
+  Link,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -31,6 +32,7 @@ import * as Yup from "yup";
 import { useRouter } from "next/router";
 
 import { BiRocket } from "react-icons/bi";
+import NextLink from "next/link";
 
 import WorkModal from "../../components/modals/work-modal";
 import LearnModal from "../../components/modals/learn-modal";
@@ -39,9 +41,10 @@ import { useUserInfo } from "../../context/user-context";
 import { useEffect, useState, useRef } from "react";
 import { chakraStyles } from "../../components/styles/react-select";
 import { Select } from "chakra-react-select";
+import ThumbNailImage from "../../components/general/thumbnail-avatar";
 
 export default function LearningWorkExp() {
-  const { userInfo, createUser, setProgress } = useUserInfo();
+  const { userInfo, skillInfo, createUser, setProgress } = useUserInfo();
 
   const [modalType, setModalType] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -62,7 +65,7 @@ export default function LearningWorkExp() {
     setProgress(80);
   }, [setProgress]);
 
-  console.log("User info: ", userInfo);
+  console.log("SkillInfo: ", skillInfo);
 
   return (
     <>
@@ -93,61 +96,84 @@ export default function LearningWorkExp() {
         position={"absolute"}
         height={"100%"}
         className={"law-container"}
+        top={24}
       >
         <VStack spacing={{ base: 5, md: 10, lg: 20 }}>
           <VStack spacing={{ base: 5, md: 5, lg: 10 }}>
             {" "}
-            <Heading
-              fontSize={{
-                base: "xl",
-                md: "2xl",
-              }}
-            >
-              Tell us more about your skill.
-            </Heading>
+            <Flex justify={"flex-start"}>
+              <Heading
+                fontSize={{
+                  base: "xl",
+                  md: "2xl",
+                }}
+                color={"white"}
+              >
+                Tell us more about your skill.
+              </Heading>
+            </Flex>
             <Text fontSize={{ base: 14, md: 14, lg: 16 }}>
               Add relevent experience to your skill to gain reputational value
               for this Skill NFT
             </Text>
-            <Flex justifyContent={"Center"} align="center">
-              <Circle size="10" bgColor={"orange.500"} m={1}>
-                <Icon as={BiRocket} w={5} h={5} color={"white"} />
-              </Circle>
-              <Spacer />
-              <Center m={1}>
-                <Heading
-                  fontFamily={"revert"}
-                  fontSize={{
-                    base: "xl",
-                    md: "2xl",
-                  }}
-                >
-                  Skill
-                </Heading>
-              </Center>
-            </Flex>
+            <Grid
+              templateRows="repeat(1, 1fr)"
+              templateColumns="repeat(12, 1fr)"
+              gap={0}
+              zIndex={8}
+              w={"100%"}
+            >
+              {" "}
+              <GridItem rowSpan={1} colSpan={1}>
+                {" "}
+                <ThumbNailImage skillName={skillInfo.skillName} />
+              </GridItem>
+              <GridItem rowSpan={1} colSpan={7} colStart={3}>
+                <Flex align={"center"} h={"100%"} justify={"flex-start"}>
+                  <Heading
+                    verticalAlign="middle"
+                    fontSize={{
+                      base: "md",
+                      md: "lg",
+                    }}
+                    color={"white"}
+                  >
+                    {skillInfo.skillName}
+                  </Heading>
+                </Flex>
+              </GridItem>
+              <GridItem rowSpan={1} colSpan={3} colStart={10}>
+                <Flex align={"center"} h={"100%"} justify={"flex-end"}>
+                  <NextLink href="/minting-skills/skills-info" passHref>
+                    <Link>
+                      <Text fontSize={"xs"} fontWeight={"bold"}>
+                        Edit Skill
+                      </Text>
+                    </Link>
+                  </NextLink>
+                </Flex>
+              </GridItem>
+            </Grid>
           </VStack>
+          <Box borderTop={"solid gray 0.01px"} w={"100%"}></Box>
           <VStack spacing={5}>
             <VStack spacing={2}>
-              <Flex direction="row" width={"100%"}>
+              <Flex direction="row" width={"100%"} zIndex={7} align={"center"}>
                 <Heading
                   fontSize={{
                     base: "lg",
                     md: "xl",
                   }}
+                  color={"white"}
                 >
                   Learning Experience
                 </Heading>
                 <Spacer />
                 <IconButton
-                  size={"sm"}
-                  colorScheme="green"
-                  bg="green.500"
+                  size={"md"}
+                  variant={"ghost"}
                   color="white"
-                  _hover={{
-                    bg: "green.400",
-                  }}
-                  aria-label="Add to friends"
+                  aria-label="Add Learning experiece"
                   icon={<AddIcon />}
                   onClick={() => {
                     setModalType("learn");
@@ -155,274 +181,17 @@ export default function LearningWorkExp() {
                   }}
                 />
               </Flex>
-              <Flex direction="row" width={"100%"}>
-                <Heading
-                  fontSize={{
-                    base: "lg",
-                    md: "xl",
-                  }}
-                >
-                  Learning Experience
-                </Heading>
-                <Spacer />
-                <IconButton
-                  size={"sm"}
-                  colorScheme="green"
-                  bg="green.500"
-                  color="white"
-                  _hover={{
-                    bg: "green.400",
-                  }}
-                  aria-label="Add to friends"
-                  icon={<AddIcon />}
-                  onClick={() => {
-                    setModalType("learn");
-                    onOpen();
-                  }}
-                />
-              </Flex>
-              <Flex direction="row" width={"100%"}>
-                <Heading
-                  fontSize={{
-                    base: "lg",
-                    md: "xl",
-                  }}
-                >
-                  Learning Experience
-                </Heading>
-                <Spacer />
-                <IconButton
-                  size={"sm"}
-                  colorScheme="green"
-                  bg="green.500"
-                  color="white"
-                  _hover={{
-                    bg: "green.400",
-                  }}
-                  aria-label="Add to friends"
-                  icon={<AddIcon />}
-                  onClick={() => {
-                    setModalType("learn");
-                    onOpen();
-                  }}
-                />
-              </Flex>
-              <Flex direction="row" width={"100%"}>
-                <Heading
-                  fontSize={{
-                    base: "lg",
-                    md: "xl",
-                  }}
-                >
-                  Learning Experience
-                </Heading>
-                <Spacer />
-                <IconButton
-                  size={"sm"}
-                  colorScheme="green"
-                  bg="green.500"
-                  color="white"
-                  _hover={{
-                    bg: "green.400",
-                  }}
-                  aria-label="Add to friends"
-                  icon={<AddIcon />}
-                  onClick={() => {
-                    setModalType("learn");
-                    onOpen();
-                  }}
-                />
-              </Flex>
-              <Flex direction="row" width={"100%"}>
-                <Heading
-                  fontSize={{
-                    base: "lg",
-                    md: "xl",
-                  }}
-                >
-                  Learning Experience
-                </Heading>
-                <Spacer />
-                <IconButton
-                  size={"sm"}
-                  colorScheme="green"
-                  bg="green.500"
-                  color="white"
-                  _hover={{
-                    bg: "green.400",
-                  }}
-                  aria-label="Add to friends"
-                  icon={<AddIcon />}
-                  onClick={() => {
-                    setModalType("learn");
-                    onOpen();
-                  }}
-                />
-              </Flex>
-              <Flex direction="row" width={"100%"}>
-                <Heading
-                  fontSize={{
-                    base: "lg",
-                    md: "xl",
-                  }}
-                >
-                  Learning Experience
-                </Heading>
-                <Spacer />
-                <IconButton
-                  size={"sm"}
-                  colorScheme="green"
-                  bg="green.500"
-                  color="white"
-                  _hover={{
-                    bg: "green.400",
-                  }}
-                  aria-label="Add to friends"
-                  icon={<AddIcon />}
-                  onClick={() => {
-                    setModalType("learn");
-                    onOpen();
-                  }}
-                />
-              </Flex>
-              <Flex direction="row" width={"100%"}>
-                <Heading
-                  fontSize={{
-                    base: "lg",
-                    md: "xl",
-                  }}
-                >
-                  Learning Experience
-                </Heading>
-                <Spacer />
-                <IconButton
-                  size={"sm"}
-                  colorScheme="green"
-                  bg="green.500"
-                  color="white"
-                  _hover={{
-                    bg: "green.400",
-                  }}
-                  aria-label="Add to friends"
-                  icon={<AddIcon />}
-                  onClick={() => {
-                    setModalType("learn");
-                    onOpen();
-                  }}
-                />
-              </Flex>
-              <Flex direction="row" width={"100%"}>
-                <Heading
-                  fontSize={{
-                    base: "lg",
-                    md: "xl",
-                  }}
-                >
-                  Learning Experience
-                </Heading>
-                <Spacer />
-                <IconButton
-                  size={"sm"}
-                  colorScheme="green"
-                  bg="green.500"
-                  color="white"
-                  _hover={{
-                    bg: "green.400",
-                  }}
-                  aria-label="Add to friends"
-                  icon={<AddIcon />}
-                  onClick={() => {
-                    setModalType("learn");
-                    onOpen();
-                  }}
-                />
-              </Flex>
-              <Flex direction="row" width={"100%"}>
-                <Heading
-                  fontSize={{
-                    base: "lg",
-                    md: "xl",
-                  }}
-                >
-                  Learning Experience
-                </Heading>
-                <Spacer />
-                <IconButton
-                  size={"sm"}
-                  colorScheme="green"
-                  bg="green.500"
-                  color="white"
-                  _hover={{
-                    bg: "green.400",
-                  }}
-                  aria-label="Add to friends"
-                  icon={<AddIcon />}
-                  onClick={() => {
-                    setModalType("learn");
-                    onOpen();
-                  }}
-                />
-              </Flex>
-              <Flex direction="row" width={"100%"}>
-                <Heading
-                  fontSize={{
-                    base: "lg",
-                    md: "xl",
-                  }}
-                >
-                  Learning Experience
-                </Heading>
-                <Spacer />
-                <IconButton
-                  size={"sm"}
-                  colorScheme="green"
-                  bg="green.500"
-                  color="white"
-                  _hover={{
-                    bg: "green.400",
-                  }}
-                  aria-label="Add to friends"
-                  icon={<AddIcon />}
-                  onClick={() => {
-                    setModalType("learn");
-                    onOpen();
-                  }}
-                />
-              </Flex>
-              <Flex direction="row" width={"100%"}>
-                <Heading
-                  fontSize={{
-                    base: "lg",
-                    md: "xl",
-                  }}
-                >
-                  Learning Experience
-                </Heading>
-                <Spacer />
-                <IconButton
-                  size={"sm"}
-                  colorScheme="green"
-                  bg="green.500"
-                  color="white"
-                  _hover={{
-                    bg: "green.400",
-                  }}
-                  aria-label="Add to friends"
-                  icon={<AddIcon />}
-                  onClick={() => {
-                    setModalType("learn");
-                    onOpen();
-                  }}
-                />
-              </Flex>
-              <Text fontSize={{ base: 12, md: 12, lg: 14 }}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                cursus dictum convallis.
+
+              <Text fontSize={{ base: 12, md: 12, lg: 14 }} color={"gray.300"}>
+                Add learning experiences associated with this skill
+                (courses/certificates/workshops/etc.)
               </Text>
             </VStack>
+
             <VStack spacing={2}>
-              <Flex direction="row" width={"100%"}>
+              <Flex direction="row" width={"100%"} zIndex={7} align={"center"}>
                 <Heading
+                  color={"white"}
                   fontSize={{
                     base: "lg",
                     md: "xl",
@@ -432,47 +201,50 @@ export default function LearningWorkExp() {
                 </Heading>
                 <Spacer />
                 <IconButton
-                  size={"sm"}
-                  colorScheme="green"
-                  bg="green.500"
+                  size={"md"}
+                  variant={"ghost"}
                   color="white"
-                  _hover={{
-                    bg: "green.400",
-                  }}
-                  aria-label="Add to friends"
+                  aria-label="Add work experience"
                   icon={<AddIcon />}
                   onClick={() => {
-                    setModalType("work");
+                    setModalType("learn");
                     onOpen();
                   }}
                 />
               </Flex>
-              <Text fontSize={{ base: 12, md: 12, lg: 14 }}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                cursus dictum convallis.
+              <Text fontSize={{ base: 12, md: 12, lg: 14 }} color={"gray.300"}>
+                Add work experience associated with this skill
+                (jobs/projects/freelance gigs/etc.)
               </Text>
             </VStack>
           </VStack>
+          <Box borderTop={"solid gray 1px"} w={"100%"}></Box>
         </VStack>
-        <Button
-          colorScheme="blue"
-          bg="blue.400"
-          color="white"
-          _hover={{
-            bg: "blue.500",
-          }}
+        <Box
           position={"absolute"}
-          zIndex={8}
-          isFullWidth
-          bottom={"5%"}
-          width={"200px"}
-          rounded="full"
-          onClick={() => {
-            /* router.push("/"); */
-          }}
+          bottom={20}
+          left={"50%"}
+          transform={"translate(-50%, 0)"}
+          w={"80%"}
         >
-          Continue
-        </Button>
+          <ButtonGradient
+            label={"Proceed to next step"}
+            size="lg"
+            type="submit"
+          />
+        </Box>
+        <Text
+          fontSize={{ base: 12, md: 12, lg: 14 }}
+          position={"absolute"}
+          bottom={5}
+          left={"50%"}
+          transform={"translate(-50%, 0)"}
+          w={"80%"}
+          color={"gray.500"}
+        >
+          If you don’t have relevant experience, you can simply mint your skill
+          without experience.
+        </Text>
       </Box>
     </>
   );

@@ -33,9 +33,6 @@ export default function PersonalInfo() {
       initialValues={userInfo}
       enableReinitialize
       validationSchema={Yup.object({
-        name: Yup.string()
-          .max(45, "Must be 45 characters or less")
-          .required("Required"),
         userName: Yup.string()
           .max(20, "Must be 20 characters or less")
           .required("Required"),

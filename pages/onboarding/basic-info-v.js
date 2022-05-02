@@ -112,7 +112,7 @@ export default function BasicInfo() {
           colSpan={{ base: 2 /* , md: 20, lg: 48  */ }}
           rowEnd={{ base: 39 /* , md: 19, lg: 28 */ }}
           colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
-          zIndex={{ base: 3 /* , md: 2, lg: 3 */ }}
+          zIndex={{ base: 7 /* , md: 2, lg: 3 */ }}
         >
           <Image
             src="/images/basic-info/points.png"

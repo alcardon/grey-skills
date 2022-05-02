@@ -141,6 +141,7 @@ export default function PersonalInfo() {
               }
               value={formik.values.skillName}
               options={SoftwareDevelopment}
+              needSlider={true}
             />
 
             <FormErrorMessage>{formik.errors.job}</FormErrorMessage>

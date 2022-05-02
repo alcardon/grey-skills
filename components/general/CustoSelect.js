@@ -10,10 +10,13 @@ export const CustomSelect = ({
   form,
   options,
   isMulti = false,
+  needSlider = false,
   setIsSliderDisabled,
 }) => {
   const onChange = (option) => {
-    setIsSliderDisabled(false);
+    if (needSlider) {
+      setIsSliderDisabled(false);
+    }
     form.setFieldValue(
       field.name,
       isMulti ? option.map((item) => item.value) : option.value
