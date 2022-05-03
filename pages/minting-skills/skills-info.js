@@ -35,12 +35,16 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { chakraStyles } from "../../components/styles/react-select";
 import { Select } from "chakra-react-select";
-import CustomSelect from "../../components/general/CustoSelect";
+import SkillSelect from "../../components/general/skillSelect";
 import { SoftwareDevelopment } from "../../components/options-data/options";
 import { Field, Form, Formik } from "formik";
+import SmallAvatar from "../../components/general/small-avatar";
 
 export default function PersonalInfo() {
   const { skillInfo, createSkillInfo, setProgress } = useUserInfo();
+  const [skillName, setSkillName] = useState(
+    skillInfo.skillName ? skillInfo.skillName : ""
+  );
   const [skillLevel, setSkillLevel] = useState(skillInfo.skillLevel);
   const [isSliderDisabled, setIsSliderDisabled] = useState(true);
   const handleChange = (value) => setSkillLevel(value);
@@ -60,7 +64,6 @@ export default function PersonalInfo() {
       actions.setSubmitting(false);
     }, 400);
   };
-  skillInfo.skillName === "" ? true : false;
 
   return (
     <Formik
@@ -108,18 +111,39 @@ export default function PersonalInfo() {
                 Search for a skill you want to mint.{" "}
               </Text>
             </GridItem>
+
             <GridItem
               rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
               colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
               rowEnd={{ base: 20 /* , md: 19, lg: 28 */ }}
               colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
               zIndex={7}
+              display={skillName !== "" ? "inline-grid" : "none"}
             >
               <Center>
                 {" "}
-                <Text color="gray.600" textAlign={"left"} fontSize={14} pt={2}>
+                <Text
+                  color="gray.600"
+                  textAlign={"left"}
+                  fontSize={14}
+                  pt={2}
+                  display={skillName == "" ? "inline-block" : "none"}
+                >
                   Your Skill badge will appear here.
                 </Text>
+              </Center>
+            </GridItem>
+
+            <GridItem
+              rowSpan={{ base: 7 /* , md: 6, lg: 25 */ }}
+              colSpan={{ base: 8 /* , md: 20, lg: 48  */ }}
+              rowEnd={{ base: 21 /* , md: 19, lg: 28 */ }}
+              colStart={{ base: 9 /* , md: 1, lg: 1 */ }}
+              zIndex={7}
+              display={skillName == "" ? "none" : "inline-block"}
+            >
+              <Center w={"100%"} h={"100%"}>
+                <SmallAvatar skillName={skillName}></SmallAvatar>
               </Center>
             </GridItem>
 
@@ -141,11 +165,12 @@ export default function PersonalInfo() {
                 <Field
                   name="skillName"
                   options={SoftwareDevelopment}
-                  component={CustomSelect}
+                  component={SkillSelect}
                   placeholder="Select a language..."
                   isMulti={false}
                   needSlider={true}
                   setIsSliderDisabled={setIsSliderDisabled}
+                  setSkillName={setSkillName}
                 />
               </FormControl>
             </GridItem>

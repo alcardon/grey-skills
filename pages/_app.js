@@ -7,6 +7,9 @@ import { Button } from "@chakra-ui/react";
 import { UserProvider } from "../context/user-context";
 import ProgressLayout from "../components/layout/progres-layout";
 
+import "@fontsource/kanit/500.css";
+import "@fontsource/kanit/400.css";
+
 export function HeadTags() {
   return (
     <Head>

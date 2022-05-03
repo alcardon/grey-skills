@@ -28,12 +28,14 @@ export const UserProvider = ({ children }) => {
   const [industryInfo, setIndustryInfo] = useState({
     industry: "",
     industryRole: "",
+    profesionalBg: "",
   });
 
-  const createIndustryUser = (industry, industryRole) => {
+  const createIndustryUser = (industry, industryRole, profesionalBg) => {
     setIndustryInfo({
       industry: industry,
       industryRole: industryRole,
+      profesionalBg: profesionalBg,
     });
   };
 
@@ -120,7 +122,7 @@ export const UserProvider = ({ children }) => {
         userInfo,
         createUser,
         industryInfo,
-        setIndustryInfo,
+        createIndustryUser,
         skillInfo,
         setSkillInfo,
         createSkillInfo,
