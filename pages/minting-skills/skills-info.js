@@ -36,12 +36,17 @@ import { useEffect, useState } from "react";
 import { chakraStyles } from "../../components/styles/react-select";
 import { Select } from "chakra-react-select";
 import SkillSelect from "../../components/general/skillSelect";
-import { SoftwareDevelopment } from "../../components/options-data/options";
+import { getSkills } from "../../components/options-data/options";
 import { Field, Form, Formik } from "formik";
 import SmallAvatar from "../../components/general/small-avatar";
 
 export default function PersonalInfo() {
-  const { skillInfo, createSkillInfo, setProgress } = useUserInfo();
+  const {
+    skillInfo,
+    createSkillInfo,
+    setProgress,
+    industryInfo
+  } = useUserInfo();
   const [skillName, setSkillName] = useState(
     skillInfo.skillName ? skillInfo.skillName : ""
   );
@@ -164,9 +169,11 @@ export default function PersonalInfo() {
                 </FormLabel>
                 <Field
                   name="skillName"
-                  options={SoftwareDevelopment}
+                  options={
+                    getSkills(industryInfo.industry, industryInfo.industryRole)
+                  }
                   component={SkillSelect}
-                  placeholder="Select a language..."
+                  placeholder="E.g. Data Analysis"
                   isMulti={false}
                   needSlider={true}
                   setIsSliderDisabled={setIsSliderDisabled}

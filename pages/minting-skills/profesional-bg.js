@@ -158,7 +158,7 @@ export default function PersonalInfo() {
                 isSearchable
                 options={industries}
                 component={CustomSelect}
-                placeholder="Fintech..."
+                placeholder="E.g. Fintech"
                 isMulti={false}
               />
             </FormControl>
@@ -184,7 +184,7 @@ export default function PersonalInfo() {
                 isSearchable
                 options={roles}
                 component={CustomSelect}
-                placeholder="CEO..."
+                placeholder="E.g. Backend Developer"
                 isMulti={false}
               />
             </FormControl>
