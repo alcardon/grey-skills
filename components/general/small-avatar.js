@@ -1,6 +1,6 @@
-import { Box, Circle, Flex, Heading } from "@chakra-ui/react";
+import { Box, Circle, Flex, Heading, Text } from "@chakra-ui/react";
 import styles from "../styles/global.module.css";
-
+import "@fontsource/inter";
 function GetFirstLetter(skillName) {
   console.log(skillName);
   let result;
@@ -11,7 +11,11 @@ function GetFirstLetter(skillName) {
     result = null;
   }
   return (
-    <Heading fontSize={{ base: "20px", md: "16px" }} color={"whatsapp.100"}>
+    <Heading
+      fontSize={{ base: "20px", md: "16px" }}
+      fontFamily={"Inter, sans-serif"}
+      color={"whatsapp.100"}
+    >
       {result}
     </Heading>
   );
@@ -39,6 +43,9 @@ export default function SmallAvatar({ skillName }) {
       >
         {GetFirstLetter(skillName)}
       </Circle>
+      <Text top={"75px"} position={"absolute"}>
+        {skillName}
+      </Text>
     </Flex>
   );
 }

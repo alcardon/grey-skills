@@ -1,5 +1,6 @@
 import { Box, Circle, Flex, Heading } from "@chakra-ui/react";
 import styles from "../styles/global.module.css";
+import "@fontsource/inter";
 
 function GetFirstLetter(skillName) {
   console.log(skillName);
@@ -11,7 +12,11 @@ function GetFirstLetter(skillName) {
     result = null;
   }
   return (
-    <Heading fontSize={{ base: "10px", md: "16px" }} color={"whatsapp.100"}>
+    <Heading
+      fontSize={{ base: "10px", md: "16px" }}
+      fontFamily={"Inter, sans-serif"}
+      color={"whatsapp.100"}
+    >
       {result}
     </Heading>
   );

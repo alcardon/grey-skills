@@ -48,6 +48,7 @@ export default function PersonalInfo() {
   const [skillLevel, setSkillLevel] = useState(skillInfo.skillLevel);
   const [isSliderDisabled, setIsSliderDisabled] = useState(true);
   const handleChange = (value) => setSkillLevel(value);
+
   useEffect(() => {
     setProgress(60);
     if (skillInfo.skillName !== "") {
@@ -85,7 +86,7 @@ export default function PersonalInfo() {
     md: "repeat(20, 1fr)",
     lg: "repeat(48, 1fr)", */,
             }}
-            height={{ base: "100vh" /* , md: "100vh"  */ }}
+            maxheight={{ base: "70vh" /* , md: "100vh"  */ }}
             width={"100%"}
             gap={0}
           >
