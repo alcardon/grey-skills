@@ -12,8 +12,8 @@ function GetFirstLetter(skillName) {
   }
   return (
     <Heading
-      fontSize={{ base: "20px", md: "16px" }}
-      fontFamily={"Inter, sans-serif"}
+      fontSize={{ base: "17px", md: "17px" }}
+      fontFamily={"inter"}
       color={"whatsapp.100"}
     >
       {result}
@@ -31,7 +31,7 @@ export default function SmallAvatar({ skillName }) {
       align={"center"}
       justify={"center"}
       zIndex={10}
-      border={"solid #808080 1px"}
+      border={"solid #808080 2px"}
       position={"relative"}
     >
       <Circle
@@ -43,7 +43,13 @@ export default function SmallAvatar({ skillName }) {
       >
         {GetFirstLetter(skillName)}
       </Circle>
-      <Text top={"75px"} position={"absolute"}>
+      <Text
+        top={"75px"}
+        position={"absolute"}
+        textAlign={"center"}
+        fontFamily={"kanit"}
+        fontSize={"15"}
+      >
         {skillName}
       </Text>
     </Flex>

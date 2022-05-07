@@ -9,7 +9,10 @@ export default function ButtonGradient({ label, ...props }) {
       bgGradient="linear(to-r,#4b0da9, #fd9193)"
       color={"white"}
       width={"100%"}
-      fontWeight={"500"}
+      fontWeight={"600"}
+      fontStyle={"semibold"}
+      fontSize={"16px"}
+      fontFamily={"inter"}
       {...props}
     >
       {label}

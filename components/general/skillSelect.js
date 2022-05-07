@@ -44,6 +44,7 @@ export const SkillSelect = ({
       placeholder={placeholder}
       options={options}
       isMulti={isMulti}
+      size={"sm"}
     />
   );
 };

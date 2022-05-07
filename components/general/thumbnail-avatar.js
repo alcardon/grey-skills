@@ -13,8 +13,9 @@ function GetFirstLetter(skillName) {
   }
   return (
     <Heading
-      fontSize={{ base: "10px", md: "16px" }}
-      fontFamily={"Inter, sans-serif"}
+      fontSize={{ base: "10px", md: "10px" }}
+      fontFamily={"inter"}
+      fontWeight={"normal"}
       color={"whatsapp.100"}
     >
       {result}

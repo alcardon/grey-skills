@@ -29,6 +29,8 @@ import { useFormik } from "formik";
 
 import * as Yup from "yup";
 
+import style from "../../styles/Home.module.css";
+
 import ButtonGradient from "../../components/general/gradient-button";
 import { useUserInfo } from "../../context/user-context";
 import { useRouter } from "next/router";
@@ -67,192 +69,212 @@ export default function PersonalInfo() {
   };
 
   return (
-    <Formik
-      initialValues={skillInfo}
-      enableReinitialize
-      validator={() => ({})}
-      onSubmit={onSubmit}
-    >
-      {(props) => (
-        <Form>
-          <Grid
-            templateRows={{
-              base: "repeat(48, 1fr)" /* ,
+    <Flex height={{ base: "90vh", md: "660px" }}>
+      <Formik
+        initialValues={skillInfo}
+        enableReinitialize
+        validator={() => ({})}
+        onSubmit={onSubmit}
+      >
+        {(props) => (
+          <Form className={style.form}>
+            <Grid
+              templateRows={{
+                base: "repeat(48, 1fr)" /* ,
     md: "repeat(24, 1fr)",
     lg: "repeat(48, 1fr)", */,
-            }}
-            templateColumns={{
-              base: "repeat(24, 1fr)" /* ,
+              }}
+              templateColumns={{
+                base: "repeat(24, 1fr)" /* ,
     md: "repeat(20, 1fr)",
     lg: "repeat(48, 1fr)", */,
-            }}
-            maxheight={{ base: "70vh" /* , md: "100vh"  */ }}
-            width={"100%"}
-            gap={0}
-          >
-            <GridItem
-              rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
-              colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
-              rowEnd={{ base: 12 /* , md: 19, lg: 28 */ }}
-              colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
-              zIndex={7}
+              }}
+              height={{ base: "100%", md: "660px" }}
+              width={"100%"}
+              gap={0}
             >
-              {" "}
-              <Heading
-                display={"table-cell"}
-                verticalAlign="middle"
-                fontSize={{
-                  base: "xl",
-                }}
-                color={"white"}
+              <GridItem
+                rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
+                colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
+                rowEnd={{ base: 7 /* , md: 19, lg: 28 */ }}
+                colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+                zIndex={7}
               >
-                Mint your skill
-              </Heading>
-              <Text color="gray.300" textAlign={"left"} fontSize={16} pt={2}>
-                Search for a skill you want to mint.{" "}
-              </Text>
-            </GridItem>
-
-            <GridItem
-              rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
-              colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
-              rowEnd={{ base: 20 /* , md: 19, lg: 28 */ }}
-              colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
-              zIndex={7}
-              display={skillName !== "" ? "inline-grid" : "none"}
-            >
-              <Center>
                 {" "}
-                <Text
-                  color="gray.600"
-                  textAlign={"left"}
-                  fontSize={14}
-                  pt={2}
-                  display={skillName == "" ? "inline-block" : "none"}
+                <Heading
+                  display={"table-cell"}
+                  verticalAlign="middle"
+                  fontSize={{
+                    base: "xl",
+                  }}
+                  color={"white"}
                 >
-                  Your Skill badge will appear here.
+                  Mint your skill
+                </Heading>
+                <Text color="gray.300" textAlign={"left"} fontSize={16} pt={2}>
+                  Search for a skill you want to mint.{" "}
                 </Text>
-              </Center>
-            </GridItem>
+              </GridItem>
 
-            <GridItem
-              rowSpan={{ base: 7 /* , md: 6, lg: 25 */ }}
-              colSpan={{ base: 8 /* , md: 20, lg: 48  */ }}
-              rowEnd={{ base: 21 /* , md: 19, lg: 28 */ }}
-              colStart={{ base: 9 /* , md: 1, lg: 1 */ }}
-              zIndex={7}
-              display={skillName == "" ? "none" : "inline-block"}
-            >
-              <Center w={"100%"} h={"100%"}>
-                <SmallAvatar skillName={skillName}></SmallAvatar>
-              </Center>
-            </GridItem>
+              {/* <GridItem
+                rowSpan={{ base: 3  }}
+                colSpan={{ base: 20 }}
+                rowEnd={{ base: 15 }}
+                colStart={{ base: 3 }}
+                zIndex={7}
+                display={skillName !== "" ? "inline-grid" : "none"}
+              >
+                <Center>
+                  {" "}
+                  <Text
+                    color="gray.600"
+                    textAlign={"left"}
+                    fontSize={14}
+                    pt={2}
+                    display={skillName == "" ? "inline-block" : "none"}
+                  >
+                    Your Skill badge will appear here.
+                  </Text>
+                </Center>
+              </GridItem> */}
 
-            <GridItem
-              rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
-              colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
-              rowEnd={{ base: 27 /* , md: 19, lg: 28 */ }}
-              colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
-              zIndex={7}
-            >
-              <FormControl>
-                <FormLabel
-                  fontSize={"md"}
-                  fontFamily={"Roboto"}
-                  fontWeight={"regular"}
-                >
-                  Search your skill*
-                </FormLabel>
-                <Field
-                  name="skillName"
-                  options={SoftwareDevelopment}
-                  component={SkillSelect}
-                  placeholder="Select a language..."
-                  isMulti={false}
-                  needSlider={true}
-                  setIsSliderDisabled={setIsSliderDisabled}
-                  setSkillName={setSkillName}
-                />
-              </FormControl>
-            </GridItem>
+              <GridItem
+                rowSpan={{ base: 9 /* , md: 6, lg: 25 */ }}
+                colSpan={{ base: 9 /* , md: 20, lg: 48  */ }}
+                rowEnd={{ base: 20 /* , md: 19, lg: 28 */ }}
+                colStart={{ base: 9 /* , md: 1, lg: 1 */ }}
+                zIndex={7}
+                display={skillName == "" ? "none" : "inline-block"}
+              >
+                <Center w={"100%"} h={"100%"}>
+                  <SmallAvatar skillName={skillName}></SmallAvatar>
+                </Center>
+              </GridItem>
 
-            <GridItem
-              rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
-              colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
-              rowEnd={{ base: 34 /* , md: 19, lg: 28 */ }}
-              colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
-              zIndex={6}
-            >
-              <FormControl>
-                <FormLabel
-                  fontSize={"md"}
-                  fontFamily={"Roboto"}
-                  fontWeight={"regular"}
-                  color={"gray.200"}
-                >
-                  How experienced are you in this skill?
-                </FormLabel>
+              <GridItem
+                rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
+                colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
+                rowEnd={{ base: 27 /* , md: 19, lg: 28 */ }}
+                colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+                zIndex={7}
+              >
+                <FormControl>
+                  <FormLabel
+                    fontSize={"md"}
+                    fontFamily={"Roboto"}
+                    fontWeight={"regular"}
+                  >
+                    Search your skill*
+                  </FormLabel>
+                  <Field
+                    name="skillName"
+                    options={SoftwareDevelopment}
+                    component={SkillSelect}
+                    placeholder="Select a language..."
+                    isMulti={false}
+                    needSlider={true}
+                    setIsSliderDisabled={setIsSliderDisabled}
+                    setSkillName={setSkillName}
+                  />
+                </FormControl>
+              </GridItem>
 
-                <InputGroup>
-                  <HStack direction={"row"} spacing={7} w={"100%"}>
-                    <Slider
-                      focusThumbOnChange={false}
-                      value={skillLevel}
-                      onChange={handleChange}
-                      defaultValue={skillLevel}
-                      isDisabled={isSliderDisabled}
-                    >
-                      <SliderTrack bg={"gray.100"}>
-                        <SliderFilledTrack bgGradient="linear(to-r,#4b0da9, #fd9193)" />
-                      </SliderTrack>
-                      <SliderThumb boxSize={4} zIndex={0} />
-                    </Slider>
-
-                    <NumberInput
-                      size="sm"
-                      maxW={{ base: "25%", md: "18%" }}
-                      value={skillLevel}
-                      onChange={handleChange}
-                      fontSize={"md"}
-                      alignContent={"center"}
-                      justify={"center"}
-                      isDisabled={isSliderDisabled}
-                    >
-                      <NumberInputField
-                        bgColor={"white"}
-                        color={"gray.800"}
-                        pl="25px"
-                        fontSize={{ base: "14px", md: "16px" }}
-                        borderRadius={"md"}
-                      />
-                    </NumberInput>
-                  </HStack>
-                </InputGroup>
+              <GridItem
+                rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
+                colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
+                rowEnd={{ base: 34 /* , md: 19, lg: 28 */ }}
+                colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+                zIndex={6}
+              >
+                <FormControl>
+                  <FormLabel
+                    fontSize={"13px"}
+                    fontFamily={"Roboto"}
+                    fontWeight={"regular"}
+                    color={"gray.200"}
+                  >
+                    Move the slider to indicate your proficiency in this skill:
+                  </FormLabel>
+                </FormControl>
+              </GridItem>
+              <GridItem
+                rowSpan={{ base: 2 /* , md: 6, lg: 25 */ }}
+                colSpan={{ base: 13 /* , md: 20, lg: 48  */ }}
+                rowEnd={{ base: 35 /* , md: 19, lg: 28 */ }}
+                colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+                zIndex={6}
+              >
+                <Flex align={"center"} h={"100%"}>
+                  <InputGroup>
+                    <HStack direction={"row"} spacing={7} w={"100%"}>
+                      <Slider
+                        focusThumbOnChange={false}
+                        value={skillLevel}
+                        onChange={handleChange}
+                        defaultValue={skillLevel}
+                        isDisabled={isSliderDisabled}
+                      >
+                        <SliderTrack bg={"gray.100"}>
+                          <SliderFilledTrack bgGradient="linear(to-r,#4b0da9, #fd9193)" />
+                        </SliderTrack>
+                        <SliderThumb boxSize={4} zIndex={0} />
+                      </Slider>
+                    </HStack>
+                  </InputGroup>
+                </Flex>
                 {/* <FormErrorMessage>{meta.error}</FormErrorMessage> */}
-              </FormControl>
-            </GridItem>
-
-            {/* <ButtonGradient label={"Continue"}></ButtonGradient> */}
-
-            <GridItem
-              rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
-              colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
-              rowEnd={{ base: 46 /* , md: 19, lg: 28 */ }}
-              colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
-              zIndex={6}
-            >
-              <Box>
-                <ButtonGradient
-                  label={"Proceed to next step"}
-                  size="lg"
-                  type="submit"
-                  isDisabled={isSliderDisabled}
-                />
-              </Box>
-            </GridItem>
-          </Grid>
-        </Form>
-      )}
-    </Formik>
+              </GridItem>
+              <GridItem
+                rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
+                colSpan={{ base: 5 /* , md: 20, lg: 48  */ }}
+                rowEnd={{ base: 36 /* , md: 19, lg: 28 */ }}
+                colStart={{ base: 18 /* , md: 1, lg: 1 */ }}
+                zIndex={6}
+              >
+                <Flex align={"center"} h={"100%"}>
+                  <NumberInput
+                    size="sm"
+                    maxW={{ base: "100%", md: "100%" }}
+                    value={skillLevel}
+                    onChange={handleChange}
+                    fontSize={"md"}
+                    alignContent={"center"}
+                    justify={"center"}
+                    isDisabled={isSliderDisabled}
+                    w={"100%"}
+                  >
+                    <NumberInputField
+                      bgColor={"white"}
+                      color={"gray.800"}
+                      pl={{ base: "15px", md: "15px" }}
+                      fontSize={{ base: "14px", md: "14px" }}
+                      borderRadius={"md"}
+                      w={"100%"}
+                    />
+                  </NumberInput>
+                </Flex>
+                {/* <ButtonGradient label={"Continue"}></ButtonGradient> */}
+              </GridItem>
+              <GridItem
+                rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
+                colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
+                rowEnd={{ base: 45 /* , md: 19, lg: 28 */ }}
+                colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+                zIndex={6}
+              >
+                <Box>
+                  <ButtonGradient
+                    label={"Proceed to next step"}
+                    size="md"
+                    type="submit"
+                    isDisabled={isSliderDisabled}
+                  />
+                </Box>
+              </GridItem>
+            </Grid>
+          </Form>
+        )}
+      </Formik>
+    </Flex>
   );
 }

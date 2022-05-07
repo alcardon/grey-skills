@@ -69,183 +69,245 @@ export default function LearningWorkExp() {
 
   return (
     <>
-      <Modal
-        onClose={onClose}
-        isOpen={isOpen}
-        size={"xs"}
-        initialFocusRef={initialRef}
-      >
-        <ModalOverlay />
-        <ModalContent top={100}>
-          <ModalCloseButton size={"sm"} top={3} />
-          {ModalRender()}
-          <ModalFooter>
-            <Button onClick={onClose} mr={3}>
-              Cancel
-            </Button>
-            <Button ref={initialRef} colorScheme="blue">
-              Save
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+      <Flex height={{ base: "90vh", md: "660px" }} position={"relative"}>
+        <Modal onClose={onClose} isOpen={isOpen} borderRadius={"lg"} isCentered>
+          <ModalOverlay />
+          <ModalContent
+            top={3}
+            height={{ base: "90vh", md: "700px" }}
+            w={"340px"}
+          >
+            <ModalCloseButton size={"lg"} zIndex={10} />
+            {ModalRender()}
+          </ModalContent>
+        </Modal>
 
-      <Box
-        maxW={"sm"}
-        p={{ base: 7, md: 10 }}
-        position={"absolute"}
-        height={"100%"}
-        className={"law-container"}
-        top={24}
-      >
-        <VStack spacing={{ base: 5, md: 10, lg: 20 }}>
-          <VStack spacing={{ base: 5, md: 5, lg: 10 }}>
+        <Grid
+          templateRows={{
+            base: "repeat(48, 1fr)",
+          }}
+          templateColumns={{
+            base: "repeat(24, 1fr)" /* ,
+  md: "repeat(20, 1fr)",
+  lg: "repeat(48, 1fr)", */,
+          }}
+          gap={0}
+          zIndex={8}
+          w={"100%"}
+          overflow={"auto"}
+        >
+          <GridItem
+            rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
+            colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
+            rowEnd={{ base: 7 /* , md: 19, lg: 28 */ }}
+            colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+            zIndex={7}
+          >
             {" "}
-            <Flex justify={"flex-start"}>
-              <Heading
-                fontSize={{
-                  base: "xl",
-                  md: "2xl",
-                }}
-                color={"white"}
-              >
-                Tell us more about your skill.
-              </Heading>
-            </Flex>
-            <Text fontSize={{ base: 14, md: 14, lg: 16 }}>
+            <Heading
+              fontSize={{
+                base: "xl",
+                md: "xl",
+              }}
+              color={"white"}
+            >
+              Tell us more about your skill
+            </Heading>
+            <Text fontSize={{ base: 14, md: 15 }} pt={2} fontFamily={"inter"}>
               Add relevent experience to your skill to gain reputational value
               for this Skill NFT
             </Text>
-            <Grid
-              templateRows="repeat(1, 1fr)"
-              templateColumns="repeat(12, 1fr)"
-              gap={0}
-              zIndex={8}
-              w={"100%"}
-            >
-              {" "}
-              <GridItem rowSpan={1} colSpan={1}>
-                {" "}
-                <ThumbNailImage skillName={skillInfo.skillName} />
-              </GridItem>
-              <GridItem rowSpan={1} colSpan={7} colStart={3}>
-                <Flex align={"center"} h={"100%"} justify={"flex-start"}>
-                  <Heading
-                    verticalAlign="middle"
-                    fontSize={{
-                      base: "md",
-                      md: "lg",
-                    }}
-                    color={"white"}
+          </GridItem>{" "}
+          <GridItem
+            rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
+            colSpan={{ base: 3 /* , md: 20, lg: 48  */ }}
+            rowEnd={{ base: 14 /* , md: 19, lg: 28 */ }}
+            colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+            zIndex={7}
+          >
+            {" "}
+            <ThumbNailImage skillName={skillInfo.skillName} />
+          </GridItem>
+          <GridItem
+            rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
+            colSpan={{ base: 12 /* , md: 20, lg: 48  */ }}
+            rowEnd={{ base: 14 /* , md: 19, lg: 28 */ }}
+            colStart={{ base: 6 /* , md: 1, lg: 1 */ }}
+            zIndex={7}
+          >
+            <Flex align={"center"} h={"100%"} justify={"flex-start"}>
+              <Heading
+                verticalAlign="middle"
+                fontFamily={"kanit"}
+                fontWeight={"normal"}
+                fontSize={"15"}
+                color={"white"}
+                pl={2}
+              >
+                {skillInfo.skillName}
+              </Heading>
+            </Flex>
+          </GridItem>
+          <GridItem
+            rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
+            colSpan={{ base: 5 /* , md: 20, lg: 48  */ }}
+            rowEnd={{ base: 14 /* , md: 19, lg: 28 */ }}
+            colEnd={{ base: 23 /* , md: 1, lg: 1 */ }}
+            zIndex={7}
+          >
+            <Flex align={"center"} h={"100%"} justify={"flex-end"}>
+              <NextLink href="/minting-skills/skills-info" passHref>
+                <Link>
+                  <Text
+                    fontSize={"11"}
+                    fontWeight={"semibold"}
+                    fontFamily={"inter"}
                   >
-                    {skillInfo.skillName}
-                  </Heading>
-                </Flex>
-              </GridItem>
-              <GridItem rowSpan={1} colSpan={3} colStart={10}>
-                <Flex align={"center"} h={"100%"} justify={"flex-end"}>
-                  <NextLink href="/minting-skills/skills-info" passHref>
-                    <Link>
-                      <Text fontSize={"xs"} fontWeight={"bold"}>
-                        Edit Skill
-                      </Text>
-                    </Link>
-                  </NextLink>
-                </Flex>
-              </GridItem>
-            </Grid>
-          </VStack>
-          <Box borderTop={"solid gray 0.01px"} w={"100%"}></Box>
-          <VStack spacing={5}>
-            <VStack spacing={2}>
-              <Flex direction="row" width={"100%"} zIndex={7} align={"center"}>
-                <Heading
-                  fontSize={{
-                    base: "lg",
-                    md: "xl",
-                  }}
-                  color={"white"}
-                >
-                  Learning Experience
-                </Heading>
-                <Spacer />
-                <IconButton
-                  size={"md"}
-                  variant={"ghost"}
-                  color="white"
-                  aria-label="Add Learning experiece"
-                  icon={<AddIcon />}
-                  onClick={() => {
-                    setModalType("learn");
-                    onOpen();
-                  }}
-                />
-              </Flex>
-
-              <Text fontSize={{ base: 12, md: 12, lg: 14 }} color={"gray.300"}>
-                Add learning experiences associated with this skill
-                (courses/certificates/workshops/etc.)
-              </Text>
-            </VStack>
-
-            <VStack spacing={2}>
-              <Flex direction="row" width={"100%"} zIndex={7} align={"center"}>
-                <Heading
-                  color={"white"}
-                  fontSize={{
-                    base: "lg",
-                    md: "xl",
-                  }}
-                >
-                  Work Experience
-                </Heading>
-                <Spacer />
-                <IconButton
-                  size={"md"}
-                  variant={"ghost"}
-                  color="white"
-                  aria-label="Add work experience"
-                  icon={<AddIcon />}
-                  onClick={() => {
-                    setModalType("learn");
-                    onOpen();
-                  }}
-                />
-              </Flex>
-              <Text fontSize={{ base: 12, md: 12, lg: 14 }} color={"gray.300"}>
-                Add work experience associated with this skill
-                (jobs/projects/freelance gigs/etc.)
-              </Text>
-            </VStack>
-          </VStack>
-          <Box borderTop={"solid gray 1px"} w={"100%"}></Box>
-        </VStack>
-        <Box
-          position={"absolute"}
-          bottom={20}
-          left={"50%"}
-          transform={"translate(-50%, 0)"}
-          w={"80%"}
-        >
-          <ButtonGradient
-            label={"Proceed to next step"}
-            size="lg"
-            type="submit"
-          />
-        </Box>
-        <Text
-          fontSize={{ base: 12, md: 12, lg: 14 }}
-          position={"absolute"}
-          bottom={5}
-          left={"50%"}
-          transform={"translate(-50%, 0)"}
-          w={"80%"}
-          color={"gray.500"}
-        >
-          If you don’t have relevant experience, you can simply mint your skill
-          without experience.
-        </Text>
-      </Box>
+                    Change skill
+                  </Text>
+                </Link>
+              </NextLink>
+            </Flex>
+          </GridItem>
+          <GridItem
+            rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
+            colSpan={{ base: 24 /* , md: 20, lg: 48  */ }}
+            rowEnd={{ base: 20 /* , md: 19, lg: 28 */ }}
+            colStart={{ base: 1 /* , md: 1, lg: 1 */ }}
+            zIndex={7}
+          >
+            {" "}
+            <Box borderTop={"solid gray 0.01px"} w={"100%"}></Box>{" "}
+          </GridItem>
+          <GridItem
+            rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
+            colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
+            rowEnd={{ base: 22 /* , md: 19, lg: 28 */ }}
+            colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+            zIndex={7}
+          >
+            {" "}
+            <Flex direction="row" width={"100%"} zIndex={7} align={"center"}>
+              <Heading
+                fontSize={{
+                  base: "lg",
+                  md: "xl",
+                }}
+                color={"white"}
+              >
+                Learning Experience
+              </Heading>
+              <Spacer />
+              <IconButton
+                size={"md"}
+                variant={"ghost"}
+                color="white"
+                aria-label="Add Learning experiece"
+                icon={<AddIcon />}
+                onClick={() => {
+                  setModalType("learn");
+                  onOpen();
+                }}
+              />
+            </Flex>
+            <Text fontSize={{ base: 12.5 }} color={"gray.500"} width={"90%"}>
+              Add learning experiences associated with this skill
+              (courses/certificates/workshops/etc.)
+            </Text>
+          </GridItem>
+          {/*  <GridItem colSpan={12}>
+            {" "}
+            <Text fontSize={{ base: 12, md: 12, lg: 14 }} color={"gray.300"}>
+              Add learning experiences associated with this skill
+              (courses/certificates/workshops/etc.) Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+              labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+              nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate
+              velit esse cillum dolore eu fugiat nulla pariatur. Ut enim ad
+              minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              aliquip ex ea commodo consequat.
+            </Text>
+          </GridItem> */}
+          <GridItem
+            rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
+            colSpan={{ base: 24 /* , md: 20, lg: 48  */ }}
+            rowEnd={{ base: 41 /* , md: 19, lg: 28 */ }}
+            colStart={{ base: 1 /* , md: 1, lg: 1 */ }}
+            zIndex={7}
+          >
+            <Box borderTop={"solid gray 0.01px"} w={"100%"}></Box>
+          </GridItem>
+          <GridItem
+            rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
+            colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
+            rowEnd={{ base: 32 /* , md: 19, lg: 28 */ }}
+            colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+            zIndex={7}
+          >
+            {" "}
+            <Flex direction="row" width={"100%"} zIndex={7} align={"center"}>
+              <Heading
+                color={"white"}
+                fontSize={{
+                  base: "lg",
+                  md: "xl",
+                }}
+              >
+                Work Experience
+              </Heading>
+              <Spacer />
+              <IconButton
+                size={"md"}
+                variant={"ghost"}
+                color="white"
+                aria-label="Add work experience"
+                icon={<AddIcon />}
+                onClick={() => {
+                  setModalType("work");
+                  onOpen();
+                }}
+              />
+            </Flex>
+            <Text fontSize={{ base: 12.5 }} color={"gray.500"} width={"90%"}>
+              Add work experience associated with this skill
+              (jobs/projects/freelance gigs/etc.)
+            </Text>
+          </GridItem>
+          <GridItem
+            rowSpan={{ base: 2 /* , md: 6, lg: 25 */ }}
+            colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
+            rowEnd={{ base: 28 /* , md: 19, lg: 28 */ }}
+            colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+            zIndex={7}
+          ></GridItem>
+          <GridItem
+            rowSpan={{ base: 2 /* , md: 6, lg: 25 */ }}
+            colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
+            rowEnd={{ base: 36 /* , md: 19, lg: 28 */ }}
+            colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+            zIndex={7}
+          ></GridItem>
+          <GridItem
+            rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
+            colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
+            rowEnd={{ base: 43 /* , md: 19, lg: 28 */ }}
+            colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+            zIndex={7}
+          >
+            <ButtonGradient label={"Mint my skill"} size="md" type="submit" />
+            <Text
+              fontSize={{ base: 13 }}
+              color={"gray.500"}
+              pt={4}
+              textAlign={"center"}
+            >
+              If you don’t have relevant experience, you can simply mint your
+              skill without experience.
+            </Text>
+          </GridItem>
+        </Grid>
+      </Flex>
     </>
   );
 }

@@ -9,6 +9,7 @@ import ProgressLayout from "../components/layout/progres-layout";
 
 import "@fontsource/kanit/500.css";
 import "@fontsource/kanit/400.css";
+import "@fontsource/inter";
 
 export function HeadTags() {
   return (

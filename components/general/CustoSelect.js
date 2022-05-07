@@ -42,6 +42,7 @@ export const CustomSelect = ({
       placeholder={placeholder}
       options={options}
       isMulti={isMulti}
+      size="sm"
     />
   );
 };

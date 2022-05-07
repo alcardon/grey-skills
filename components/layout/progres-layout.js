@@ -9,6 +9,7 @@ import {
   Grid,
   GridItem,
   Button,
+  Center,
 } from "@chakra-ui/react";
 
 import { useState } from "react";
@@ -22,73 +23,93 @@ const ProgressLayout = ({ children }) => {
   const router = useRouter();
 
   return (
-    <Container
-      as={"body"}
-      p={{ base: 0, md: 16 }}
-      maxW={"sm"}
-      maxH={{ sm: "844px" }}
-      height={{ base: "100vh" }}
-      borderRadius={{ base: "none", sm: "md" }}
-      backgroundPosition="center"
-      backgroundRepeat="repeat"
-      bgSize={"cover"}
-      width="100vw"
-      bgImage={"url('/images/general/background.png')"}
-      className={"main-Lay-progress"}
-      fontFamily={"Kanit, sans-serif"}
-    >
+    <Flex h={"100%"} w={"100%"} justify={"center"} align={"center"}>
       <Box
-        h={"100%"}
+        maxW={{ md: "360px" }}
+        maxH={{ md: "760px" }}
+        height={{ base: "100vh", md: "760px" }}
+        mt={{ base: 0, sm: 10, md: 20 }}
+        borderRadius={{ base: "none", sm: "xl" }}
+        bgImage={"url('/images/general/background.png')"}
+        backgroundPosition="center"
+        backgroundRepeat="no-repeat"
+        bgSize={"cover"}
+        className={"main-Lay-progress"}
         position={"relative"}
-        boxSizing="border-box"
-        className="bigRelative"
+        mb={{ base: "0", md: "0" }}
+        boxShadow={"0px 0px 20px -12px rgba(255,255,255,1)"}
       >
-        <Flex
-          alignItems={"center"}
-          bgColor="#222021"
-          h={"12%"}
-          w={"100%"}
-          px={"6%"}
-          zIndex={8}
-          top={0}
-          position={"fixed"}
-        >
-          <Grid
-            templateRows="repeat(1, 1fr)"
-            templateColumns="repeat(12, 1fr)"
-            gap={0}
-            zIndex={8}
+        <Box>
+          <Flex
+            bgColor="#222021"
+            h={{ base: "10vh", md: "100px" }}
             w={"100%"}
+            px={"6%"}
+            zIndex={7}
+            top={0}
+            position={"relative"}
+            borderTopRadius={{ base: "none", md: "xl" }}
           >
-            <GridItem rowSpan={1} colSpan={1}>
-              <IconButton
-                variant={"ghost"}
-                aria-label={"back"}
-                onClick={() => router.back()}
-                icon={<ArrowBackIcon boxSize={"27px"} />}
-                zIndex={8}
-              />
-            </GridItem>
-            <GridItem rowSpan={1} colSpan={8} colStart={3}>
-              <Flex alignItems={"center"} h={"100%"}>
-                <HStack width={"100%"}>
-                  <Progress
-                    showInfo={false}
-                    strokeColor={{
-                      "0%": "#4b0da9",
-                      "100%": "#fd9193",
-                    }}
-                    trailColor={"#535152"}
-                    percent={progress}
+            <Image
+              src={"/images/general/mobile-navbar.png"}
+              position={"absolute"}
+              w={"100%"}
+              top={0}
+              left={0}
+              height={"40px"}
+              zIndex={8}
+              alt={"mobile battery"}
+              display={{ base: "none", md: "inline-block" }}
+            ></Image>
+            <Grid
+              templateRows="repeat(5, 1fr)"
+              templateColumns="repeat(12, 1fr)"
+              gap={0}
+              zIndex={7}
+              w={"100%"}
+              h={"100%"}
+            >
+              <GridItem
+                rowSpan={1}
+                colSpan={1}
+                rowStart={{ base: "3", md: "4" }}
+              >
+                <Flex alignItems={"center"} h={"100%"}>
+                  <IconButton
+                    variant={"ghost"}
+                    aria-label={"back"}
+                    onClick={() => router.back()}
+                    icon={<ArrowBackIcon boxSize={"27px"} />}
                     zIndex={8}
                   />
-                </HStack>
-              </Flex>
-            </GridItem>
-          </Grid>
-        </Flex>
+                </Flex>
+              </GridItem>
+              <GridItem
+                rowSpan={1}
+                colSpan={8}
+                colStart={3}
+                rowStart={{ base: "3", md: "4" }}
+              >
+                <Flex alignItems={"center"} h={"100%"}>
+                  <HStack width={"100%"}>
+                    <Progress
+                      showInfo={false}
+                      strokeColor={{
+                        "0%": "#4b0da9",
+                        "100%": "#fd9193",
+                      }}
+                      trailColor={"#535152"}
+                      percent={progress}
+                      zIndex={8}
+                    />
+                  </HStack>
+                </Flex>
+              </GridItem>
+            </Grid>
+          </Flex>
+        </Box>
         {/*  <Header /> */}
-        <Image
+        {/*   <Image
           src={"/images/general/cover.png"}
           position={"absolute"}
           objectFit="cover"
@@ -97,12 +118,12 @@ const ProgressLayout = ({ children }) => {
           height={"100%"}
           zIndex={5}
           top={0}
-        ></Image>
+        ></Image> */}
         {children}
 
         {/*  <Footer /> */}
       </Box>
-    </Container>
+    </Flex>
   );
 };
 

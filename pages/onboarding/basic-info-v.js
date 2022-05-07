@@ -12,6 +12,7 @@ import {
   Button,
   Image,
   Grid,
+  Circle,
   GridItem,
   Link,
   Progress,
@@ -39,14 +40,15 @@ export default function BasicInfo() {
     md: "repeat(20, 1fr)",
     lg: "repeat(48, 1fr)", */,
         }}
-        height={{ base: "100vh" /* , md: "100vh"  */ }}
+        height={{ base: "100%", md: "100%" }}
+        width={"100%"}
         gap={0}
       >
         <GridItem
           rowSpan={{ base: 2 /* , md: 2, lg: 3, xl: 3, "2xl": 3 */ }}
           colSpan={{ base: 7 /*  md: 2, lg: 2, xl: 2, "2xl": 2 */ }}
           colStart={{ base: 3 /* , md: 2, lg: 4, xl: 4, "2xl": 4  */ }}
-          rowEnd={{ base: 5 /* , md: 4, lg: 8, xl: 8, "2xl": 8 */ }}
+          rowEnd={{ base: 7 /* , md: 4, lg: 8, xl: 8, "2xl": 8 */ }}
           display={"flex"}
           alignItems={"center"}
           justify={"center"}
@@ -61,9 +63,9 @@ export default function BasicInfo() {
         </GridItem>
         <GridItem
           rowSpan={{ base: 7 /* , md: 2, lg: 3, xl: 3, "2xl": 3 */ }}
-          colSpan={{ base: 19 /*  md: 2, lg: 2, xl: 2, "2xl": 2 */ }}
+          colSpan={{ base: 20 /*  md: 2, lg: 2, xl: 2, "2xl": 2 */ }}
           colStart={{ base: 3 /* , md: 2, lg: 4, xl: 4, "2xl": 4  */ }}
-          rowEnd={{ base: 15 /* , md: 4, lg: 8, xl: 8, "2xl": 8 */ }}
+          rowEnd={{ base: 17 /* , md: 4, lg: 8, xl: 8, "2xl": 8 */ }}
           display={"flex"}
           alignItems={"center"}
           justify={"center"}
@@ -72,7 +74,7 @@ export default function BasicInfo() {
             {" "}
             <Heading
               fontWeight={"600"}
-              fontSize={{ base: "32", sm: "60", md: "6xl" }}
+              fontSize={{ base: "3xl", md: "3xl" }}
               lineHeight="107%"
               textAlign={"left"}
               color={"white"}
@@ -89,7 +91,7 @@ export default function BasicInfo() {
           rowSpan={{ base: 2 /* , md: 2, lg: 3, xl: 3, "2xl": 3 */ }}
           colSpan={{ base: 19 /*  md: 2, lg: 2, xl: 2, "2xl": 2 */ }}
           colStart={{ base: 3 /* , md: 2, lg: 4, xl: 4, "2xl": 4  */ }}
-          rowEnd={{ base: 18 /* , md: 4, lg: 8, xl: 8, "2xl": 8 */ }}
+          rowEnd={{ base: 20 /* , md: 4, lg: 8, xl: 8, "2xl": 8 */ }}
           display={"flex"}
           alignItems={"center"}
           justify={"center"}
@@ -108,33 +110,92 @@ export default function BasicInfo() {
         </GridItem>
 
         <GridItem
-          rowSpan={{ base: 20 /* , md: 6, lg: 25 */ }}
+          rowSpan={{ base: 17 /* , md: 6, lg: 25 */ }}
+          colSpan={{ base: 2 /* , md: 20, lg: 48  */ }}
+          rowEnd={{ base: 38 /* , md: 19, lg: 28 */ }}
+          colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+          zIndex={{ base: 7 /* , md: 2, lg: 3 */ }}
+        >
+          <Center h={"100%"}>
+            <Image
+              src="/images/basic-info/points.png"
+              alt="points"
+              w="10%"
+              objectFit={"cover"}
+              h={"100%"}
+            ></Image>
+          </Center>
+        </GridItem>
+
+        <GridItem
+          rowSpan={{ base: 2 /* , md: 6, lg: 25 */ }}
+          colSpan={{ base: 2 /* , md: 20, lg: 48  */ }}
+          rowEnd={{ base: 23 /* , md: 19, lg: 28 */ }}
+          colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+          zIndex={{ base: 7 /* , md: 2, lg: 3 */ }}
+        >
+          <Center>
+            <Circle size="22px" bg="#ff9393" />
+          </Center>
+        </GridItem>
+        <GridItem
+          rowSpan={{ base: 2 /* , md: 6, lg: 25 */ }}
+          colSpan={{ base: 2 /* , md: 20, lg: 48  */ }}
+          rowEnd={{ base: 27 /* , md: 19, lg: 28 */ }}
+          colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+          zIndex={{ base: 7 /* , md: 2, lg: 3 */ }}
+        >
+          <Center>
+            <Circle size="22px" bg="#ff9393" />
+          </Center>
+        </GridItem>
+        <GridItem
+          rowSpan={{ base: 2 /* , md: 6, lg: 25 */ }}
+          colSpan={{ base: 2 /* , md: 20, lg: 48  */ }}
+          rowEnd={{ base: 31 /* , md: 19, lg: 28 */ }}
+          colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+          zIndex={{ base: 7 /* , md: 2, lg: 3 */ }}
+        >
+          <Center>
+            <Circle size="22px" bg="#ff9393" />
+          </Center>
+        </GridItem>
+        <GridItem
+          rowSpan={{ base: 2 /* , md: 6, lg: 25 */ }}
+          colSpan={{ base: 2 /* , md: 20, lg: 48  */ }}
+          rowEnd={{ base: 35 /* , md: 19, lg: 28 */ }}
+          colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+          zIndex={{ base: 7 /* , md: 2, lg: 3 */ }}
+        >
+          <Center>
+            <Circle size="22px" bg="#ff9393" />
+          </Center>
+        </GridItem>
+        <GridItem
+          rowSpan={{ base: 2 /* , md: 6, lg: 25 */ }}
           colSpan={{ base: 2 /* , md: 20, lg: 48  */ }}
           rowEnd={{ base: 39 /* , md: 19, lg: 28 */ }}
           colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
           zIndex={{ base: 7 /* , md: 2, lg: 3 */ }}
         >
-          <Image
-            src="/images/basic-info/points.png"
-            alt="points"
-            w="75%"
-            h={"100%"}
-          ></Image>
+          <Center>
+            <Circle size="22px" bg="#ff9393" />
+          </Center>
         </GridItem>
+
         <GridItem
-          rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
-          colSpan={{ base: 18 /* , md: 20, lg: 48  */ }}
-          rowEnd={{ base: 22 /* , md: 19, lg: 28 */ }}
-          colStart={{ base: 5 /* , md: 1, lg: 1 */ }}
+          rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
+          colSpan={{ base: 17 /* , md: 20, lg: 48  */ }}
+          rowEnd={{ base: 25 /* , md: 19, lg: 28 */ }}
+          colStart={{ base: 6 /* , md: 1, lg: 1 */ }}
           zIndex={{ base: 3 /* , md: 2, lg: 3 */ }}
         >
           <Text
-            color={"white"}
+            color={"whiteAlpha.800"}
             textAlign={"left"}
             fontWeight={"regular"}
             fontFamily={"Roboto"}
-            fontSize="sm"
-            noOfLines={2}
+            fontSize="13"
           >
             Mint, add and own your skills as dynamic NFTs that grow with
             reputational value stored on the blockchain.
@@ -142,17 +203,17 @@ export default function BasicInfo() {
         </GridItem>
         <GridItem
           rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
-          colSpan={{ base: 18 /* , md: 20, lg: 48  */ }}
-          rowEnd={{ base: 27 /* , md: 19, lg: 28 */ }}
-          colStart={{ base: 5 /* , md: 1, lg: 1 */ }}
+          colSpan={{ base: 17 /* , md: 20, lg: 48  */ }}
+          rowEnd={{ base: 28 /* , md: 19, lg: 28 */ }}
+          colStart={{ base: 6 /* , md: 1, lg: 1 */ }}
           zIndex={{ base: 3 /* , md: 2, lg: 3 */ }}
         >
           <Text
-            color={"white"}
+            color={"whiteAlpha.800"}
             textAlign={"left"}
             fontWeight={"regular"}
             fontFamily={"Roboto"}
-            fontSize="sm"
+            fontSize="13"
           >
             Apply your skills through new projects or make your own to attract
             verified talent.
@@ -160,17 +221,17 @@ export default function BasicInfo() {
         </GridItem>
         <GridItem
           rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
-          colSpan={{ base: 18 /* , md: 20, lg: 48  */ }}
-          rowEnd={{ base: 31 /* , md: 19, lg: 28 */ }}
-          colStart={{ base: 5 /* , md: 1, lg: 1 */ }}
+          colSpan={{ base: 17 /* , md: 20, lg: 48  */ }}
+          rowEnd={{ base: 32 /* , md: 19, lg: 28 */ }}
+          colStart={{ base: 6 /* , md: 1, lg: 1 */ }}
           zIndex={{ base: 3 /* , md: 2, lg: 3 */ }}
         >
           <Text
-            color={"white"}
+            color={"whiteAlpha.800"}
             textAlign={"left"}
             fontWeight={"regular"}
             fontFamily={"Roboto"}
-            fontSize="sm"
+            fontSize="13"
           >
             Access and create professional learning experiences to enhance and
             grow current and new skills.
@@ -178,17 +239,17 @@ export default function BasicInfo() {
         </GridItem>
         <GridItem
           rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
-          colSpan={{ base: 18 /* , md: 20, lg: 48  */ }}
+          colSpan={{ base: 17 /* , md: 20, lg: 48  */ }}
           rowEnd={{ base: 36 /* , md: 19, lg: 28 */ }}
-          colStart={{ base: 5 /* , md: 1, lg: 1 */ }}
+          colStart={{ base: 6 /* , md: 1, lg: 1 */ }}
           zIndex={{ base: 3 /* , md: 2, lg: 3 */ }}
         >
           <Text
-            color={"white"}
+            color={"whiteAlpha.800"}
             textAlign={"left"}
             fontWeight={"regular"}
             fontFamily={"Roboto"}
-            fontSize="sm"
+            fontSize="13"
           >
             Manage your skills growth, reputation, and opportunities through
             your Grey Skill Wallet.
@@ -196,17 +257,17 @@ export default function BasicInfo() {
         </GridItem>
         <GridItem
           rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
-          colSpan={{ base: 18 /* , md: 20, lg: 48  */ }}
+          colSpan={{ base: 17 /* , md: 20, lg: 48  */ }}
           rowEnd={{ base: 40 /* , md: 19, lg: 28 */ }}
-          colStart={{ base: 5 /* , md: 1, lg: 1 */ }}
+          colStart={{ base: 6 /* , md: 1, lg: 1 */ }}
           zIndex={{ base: 3 /* , md: 2, lg: 3 */ }}
         >
           <Text
             textAlign={"left"}
             fontWeight={"regular"}
             fontFamily={"Roboto"}
-            color={"white"}
-            fontSize="sm"
+            color={"whiteAlpha.800"}
+            fontSize="13"
           >
             Document verifiable skills and related experiences on a Digital
             Resume.
@@ -215,14 +276,14 @@ export default function BasicInfo() {
         <GridItem
           rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
           colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
-          rowEnd={{ base: 46 /* , md: 19, lg: 28 */ }}
+          rowEnd={{ base: 45 /* , md: 19, lg: 28 */ }}
           colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
           zIndex={7}
         >
           <Box>
             <ButtonGradient
               label={"See what Grey can do"}
-              size="lg"
+              size="md"
               onClick={() => {
                 router.push("/onboarding/video");
                 console.log("hola mundo");

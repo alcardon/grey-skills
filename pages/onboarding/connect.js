@@ -43,14 +43,15 @@ export default function BasicInfo() {
     md: "repeat(20, 1fr)",
     lg: "repeat(48, 1fr)", */,
         }}
-        height={{ base: "100vh" /* , md: "100vh"  */ }}
+        height={{ base: "100%", md: "100%" }}
+        width={"100%"}
         gap={0}
       >
         <GridItem
           rowSpan={{ base: 2 /* , md: 2, lg: 3, xl: 3, "2xl": 3 */ }}
           colSpan={{ base: 7 /*  md: 2, lg: 2, xl: 2, "2xl": 2 */ }}
           colStart={{ base: 3 /* , md: 2, lg: 4, xl: 4, "2xl": 4  */ }}
-          rowEnd={{ base: 5 /* , md: 4, lg: 8, xl: 8, "2xl": 8 */ }}
+          rowEnd={{ base: 7 /* , md: 4, lg: 8, xl: 8, "2xl": 8 */ }}
           display={"flex"}
           alignItems={"center"}
           justify={"center"}
@@ -65,9 +66,9 @@ export default function BasicInfo() {
         </GridItem>
 
         <GridItem
-          rowSpan={{ base: 12 /* , md: 2, lg: 3, xl: 3, "2xl": 3 */ }}
-          colSpan={{ base: 15 /*  md: 2, lg: 2, xl: 2, "2xl": 2 */ }}
-          colEnd={{ base: 25 /* , md: 2, lg: 4, xl: 4, "2xl": 4  */ }}
+          rowSpan={{ base: 14 /* , md: 2, lg: 3, xl: 3, "2xl": 3 */ }}
+          colSpan={{ base: 17 /*  md: 2, lg: 2, xl: 2, "2xl": 2 */ }}
+          colEnd={{ base: 27 /* , md: 2, lg: 4, xl: 4, "2xl": 4  */ }}
           rowStart={{ base: 3 /* , md: 4, lg: 8, xl: 8, "2xl": 8 */ }}
           display={"flex"}
           alignItems={"center"}
@@ -86,7 +87,7 @@ export default function BasicInfo() {
           rowSpan={{ base: 3 /* , md: 2, lg: 3, xl: 3, "2xl": 3 */ }}
           colSpan={{ base: 13 /*  md: 2, lg: 2, xl: 2, "2xl": 2 */ }}
           colStart={{ base: 3 /* , md: 2, lg: 4, xl: 4, "2xl": 4  */ }}
-          rowEnd={{ base: 23 /* , md: 4, lg: 8, xl: 8, "2xl": 8 */ }}
+          rowEnd={{ base: 22 /* , md: 4, lg: 8, xl: 8, "2xl": 8 */ }}
           zIndex={8}
         >
           {" "}
@@ -112,14 +113,14 @@ export default function BasicInfo() {
             {" "}
             <Heading
               fontWeight={"600"}
-              fontSize={{ base: "30", sm: "60", md: "6xl" }}
+              fontSize={{ base: "3xl", sm: "3xl", md: "3xl" }}
               lineHeight="107%"
               textAlign={"left"}
               color={"white"}
             >
               Connect your Polkadot JS Wallet
             </Heading>
-            <Text color="gray.500" textAlign={"left"} fontSize={15} pt={2}>
+            <Text color="gray.500" textAlign={"left"} fontSize={15} pt={6}>
               Begin building your professional reputation and start owning your
               skills.
             </Text>
@@ -128,14 +129,14 @@ export default function BasicInfo() {
         <GridItem
           rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
           colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
-          rowEnd={{ base: 46 /* , md: 19, lg: 28 */ }}
+          rowEnd={{ base: 45 /* , md: 19, lg: 28 */ }}
           colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
           zIndex={7}
         >
           <Box>
             <ButtonGradient
               label={"Connect your wallet"}
-              size="lg"
+              size="md"
               onClick={() => {
                 router.push("/minting-skills/personal-info");
                 console.log("hola mundo");

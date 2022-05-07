@@ -19,8 +19,8 @@ export const chakraStyles = {
   }),
   indicatorsContainer: (provided, state) => ({
     ...provided,
-    borderColor: "gray.300",
-    bgColor: "gray.200",
+    borderColor: "white",
+    bgColor: "white",
   }),
   indicatorSeparator: (provided, state) => ({
     ...provided,
