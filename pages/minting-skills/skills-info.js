@@ -38,12 +38,13 @@ import { useEffect, useState } from "react";
 import { chakraStyles } from "../../components/styles/react-select";
 import { Select } from "chakra-react-select";
 import SkillSelect from "../../components/general/skillSelect";
-import { SoftwareDevelopment } from "../../components/options-data/options";
+import { getSkills } from "../../components/options-data/options";
 import { Field, Form, Formik } from "formik";
 import SmallAvatar from "../../components/general/small-avatar";
 
 export default function PersonalInfo() {
-  const { skillInfo, createSkillInfo, setProgress } = useUserInfo();
+  const { skillInfo, createSkillInfo, setProgress, industryInfo } =
+    useUserInfo();
   const [skillName, setSkillName] = useState(
     skillInfo.skillName ? skillInfo.skillName : ""
   );
@@ -116,27 +117,36 @@ export default function PersonalInfo() {
                 </Text>
               </GridItem>
 
-              {/* <GridItem
-                rowSpan={{ base: 3  }}
-                colSpan={{ base: 20 }}
-                rowEnd={{ base: 15 }}
-                colStart={{ base: 3 }}
+              <GridItem
+                rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
+                colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
+                rowEnd={{ base: 27 /* , md: 19, lg: 28 */ }}
+                colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
                 zIndex={7}
-                display={skillName !== "" ? "inline-grid" : "none"}
               >
-                <Center>
-                  {" "}
-                  <Text
-                    color="gray.600"
-                    textAlign={"left"}
-                    fontSize={14}
-                    pt={2}
-                    display={skillName == "" ? "inline-block" : "none"}
+                <FormControl>
+                  <FormLabel
+                    fontSize={"md"}
+                    fontFamily={"Roboto"}
+                    fontWeight={"regular"}
                   >
-                    Your Skill badge will appear here.
-                  </Text>
-                </Center>
-              </GridItem> */}
+                    Search your skill*
+                  </FormLabel>
+                  <Field
+                    name="skillName"
+                    options={getSkills(
+                      industryInfo.industry,
+                      industryInfo.industryRole
+                    )}
+                    component={SkillSelect}
+                    placeholder="E.g. Data Analysis"
+                    isMulti={false}
+                    needSlider={true}
+                    setIsSliderDisabled={setIsSliderDisabled}
+                    setSkillName={setSkillName}
+                  />
+                </FormControl>
+              </GridItem>
 
               <GridItem
                 rowSpan={{ base: 9 /* , md: 6, lg: 25 */ }}
@@ -168,9 +178,12 @@ export default function PersonalInfo() {
                   </FormLabel>
                   <Field
                     name="skillName"
-                    options={SoftwareDevelopment}
+                    options={getSkills(
+                      industryInfo.industry,
+                      industryInfo.industryRole
+                    )}
                     component={SkillSelect}
-                    placeholder="Select a language..."
+                    placeholder="E.g. Data Analysis"
                     isMulti={false}
                     needSlider={true}
                     setIsSliderDisabled={setIsSliderDisabled}
