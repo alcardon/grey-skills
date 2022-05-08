@@ -25,10 +25,10 @@ import * as Yup from "yup";
 import ButtonGradient from "../../components/general/gradient-button";
 import { useUserInfo } from "../../context/user-context";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
 
-export default function WorkModal() {
+export default function WorkModal({ initialRef }) {
   const { userInfo, createUser, setProgress } = useUserInfo();
+
   return (
     <>
       <Box
@@ -135,6 +135,7 @@ export default function WorkModal() {
 
                         <InputGroup>
                           <Input
+                            ref={initialRef}
                             type="text"
                             placeholder="Type here"
                             _placeholder={{ color: "gray.500" }}
@@ -251,7 +252,7 @@ export default function WorkModal() {
                   <Box>
                     <ButtonGradient
                       label={"Add Work Experience"}
-                      size="lg"
+                      size="md"
                       type="submit"
                     />
                   </Box>

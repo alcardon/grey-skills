@@ -103,7 +103,7 @@ export default function Welcome() {
         >
           <Heading
             fontWeight={"600"}
-            fontSize={{ base: "46", sm: "55", md: "5xl" }}
+            fontSize={{ base: "46", sm: "55", md: "4xl" }}
             lineHeight="107%"
             textAlign={"left"}
             color={"white"}

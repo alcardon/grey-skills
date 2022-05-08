@@ -92,7 +92,10 @@ export default function PersonalInfo() {
                   md: "xl",
                 }}
                 color={"white"}
-                lineHeight={"8"}
+                lineHeight={{
+                  base: "8",
+                  md: "7",
+                }}
               >
                 Hey{" "}
                 <Text as={"span"} color={"#fd9193"}>
@@ -132,7 +135,7 @@ export default function PersonalInfo() {
                 justify={"flex-start"}
                 direction={"column"}
               >
-                <Heading color={"white"} fontSize={"lg"}>
+                <Heading color={"white"} fontSize={{ base: "lg", md: "md" }}>
                   {userInfo.name !== "" ? userInfo.name : userInfo.userName}
                 </Heading>
                 <Spacer />
@@ -255,7 +258,7 @@ export default function PersonalInfo() {
             <GridItem
               rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
               colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
-              rowEnd={{ base: 45 /* , md: 19, lg: 28 */ }}
+              rowEnd={{ base: 46 /* , md: 19, lg: 28 */ }}
               colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
               zIndex={6}
             >

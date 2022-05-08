@@ -120,7 +120,7 @@ export default function PersonalInfo() {
               <GridItem
                 rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
                 colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
-                rowEnd={{ base: 27 /* , md: 19, lg: 28 */ }}
+                rowEnd={{ base: 26 /* , md: 19, lg: 28 */ }}
                 colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
                 zIndex={7}
               >
@@ -149,10 +149,10 @@ export default function PersonalInfo() {
               </GridItem>
 
               <GridItem
-                rowSpan={{ base: 9 /* , md: 6, lg: 25 */ }}
-                colSpan={{ base: 9 /* , md: 20, lg: 48  */ }}
+                rowSpan={{ base: 10 /* , md: 6, lg: 25 */ }}
+                colSpan={{ base: 10 /* , md: 20, lg: 48  */ }}
                 rowEnd={{ base: 20 /* , md: 19, lg: 28 */ }}
-                colStart={{ base: 9 /* , md: 1, lg: 1 */ }}
+                colStart={{ base: 8 /* , md: 1, lg: 1 */ }}
                 zIndex={7}
                 display={skillName == "" ? "none" : "inline-block"}
               >
@@ -164,38 +164,7 @@ export default function PersonalInfo() {
               <GridItem
                 rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
                 colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
-                rowEnd={{ base: 27 /* , md: 19, lg: 28 */ }}
-                colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
-                zIndex={7}
-              >
-                <FormControl>
-                  <FormLabel
-                    fontSize={"md"}
-                    fontFamily={"Roboto"}
-                    fontWeight={"regular"}
-                  >
-                    Search your skill*
-                  </FormLabel>
-                  <Field
-                    name="skillName"
-                    options={getSkills(
-                      industryInfo.industry,
-                      industryInfo.industryRole
-                    )}
-                    component={SkillSelect}
-                    placeholder="E.g. Data Analysis"
-                    isMulti={false}
-                    needSlider={true}
-                    setIsSliderDisabled={setIsSliderDisabled}
-                    setSkillName={setSkillName}
-                  />
-                </FormControl>
-              </GridItem>
-
-              <GridItem
-                rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
-                colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
-                rowEnd={{ base: 34 /* , md: 19, lg: 28 */ }}
+                rowEnd={{ base: 33 /* , md: 19, lg: 28 */ }}
                 colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
                 zIndex={6}
               >
@@ -271,7 +240,7 @@ export default function PersonalInfo() {
               <GridItem
                 rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
                 colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
-                rowEnd={{ base: 45 /* , md: 19, lg: 28 */ }}
+                rowEnd={{ base: 46 /* , md: 19, lg: 28 */ }}
                 colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
                 zIndex={6}
               >

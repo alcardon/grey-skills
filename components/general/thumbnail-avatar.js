@@ -26,7 +26,7 @@ function GetFirstLetter(skillName) {
 export default function ThumbNailImage({ skillName }) {
   return (
     <Flex
-      boxSize={"10"}
+      boxSize={{ base: "50", md: "39" }}
       bgColor={"#443e48"}
       borderRadius={"lg"}
       align={"center"}
@@ -36,7 +36,7 @@ export default function ThumbNailImage({ skillName }) {
     >
       <Circle
         bgColor={"blue"}
-        boxSize={"6"}
+        boxSize={{ base: "29", md: "19" }}
         className={styles.innerCircleGradient}
       >
         {GetFirstLetter(skillName)}

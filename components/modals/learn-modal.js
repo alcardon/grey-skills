@@ -25,7 +25,7 @@ import { useUserInfo } from "../../context/user-context";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-export default function WorkModal() {
+export default function WorkModal({ initialRef }) {
   const { userInfo, createUser, setProgress } = useUserInfo();
   return (
     <>
@@ -133,6 +133,9 @@ export default function WorkModal() {
 
                         <InputGroup>
                           <Input
+                            size={"md"}
+                            borderRadius={"md"}
+                            ref={initialRef}
                             type="text"
                             placeholder="Type here"
                             _placeholder={{ color: "gray.500" }}
@@ -171,6 +174,8 @@ export default function WorkModal() {
 
                         <InputGroup>
                           <Input
+                            size={"md"}
+                            borderRadius={"md"}
                             type="text"
                             placeholder="Type here"
                             _placeholder={{ color: "gray.500" }}
@@ -209,8 +214,9 @@ export default function WorkModal() {
 
                         <InputGroup>
                           <Input
+                            size={"md"}
+                            borderRadius={"md"}
                             type="date"
-                            placeholder="E.g. Jonathan@grey.com"
                             _placeholder={{ color: "gray.500" }}
                             bgColor={"white"}
                             color={"gray.800"}
@@ -251,6 +257,8 @@ export default function WorkModal() {
 
                         <InputGroup>
                           <Input
+                            size={"md"}
+                            borderRadius={"md"}
                             type="date"
                             placeholder="Select Date"
                             _placeholder={{ color: "gray.500" }}
@@ -289,6 +297,8 @@ export default function WorkModal() {
 
                         <InputGroup>
                           <Input
+                            size={"sm"}
+                            borderRadius={"md"}
                             type="text"
                             placeholder="Type here"
                             _placeholder={{ color: "gray.500" }}
@@ -315,7 +325,7 @@ export default function WorkModal() {
                   <Box>
                     <ButtonGradient
                       label={"Add Learning Experience"}
-                      size="lg"
+                      size="md"
                       type="submit"
                     />
                   </Box>

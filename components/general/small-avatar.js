@@ -49,6 +49,8 @@ export default function SmallAvatar({ skillName }) {
         textAlign={"center"}
         fontFamily={"kanit"}
         fontSize={"15"}
+        fontWeight={"normal"}
+        px={"2"}
       >
         {skillName}
       </Text>

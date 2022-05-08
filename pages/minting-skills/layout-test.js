@@ -182,7 +182,7 @@ export default function LearningWorkExp() {
                         fontSize={"15"}
                         color={"white"}
                       >
-                        {skillInfo.skillName}
+                        {skillInfo.skillName} Nombre de prueba
                       </Heading>
                     </Flex>
                   </GridItem>
@@ -315,10 +315,10 @@ export default function LearningWorkExp() {
                     size={"md"}
                     variant={"ghost"}
                     color="white"
-                    aria-label="Add Work experiece"
+                    aria-label="Add Learning experiece"
                     icon={<AddIcon />}
                     onClick={() => {
-                      setModalType("work");
+                      setModalType("learn");
                       onOpen();
                     }}
                   />

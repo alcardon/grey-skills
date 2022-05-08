@@ -207,7 +207,7 @@ export default function PersonalInfo() {
             <GridItem
               rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
               colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
-              rowEnd={{ base: 45 /* , md: 19, lg: 28 */ }}
+              rowEnd={{ base: 46 /* , md: 19, lg: 28 */ }}
               colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
               zIndex={7}
             >

@@ -65,7 +65,7 @@ export default function BasicInfo() {
           rowSpan={{ base: 7 /* , md: 2, lg: 3, xl: 3, "2xl": 3 */ }}
           colSpan={{ base: 20 /*  md: 2, lg: 2, xl: 2, "2xl": 2 */ }}
           colStart={{ base: 3 /* , md: 2, lg: 4, xl: 4, "2xl": 4  */ }}
-          rowEnd={{ base: 17 /* , md: 4, lg: 8, xl: 8, "2xl": 8 */ }}
+          rowEnd={{ base: 16 /* , md: 4, lg: 8, xl: 8, "2xl": 8 */ }}
           display={"flex"}
           alignItems={"center"}
           justify={"center"}
@@ -74,14 +74,20 @@ export default function BasicInfo() {
             {" "}
             <Heading
               fontWeight={"600"}
-              fontSize={{ base: "3xl", md: "3xl" }}
+              fontSize={{ base: "28", md: "28" }}
               lineHeight="107%"
               textAlign={"left"}
               color={"white"}
             >
               Create your <br></br> Grey Skills Identity
             </Heading>
-            <Text color="gray.500" textAlign={"left"} fontSize={16} pt={2}>
+            <Text
+              color="gray.500"
+              textAlign={"left"}
+              fontSize={16}
+              pt={2}
+              fontFamily={"kanit"}
+            >
               Begin building your professional reputation and start owning your
               skills.
             </Text>
@@ -276,7 +282,7 @@ export default function BasicInfo() {
         <GridItem
           rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
           colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
-          rowEnd={{ base: 45 /* , md: 19, lg: 28 */ }}
+          rowEnd={{ base: 46 /* , md: 19, lg: 28 */ }}
           colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
           zIndex={7}
         >
