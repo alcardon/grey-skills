@@ -13,18 +13,17 @@ import { useUserInfo } from "../../context/user-context";
 
 import { useState, useEffect } from "react";
 
-function Item({ id, nameLearn, initialDate, endDate, ...rest }) {
+function Item({ id, nameLearn, initialDate, endDate, style }) {
   const { deleteLearnInfo } = useUserInfo();
   return (
     <Box
       shadow="md"
-      bgColor={"rgba(196,196,196,0.2)"}
+      bgColor={style === "black" ? "black" : "rgba(196,196,196,0.2)"}
       position={"relative"}
       borderRadius={"md"}
       fontFamily={"inter"}
       mt={5}
       height={"80px"}
-      {...rest}
     >
       <IconButton
         size={"md"}
@@ -67,7 +66,7 @@ function Item({ id, nameLearn, initialDate, endDate, ...rest }) {
   );
 }
 
-export default function LearningItems() {
+export default function LearningItems({ style }) {
   const { learnInfo } = useUserInfo();
   const [learnItems, setLearnItems] = useState(null);
   useEffect(() => {
@@ -87,6 +86,7 @@ export default function LearningItems() {
                 nameLearn={item.nameLearn}
                 initialDate={item.startDate}
                 endDate={item.endDate}
+                style={style}
               ></Item>
             );
           })

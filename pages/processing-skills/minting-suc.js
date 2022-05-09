@@ -146,7 +146,9 @@ export default function MintingSuccesfull() {
             <ButtonGradient
               label={"Start your journey with Grey!"}
               size="md"
-              onClick={() => {}}
+              onClick={() => {
+                router.push("/profile/home");
+              }}
             />
           </Box>
         </GridItem>
