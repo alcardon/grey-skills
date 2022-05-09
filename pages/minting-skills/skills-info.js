@@ -109,6 +109,7 @@ export default function PersonalInfo() {
                     base: "xl",
                   }}
                   color={"white"}
+                  fontWeight={"normal"}
                 >
                   Mint your skill
                 </Heading>

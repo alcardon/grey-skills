@@ -1,5 +1,3 @@
-import Illustration from "../../components/ilustrations/illustration";
-
 import "@fontsource/kanit/500.css";
 import "@fontsource/kanit/400.css";
 import {
@@ -23,9 +21,6 @@ import ButtonGradient from "../../components/general/gradient-button";
 
 export default function BasicInfo() {
   const router = useRouter();
-  /* setTimeout(() => {
-    router.push("/minting-skills/personal-info");
-  }, 2000); */
 
   return (
     <>
@@ -73,11 +68,11 @@ export default function BasicInfo() {
           <Box>
             {" "}
             <Heading
-              fontWeight={"600"}
               fontSize={{ base: "28", md: "28" }}
               lineHeight="107%"
               textAlign={"left"}
               color={"white"}
+              fontWeight={"semibold"}
             >
               Create your <br></br> Grey Skills Identity
             </Heading>

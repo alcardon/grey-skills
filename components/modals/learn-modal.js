@@ -17,16 +17,28 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, useField, useFormikContext } from "formik";
 import * as Yup from "yup";
 
 import ButtonGradient from "../../components/general/gradient-button";
 import { useUserInfo } from "../../context/user-context";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import DatePickerField from "../general/date-picker";
 
-export default function WorkModal({ initialRef }) {
-  const { userInfo, createUser, setProgress } = useUserInfo();
+import format from "date-fns/format";
+import parseISO from "date-fns/parseISO";
+import parse from "date-fns/parse";
+
+function ConvertDate(date) {
+  let result = format(date, "dd-MM-yyyy");
+  console.log(result);
+  return result;
+}
+
+export default function LearnModal({ initialRef, onClose }) {
+  const { learnInfo, createLearnInfo } = useUserInfo();
+
   return (
     <>
       <Box
@@ -58,19 +70,19 @@ export default function WorkModal({ initialRef }) {
             top={0}
           ></Image>
           <Formik
-            enableReinitialize
-            validationSchema={Yup.object({
-              userName: Yup.string()
-                .max(20, "Must be 20 characters or less")
-                .required("Required"),
-              email: Yup.string()
-                .email("Invalid email address")
-                .required("Required"),
-            })}
+            initialValues={{}}
             onSubmit={(values, { setSubmitting }) => {
               setTimeout(() => {
-                createUser(values.name, values.userName, values.email);
-                router.push("/minting-skills/profesional-bg");
+                createLearnInfo(
+                  values.nameLearn,
+                  values.provider,
+                  ConvertDate(values.startDate),
+                  ConvertDate(values.endDate),
+                  values.active,
+                  values.credentials
+                );
+                onClose();
+                setSubmitting(false);
               }, 400);
             }}
           >
@@ -93,7 +105,7 @@ export default function WorkModal({ initialRef }) {
                 <GridItem
                   rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
                   colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
-                  rowEnd={{ base: 7 /* , md: 19, lg: 28 */ }}
+                  rowEnd={{ base: 6 /* , md: 19, lg: 28 */ }}
                   colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
                   zIndex={7}
                 >
@@ -112,11 +124,11 @@ export default function WorkModal({ initialRef }) {
                 <GridItem
                   rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
                   colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
-                  rowEnd={{ base: 12 /* , md: 19, lg: 28 */ }}
+                  rowEnd={{ base: 11 /* , md: 19, lg: 28 */ }}
                   colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
                   zIndex={7}
                 >
-                  <Field name="NameCourse">
+                  <Field name="nameLearn">
                     {({
                       field, // { name, value, onChange, onBlur }
                       form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
@@ -153,11 +165,11 @@ export default function WorkModal({ initialRef }) {
                 <GridItem
                   rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
                   colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
-                  rowEnd={{ base: 18 /* , md: 19, lg: 28 */ }}
+                  rowEnd={{ base: 17 /* , md: 19, lg: 28 */ }}
                   colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
                   zIndex={7}
                 >
-                  <Field name="userName">
+                  <Field name="provider">
                     {({
                       field, // { name, value, onChange, onBlur }
                       form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
@@ -193,84 +205,27 @@ export default function WorkModal({ initialRef }) {
                 <GridItem
                   rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
                   colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
-                  rowEnd={{ base: 24 /* , md: 19, lg: 28 */ }}
+                  rowEnd={{ base: 23 /* , md: 19, lg: 28 */ }}
                   colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
-                  zIndex={7}
+                  zIndex={11}
                 >
-                  <Field name="email">
-                    {({
-                      field, // { name, value, onChange, onBlur }
-                      form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
-                      meta,
-                    }) => (
-                      <FormControl isInvalid={meta.error && meta.touched}>
-                        <FormLabel
-                          fontSize={"sm"}
-                          fontFamily={"Roboto"}
-                          fontWeight={"regular"}
-                        >
-                          Start Date
-                        </FormLabel>
-
-                        <InputGroup>
-                          <Input
-                            size={"md"}
-                            borderRadius={"md"}
-                            type="date"
-                            _placeholder={{ color: "gray.500" }}
-                            bgColor={"white"}
-                            color={"gray.800"}
-                            {...field}
-                          />
-                        </InputGroup>
-                        <FormErrorMessage>{meta.error}</FormErrorMessage>
-                      </FormControl>
-                    )}
-                  </Field>
+                  <DatePickerField
+                    name={"startDate"}
+                    label={"Start Date"}
+                  ></DatePickerField>
                 </GridItem>
                 <GridItem
                   rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
                   colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
-                  rowEnd={{ base: 30 /* , md: 19, lg: 28 */ }}
+                  rowEnd={{ base: 29 /* , md: 19, lg: 28 */ }}
                   colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
-                  zIndex={7}
+                  zIndex={10}
                 >
                   {" "}
-                  <Field name="name">
-                    {({
-                      field,
-                      form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
-                      meta,
-                    }) => (
-                      <FormControl
-                        isInvalid={
-                          meta.error
-                        } /* This could be an option to avoid change of color */
-                      >
-                        <FormLabel
-                          fontSize={"sm"}
-                          fontFamily={"Roboto"}
-                          fontWeight={"regular"}
-                        >
-                          End Date
-                        </FormLabel>
-
-                        <InputGroup>
-                          <Input
-                            size={"md"}
-                            borderRadius={"md"}
-                            type="date"
-                            placeholder="Select Date"
-                            _placeholder={{ color: "gray.500" }}
-                            bgColor={"white"}
-                            color={"gray.800"}
-                            {...field}
-                          />
-                        </InputGroup>
-                        <FormErrorMessage>{meta.error}</FormErrorMessage>
-                      </FormControl>
-                    )}
-                  </Field>
+                  <DatePickerField
+                    name={"endDate"}
+                    label={"End Date"}
+                  ></DatePickerField>
                 </GridItem>
 
                 <GridItem
@@ -280,7 +235,7 @@ export default function WorkModal({ initialRef }) {
                   colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
                   zIndex={7}
                 >
-                  <Field name="userName">
+                  <Field name="credentials">
                     {({
                       field, // { name, value, onChange, onBlur }
                       form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.

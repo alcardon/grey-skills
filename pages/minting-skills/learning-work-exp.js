@@ -42,6 +42,8 @@ import { useEffect, useState, useRef } from "react";
 import { chakraStyles } from "../../components/styles/react-select";
 import { Select } from "chakra-react-select";
 import ThumbNailImage from "../../components/general/thumbnail-avatar";
+import LearningItems from "../../components/general/learning-items";
+import WorkItems from "../../components/general/work-items";
 
 export default function LearningWorkExp() {
   const { userInfo, skillInfo, createUser, setProgress } = useUserInfo();
@@ -54,9 +56,11 @@ export default function LearningWorkExp() {
 
   const ModalRender = () => {
     if (modalType == "work") {
-      return <WorkModal initialRef={initialRef}></WorkModal>;
+      return <WorkModal initialRef={initialRef} onClose={onClose}></WorkModal>;
     } else if (modalType == "learn") {
-      return <LearnModal initialRef={initialRef}></LearnModal>;
+      return (
+        <LearnModal initialRef={initialRef} onClose={onClose}></LearnModal>
+      );
     }
   };
 
@@ -130,6 +134,7 @@ export default function LearningWorkExp() {
                     md: "xl",
                   }}
                   color={"white"}
+                  fontWeight={"normal"}
                 >
                   Tell us more about your skill
                 </Heading>
@@ -242,7 +247,7 @@ export default function LearningWorkExp() {
                       md: "xl",
                     }}
                     color={"white"}
-                    fontWeight={"semibold"}
+                    fontWeight={"normal"}
                   >
                     Learning Experience
                   </Heading>
@@ -273,7 +278,7 @@ export default function LearningWorkExp() {
             </Grid>
           </GridItem>
           <GridItem gridArea={"Learning-items"} colSpan={24}>
-            <Box> </Box>
+            <LearningItems />
           </GridItem>
           <GridItem gridArea={"Work"} colSpan={24}>
             <Grid
@@ -306,7 +311,7 @@ export default function LearningWorkExp() {
                       md: "xl",
                     }}
                     color={"white"}
-                    fontWeight={"semibold"}
+                    fontWeight={"normal"}
                   >
                     Work Experience
                   </Heading>
@@ -336,9 +341,16 @@ export default function LearningWorkExp() {
               </GridItem>
             </Grid>
           </GridItem>
-          <GridItem gridArea={"Work-items"} colSpan={24}></GridItem>
+          <GridItem gridArea={"Work-items"} colSpan={24}>
+            <WorkItems></WorkItems>
+          </GridItem>
 
-          <GridItem gridArea={"foot"} colSpan={24}>
+          <GridItem
+            gridArea={"foot"}
+            colSpan={24}
+            borderTop={"solid gray 0.01px"}
+            mt={5}
+          >
             <Grid
               templateRows={{
                 base: "repeat(2, 50%)",
@@ -359,7 +371,9 @@ export default function LearningWorkExp() {
                 <ButtonGradient
                   label={"Mint my skill"}
                   size="md"
-                  type="submit"
+                  onClick={() => {
+                    router.push("/processing-skills/minting");
+                  }}
                 />
               </GridItem>{" "}
               <GridItem rowSpan={{ base: 1 }} zIndex={7} alignSelf={"start"}>

@@ -26,8 +26,8 @@ import ButtonGradient from "../../components/general/gradient-button";
 import { useUserInfo } from "../../context/user-context";
 import { useRouter } from "next/router";
 
-export default function WorkModal({ initialRef }) {
-  const { userInfo, createUser, setProgress } = useUserInfo();
+export default function WorkModal({ initialRef, onClose }) {
+  const { createWorkInfo } = useUserInfo();
 
   return (
     <>
@@ -60,19 +60,20 @@ export default function WorkModal({ initialRef }) {
             top={0}
           ></Image>
           <Formik
-            enableReinitialize
+            initialValues={{}}
             validationSchema={Yup.object({
-              userName: Yup.string()
+              nameWork: Yup.string()
                 .max(20, "Must be 20 characters or less")
                 .required("Required"),
-              email: Yup.string()
-                .email("Invalid email address")
+              role: Yup.string()
+                .max(20, "Must be 50 characters or less")
                 .required("Required"),
             })}
             onSubmit={(values, { setSubmitting }) => {
               setTimeout(() => {
-                createUser(values.name, values.userName, values.email);
-                router.push("/minting-skills/profesional-bg");
+                createWorkInfo(values.nameWork, values.role, values.summary);
+                onClose();
+                setSubmitting(false);
               }, 400);
             }}
           >
@@ -118,7 +119,7 @@ export default function WorkModal({ initialRef }) {
                   colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
                   zIndex={7}
                 >
-                  <Field name="NameCourse">
+                  <Field name="nameWork">
                     {({
                       field, // { name, value, onChange, onBlur }
                       form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
@@ -135,6 +136,8 @@ export default function WorkModal({ initialRef }) {
 
                         <InputGroup>
                           <Input
+                            size={"md"}
+                            borderRadius={"md"}
                             ref={initialRef}
                             type="text"
                             placeholder="Type here"
@@ -157,7 +160,7 @@ export default function WorkModal({ initialRef }) {
                   colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
                   zIndex={7}
                 >
-                  <Field name="userName">
+                  <Field name="role">
                     {({
                       field, // { name, value, onChange, onBlur }
                       form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
@@ -195,7 +198,7 @@ export default function WorkModal({ initialRef }) {
                   colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
                   zIndex={6}
                 >
-                  <Field name="profesionalBg">
+                  <Field name="summary">
                     {({
                       field, // { name, value, onChange, onBlur }
                       form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.

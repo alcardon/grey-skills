@@ -125,7 +125,7 @@ export default function BasicInfo() {
           <Box>
             {" "}
             <Heading
-              fontWeight={"600"}
+              fontWeight={"normal"}
               fontSize={{ base: "2xl", sm: "2xl", md: "2xl" }}
               lineHeight="107%"
               textAlign={"left"}

@@ -96,6 +96,7 @@ export default function PersonalInfo() {
                   base: "8",
                   md: "7",
                 }}
+                fontWeight={"normal"}
               >
                 Hey{" "}
                 <Text as={"span"} color={"#fd9193"}>

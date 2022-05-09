@@ -46,6 +46,7 @@ export default function PersonalInfo() {
           setTimeout(() => {
             createUser(values.name, values.userName, values.email);
             router.push("/minting-skills/profesional-bg");
+            setSubmitting(false);
           }, 400);
         }}
       >
@@ -79,6 +80,7 @@ export default function PersonalInfo() {
                 }}
                 color={"white"}
                 lineHeight={"8"}
+                fontWeight={"normal"}
               >
                 Let&apos;s start with your personal information.
               </Heading>
