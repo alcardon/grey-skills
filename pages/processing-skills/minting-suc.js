@@ -30,11 +30,9 @@ export default function MintingSuccesfull() {
   const { skillInfo } = useUserInfo();
   const router = useRouter();
 
-  useEffect(() => {
-    setTimeout(() => {
-      router.push("/processing-skills/minting-suc");
-    }, 7000);
-  }, []);
+  setTimeout(() => {
+    router.push("/processing-skills/minting-suc");
+  }, 5000);
 
   return (
     <>
