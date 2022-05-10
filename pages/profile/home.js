@@ -269,6 +269,9 @@ export default function LearningWorkExp() {
                       fontSize={{ base: "md", md: "md" }}
                       fontWeight={"normal"}
                     >
+                      {industryInfo.industry
+                        ? industryInfo.industry + " | "
+                        : ""}
                       {industryInfo.industryRole !== ""
                         ? industryInfo.industryRole
                         : industryInfo.industryRole}{" "}
@@ -338,8 +341,9 @@ export default function LearningWorkExp() {
                   color={"gray.500"}
                   width={"92%"}
                 >
-                  Mint, add and own your skills as dynamic NFTs that grow with
-                  reputational value stored on the blockchain. ....See more.
+                  {industryInfo
+                    ? industryInfo.profesionalBg
+                    : ""}
                 </Text>
               </GridItem>
             </Grid>
