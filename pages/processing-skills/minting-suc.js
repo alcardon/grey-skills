@@ -30,10 +30,6 @@ export default function MintingSuccesfull() {
   const { skillInfo } = useUserInfo();
   const router = useRouter();
 
-  setTimeout(() => {
-    router.push("/processing-skills/minting-suc");
-  }, 5000);
-
   return (
     <>
       <Grid
