@@ -13,18 +13,17 @@ import { useUserInfo } from "../../context/user-context";
 
 import { useState, useEffect } from "react";
 
-function Item({ id, nameWork, role, ...rest }) {
+function Item({ id, nameWork, role, style }) {
   const { deleteWorkInfo } = useUserInfo();
   return (
     <Box
       shadow="md"
-      bgColor={"rgba(196,196,196,0.2)"}
+      bgColor={style === "black" ? "black" : "rgba(196,196,196,0.2)"}
       position={"relative"}
       borderRadius={"md"}
       fontFamily={"inter"}
       mt={5}
       height={"80px"}
-      {...rest}
     >
       <IconButton
         size={"md"}
@@ -66,7 +65,7 @@ function Item({ id, nameWork, role, ...rest }) {
   );
 }
 
-export default function WorkItems() {
+export default function WorkItems({ style }) {
   const { workInfo } = useUserInfo();
   console.log(workInfo);
   const [workItems, setWorkItems] = useState(null);
@@ -86,6 +85,7 @@ export default function WorkItems() {
                 id={item.id}
                 nameWork={item.nameWork}
                 role={item.role}
+                style={style}
               ></Item>
             );
           })

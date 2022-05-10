@@ -281,13 +281,13 @@ export default function LearningWorkExp() {
           >
             <Grid
               templateRows={{
-                base: "1fr 38% 1fr 1fr 20%",
+                base: "1fr 38% 20% 1fr 1fr 20%",
               }}
               templateColumns={{
                 base: "repeat(1, 1fr)",
               }}
               templateAreas={
-                "'About' 'Wallet' 'Reputation''Learn-experience' 'Foot'"
+                "'About' 'Wallet' 'Reputation''Learn-experience' 'work-experience' 'Foot'"
               }
               zIndex={8}
               w={"100%"}
@@ -296,10 +296,10 @@ export default function LearningWorkExp() {
               gap={5}
               borderBottomRadius={"md"}
             >
-              <GridItem gridArea={"About"} colSpan={24} px={7}>
+              <GridItem gridArea={"About"} colSpan={24} px={7} pt={2}>
                 <Grid
                   templateRows={{
-                    base: "40% 60%",
+                    base: "50% 50%",
                   }}
                   templateColumns={{
                     base: "1, 1fr",
@@ -363,7 +363,7 @@ export default function LearningWorkExp() {
                       color={"gray.500"}
                       width={"92%"}
                     >
-                      {industryInfo.profesionalBg}
+                      {industryInfo.profesionalBg} Hola mundo
                     </Text>
                   </GridItem>
                 </Grid>
@@ -533,6 +533,55 @@ export default function LearningWorkExp() {
                   <Box h={"100%"} w={"100%"}>
                     {" "}
                     <LearningItems style={"black"} />
+                  </Box>
+                </Flex>
+              </GridItem>
+              <GridItem
+                gridArea={"work-experience"}
+                colSpan={24}
+                rowSpan={{ base: 1 }}
+                colStart={{ base: 1 }}
+                alignSelf={"end"}
+                px={7}
+                pt={4}
+              >
+                <Flex
+                  direction="column"
+                  width={"100%"}
+                  zIndex={7}
+                  align={"center"}
+                >
+                  <Flex
+                    width={"100%"}
+                    height={"100%"}
+                    align={"center"}
+                    justifyContent={"space-between"}
+                  >
+                    <Flex justify={"center"} align={"center"}>
+                      <Heading
+                        fontSize={{
+                          base: "20px",
+                          md: "20px",
+                        }}
+                        color={"white"}
+                        fontWeight={"normal"}
+                        pb={"2"}
+                      >
+                        Work Experience
+                      </Heading>
+                    </Flex>
+                    <IconButton
+                      size={"lg"}
+                      variant={"ghost"}
+                      color="white"
+                      aria-label="Add Work experiece"
+                      icon={<Icon as={FiEdit3} />}
+                    />
+                  </Flex>
+                  <Spacer />
+                  <Box h={"100%"} w={"100%"}>
+                    {" "}
+                    <WorkItems style={"black"} />
                   </Box>
                 </Flex>
               </GridItem>
