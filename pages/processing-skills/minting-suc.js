@@ -30,10 +30,6 @@ export default function MintingSuccesfull() {
   const { skillInfo } = useUserInfo();
   const router = useRouter();
 
-  setTimeout(() => {
-    router.push("/processing-skills/minting-suc");
-  }, 5000);
-
   return (
     <>
       <Grid
@@ -52,27 +48,26 @@ export default function MintingSuccesfull() {
         gap={0}
       >
         <GridItem
-          rowSpan={{ base: 7 /* , md: 2, lg: 3, xl: 3, "2xl": 3 */ }}
+          rowSpan={{ base: 3 /* , md: 2, lg: 3, xl: 3, "2xl": 3 */ }}
           colSpan={{ base: 20 /*  md: 2, lg: 2, xl: 2, "2xl": 2 */ }}
           colStart={{ base: 3 /* , md: 2, lg: 4, xl: 4, "2xl": 4  */ }}
-          rowEnd={{ base: 11 /* , md: 4, lg: 8, xl: 8, "2xl": 8 */ }}
+          rowEnd={{ base: 9 /* , md: 4, lg: 8, xl: 8, "2xl": 8 */ }}
           display={"flex"}
-          alignItems={"center"}
+          align={"center"}
           justify={"center"}
         >
-          <Box>
-            {" "}
-            <Heading
-              fontSize={{
-                base: "2xl",
-                md: "xl",
-              }}
-              color={"white"}
-              fontWeight={"normal"}
-            >
-              Minting your Skill
-            </Heading>
-          </Box>
+          {" "}
+          <Heading
+            fontSize={{
+              base: "2xl",
+              md: "xl",
+            }}
+            color={"white"}
+            fontWeight={"normal"}
+            width={"100%"}
+          >
+            Minting your Skill
+          </Heading>
         </GridItem>
 
         <GridItem

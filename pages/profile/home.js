@@ -47,7 +47,7 @@ import ThumbNailImage from "../../components/general/thumbnail-avatar";
 import LearningItems from "../../components/general/learning-items";
 import WorkItems from "../../components/general/work-items";
 import { Progress } from "antd";
-import SmallAvatar from "../../components/general/small-avatar";
+import HomeAvatar from "../../components/general/home-avatar";
 
 import { FiEdit3, FiUpload } from "react-icons/fi";
 
@@ -72,30 +72,23 @@ export default function LearningWorkExp() {
 
   const handleChange = (value) => setValue(value);
 
-  console.log("SkillInfo: ", skillInfo);
+  console.log("SkillInfo:  ", skillInfo);
 
   return (
     <>
-      <Flex
-        height={{ base: "100vh", md: "760px" }}
-        bgColor={"#222021"}
-        borderRadius={"md"}
-      >
+      <Flex height={{ base: "100vh", md: "760px" }} position={"relative"}>
         <Grid
           templateRows={{
-            base: "32% 17% 26% 12% 1fr 13%",
-            md: "32% 17% 26% 12% 1fr 13%",
+            base: "32%  1fr",
+            md: "32%  1fr",
           }}
           templateColumns="1fr"
-          templateAreas={
-            "'Head' 'About' 'Wallet' 'Reputation' 'Learn-experience' 'Foot'"
-          }
-          gap={2}
+          templateAreas={"'Head' 'Main'"}
           zIndex={8}
           w={"100%"}
-          overflow={"auto"}
           borderBottomRadius={"lg"}
           position={"relative"}
+          gap={4}
         >
           <Image
             src={"/images/home/iPhone 13.png"}
@@ -112,7 +105,6 @@ export default function LearningWorkExp() {
           <GridItem
             gridArea={"Head"}
             colSpan={24}
-            borderBottom={"solid gray 0.01px"}
             backgroundPosition="center"
             backgroundRepeat="no-repeat"
             bgSize={"cover"}
@@ -137,7 +129,6 @@ export default function LearningWorkExp() {
                 colStart={{ base: 1 }}
                 height={"100%"}
                 width={"100%"}
-                borderTopRadius={"md"}
               >
                 {" "}
                 <Flex
@@ -156,7 +147,7 @@ export default function LearningWorkExp() {
                   ></Image>
                   <IconButton
                     pr={"7"}
-                    size={"md"}
+                    size={"lg"}
                     variant={"ghost"}
                     color="white"
                     aria-label="Add Work experiece"
@@ -206,7 +197,7 @@ export default function LearningWorkExp() {
                     <Flex align={"center"} h={"100%"} justify={"flex-start"}>
                       {" "}
                       <IconButton
-                        size={"md"}
+                        size={"lg"}
                         variant={"ghost"}
                         color="white"
                         aria-label="Add Work experiece"
@@ -221,7 +212,7 @@ export default function LearningWorkExp() {
                     zIndex={7}
                   >
                     <IconButton
-                      size={"md"}
+                      size={"lg"}
                       variant={"ghost"}
                       color="white"
                       aria-label="Add Work experiece"
@@ -278,27 +269,232 @@ export default function LearningWorkExp() {
               </GridItem>
             </Grid>
           </GridItem>
-          <GridItem gridArea={"About"} colSpan={24} px={7}>
+          <GridItem
+            gridArea={"Main"}
+            colSpan={24}
+            overflow={"auto"}
+            pt={{ base: 5, md: 0 }}
+            borderBottomRadius={"md"}
+          >
             <Grid
               templateRows={{
-                base: "repeat(2, 50%)",
+                base: "1fr 38% 1fr 1fr 20%",
               }}
               templateColumns={{
                 base: "repeat(1, 1fr)",
               }}
+              templateAreas={
+                "'About' 'Wallet' 'Reputation''Learn-experience' 'Foot'"
+              }
               zIndex={8}
               w={"100%"}
               h={"100%"}
               alignItems={"center"}
-              gap={3}
+              gap={5}
+              borderBottomRadius={"md"}
             >
+              <GridItem gridArea={"About"} colSpan={24} px={7}>
+                <Grid
+                  templateRows={{
+                    base: "40% 60%",
+                  }}
+                  templateColumns={{
+                    base: "1, 1fr",
+                  }}
+                  templateAreas={
+                    "'About' 'Wallet' 'Reputation' 'Learn-experience'"
+                  }
+                  zIndex={8}
+                  w={"100%"}
+                  h={"100%"}
+                  alignItems={"center"}
+                  gap={0}
+                >
+                  <GridItem
+                    rowSpan={{ base: 1 }}
+                    colStart={{ base: 1 }}
+                    alignSelf={"end"}
+                  >
+                    <Flex
+                      direction="row"
+                      width={"100%"}
+                      zIndex={7}
+                      align={"center"}
+                    >
+                      <Flex
+                        width={"100%"}
+                        height={"100%"}
+                        align={"center"}
+                        justifyContent={"space-between"}
+                      >
+                        <Flex alignItems={"center"} h={"100%"}>
+                          <Heading
+                            fontSize={{
+                              base: "22px",
+                              md: "22px",
+                            }}
+                            color={"white"}
+                            fontWeight={"normal"}
+                          >
+                            About
+                          </Heading>
+                        </Flex>
+                        <IconButton
+                          size={"lg"}
+                          variant={"ghost"}
+                          color="white"
+                          aria-label="edit about"
+                          icon={<Icon as={FiEdit3} />}
+                        />
+                      </Flex>
+                      <Spacer />
+                    </Flex>
+                  </GridItem>{" "}
+                  <GridItem
+                    rowSpan={{ base: 1 }}
+                    zIndex={7}
+                    alignSelf={"start"}
+                  >
+                    <Text
+                      fontSize={{ base: 15, md: 13 }}
+                      color={"gray.500"}
+                      width={"92%"}
+                    >
+                      {industryInfo.profesionalBg}
+                    </Text>
+                  </GridItem>
+                </Grid>
+              </GridItem>
+              <GridItem gridArea={"Wallet"} colSpan={24} px={7}>
+                <Grid
+                  templateRows={{
+                    base: "25% 75%",
+                  }}
+                  templateColumns={{
+                    base: "repeat(1, 1fr)",
+                  }}
+                  zIndex={8}
+                  w={"100%"}
+                  h={"100%"}
+                  alignItems={"center"}
+                  gap={3}
+                >
+                  <GridItem
+                    rowSpan={{ base: 1 }}
+                    colStart={{ base: 1 }}
+                    alignSelf={"center"}
+                  >
+                    <Flex
+                      direction="row"
+                      width={"100%"}
+                      zIndex={7}
+                      align={"center"}
+                    >
+                      <Flex
+                        width={"100%"}
+                        height={"100%"}
+                        align={"flex-end"}
+                        justifyContent={"space-between"}
+                      >
+                        <Center h={"100%"}>
+                          <Heading
+                            fontSize={{
+                              base: "22px",
+                              md: "22px",
+                            }}
+                            color={"white"}
+                            fontWeight={"normal"}
+                          >
+                            Skills Wallet
+                          </Heading>
+                        </Center>
+                      </Flex>
+                    </Flex>
+                  </GridItem>{" "}
+                  <GridItem
+                    rowSpan={{ base: 1 }}
+                    zIndex={7}
+                    alignSelf={"center"}
+                  >
+                    {" "}
+                    <Box h={"125px"} w="140px">
+                      <HomeAvatar skillName={skillInfo.skillName}></HomeAvatar>
+                    </Box>
+                  </GridItem>
+                </Grid>
+              </GridItem>
+              <GridItem gridArea={"Reputation"} colSpan={24} pt={6} px={7}>
+                <Grid
+                  templateRows={{
+                    base: "repeat(2, 50%)",
+                  }}
+                  templateColumns={{
+                    base: "repeat(1, 1fr)",
+                  }}
+                  zIndex={8}
+                  w={"100%"}
+                  h={"100%"}
+                  alignItems={"center"}
+                  gap={3}
+                >
+                  <GridItem
+                    rowSpan={{ base: 1 }}
+                    colStart={{ base: 1 }}
+                    alignSelf={"end"}
+                  >
+                    <Flex
+                      direction="row"
+                      width={"100%"}
+                      zIndex={7}
+                      align={"center"}
+                    >
+                      <Heading
+                        fontSize={{
+                          base: "20px",
+                          md: "20px",
+                        }}
+                        color={"white"}
+                        fontWeight={"normal"}
+                      >
+                        Skill Reputation
+                      </Heading>
+                      <Spacer />
+                    </Flex>
+                  </GridItem>{" "}
+                  <GridItem
+                    rowSpan={{ base: 1 }}
+                    zIndex={7}
+                    alignSelf={"start"}
+                  >
+                    {" "}
+                    <Flex alignItems={"center"} h={"100%"}>
+                      <HStack width={"100%"}>
+                        <Progress
+                          showInfo={false}
+                          strokeColor={{
+                            "0%": "#4b0da9",
+                            "100%": "#fd9193",
+                          }}
+                          trailColor={"#535152"}
+                          percent={skillInfo.skillLevel}
+                          zIndex={8}
+                        />
+                      </HStack>
+                    </Flex>
+                  </GridItem>
+                </Grid>
+              </GridItem>
               <GridItem
+                gridArea={"Learn-experience"}
+                colSpan={24}
                 rowSpan={{ base: 1 }}
                 colStart={{ base: 1 }}
                 alignSelf={"end"}
+                px={7}
+                pt={4}
               >
                 <Flex
-                  direction="row"
+                  direction="column"
                   width={"100%"}
                   zIndex={7}
                   align={"center"}
@@ -306,23 +502,24 @@ export default function LearningWorkExp() {
                   <Flex
                     width={"100%"}
                     height={"100%"}
-                    align={"flex-end"}
+                    align={"center"}
                     justifyContent={"space-between"}
                   >
-                    <Center h={"100%"}>
+                    <Flex justify={"center"} align={"center"}>
                       <Heading
                         fontSize={{
-                          base: "22px",
-                          md: "22px",
+                          base: "20px",
+                          md: "20px",
                         }}
                         color={"white"}
                         fontWeight={"normal"}
+                        pb={"2"}
                       >
-                        About
+                        Learning Experience
                       </Heading>
-                    </Center>
+                    </Flex>
                     <IconButton
-                      size={"md"}
+                      size={"lg"}
                       variant={"ghost"}
                       color="white"
                       aria-label="Add Work experiece"
@@ -330,193 +527,29 @@ export default function LearningWorkExp() {
                     />
                   </Flex>
                   <Spacer />
+                  <Box h={"100%"} w={"100%"}>
+                    {" "}
+                    <LearningItems style={"black"} />
+                  </Box>
                 </Flex>
-              </GridItem>{" "}
-              <GridItem rowSpan={{ base: 1 }} zIndex={7} alignSelf={"start"}>
-                <Text
-                  fontSize={{ base: 15, md: 13 }}
-                  color={"gray.500"}
-                  width={"92%"}
-                >
-                  Mint, add and own your skills as dynamic NFTs that grow with
-                  reputational value stored on the blockchain. ....See more.
-                </Text>
               </GridItem>
-            </Grid>
-          </GridItem>
-          <GridItem gridArea={"Wallet"} colSpan={24} px={7}>
-            <Grid
-              templateRows={{
-                base: "25% 75%",
-              }}
-              templateColumns={{
-                base: "repeat(1, 1fr)",
-              }}
-              zIndex={8}
-              w={"100%"}
-              h={"100%"}
-              alignItems={"center"}
-              pt={5}
-            >
               <GridItem
-                rowSpan={{ base: 1 }}
-                colStart={{ base: 1 }}
-                alignSelf={"center"}
+                gridArea={"Foot"}
+                colSpan={24}
+                pt={5}
+                borderBottomRadius={"md"}
               >
-                <Flex
-                  direction="row"
-                  width={"100%"}
-                  zIndex={7}
-                  align={"center"}
-                >
-                  <Flex
-                    width={"100%"}
-                    height={"100%"}
-                    align={"flex-end"}
-                    justifyContent={"space-between"}
-                  >
-                    <Center h={"100%"}>
-                      <Heading
-                        fontSize={{
-                          base: "22px",
-                          md: "22px",
-                        }}
-                        color={"white"}
-                        fontWeight={"normal"}
-                      >
-                        Skills Wallet
-                      </Heading>
-                    </Center>
-                  </Flex>
-                </Flex>
-              </GridItem>{" "}
-              <GridItem rowSpan={{ base: 1 }} zIndex={7} alignSelf={"center"}>
-                {" "}
-                <Box h={"125px"} w="140px">
-                  <SmallAvatar skillName={skillInfo.skillName}></SmallAvatar>
-                </Box>
+                <Image
+                  src={"/images/home/Group 17.png"}
+                  w={"100%"}
+                  top={0}
+                  left={0}
+                  zIndex={8}
+                  alt={"footer"}
+                  display={{ base: "inline-block" }}
+                ></Image>
               </GridItem>
             </Grid>
-          </GridItem>
-          <GridItem gridArea={"Reputation"} colSpan={24} px={7} pt={2}>
-            <Grid
-              templateRows={{
-                base: "repeat(2, 50%)",
-              }}
-              templateColumns={{
-                base: "repeat(1, 1fr)",
-              }}
-              gap={{ base: 1, md: 1 }}
-              zIndex={8}
-              w={"100%"}
-              h={"100%"}
-              alignItems={"center"}
-            >
-              <GridItem
-                rowSpan={{ base: 1 }}
-                colStart={{ base: 1 }}
-                alignSelf={"end"}
-              >
-                <Flex
-                  direction="row"
-                  width={"100%"}
-                  zIndex={7}
-                  align={"center"}
-                >
-                  <Heading
-                    fontSize={{
-                      base: "22px",
-                      md: "22px",
-                    }}
-                    color={"white"}
-                    fontWeight={"normal"}
-                  >
-                    Skill Reputation
-                  </Heading>
-                  <Spacer />
-                </Flex>
-              </GridItem>{" "}
-              <GridItem rowSpan={{ base: 1 }} zIndex={7} alignSelf={"start"}>
-                {" "}
-                <Flex alignItems={"center"} h={"100%"} pt={"3"}>
-                  <HStack width={"100%"}>
-                    <Progress
-                      showInfo={false}
-                      strokeColor={{
-                        "0%": "#4b0da9",
-                        "100%": "#fd9193",
-                      }}
-                      trailColor={"#535152"}
-                      percent={skillInfo.skillLevel}
-                      zIndex={8}
-                    />
-                  </HStack>
-                </Flex>
-              </GridItem>
-            </Grid>
-          </GridItem>
-          <GridItem
-            gridArea={"Learn-experience"}
-            colSpan={24}
-            px={7}
-            rowSpan={{ base: 1 }}
-            colStart={{ base: 1 }}
-            alignSelf={"end"}
-            pt={"5"}
-          >
-            <Flex direction="column" width={"100%"} zIndex={7} align={"center"}>
-              <Flex
-                width={"100%"}
-                height={"100%"}
-                align={"flex-end"}
-                justifyContent={"space-between"}
-              >
-                <Flex justify={"center"} align={"center"}>
-                  <Heading
-                    fontSize={{
-                      base: "22px",
-                      md: "22px",
-                    }}
-                    color={"white"}
-                    fontWeight={"normal"}
-                    pb={"2"}
-                  >
-                    Learning Experience
-                  </Heading>
-                </Flex>
-                <IconButton
-                  size={"md"}
-                  variant={"ghost"}
-                  color="white"
-                  aria-label="Add Work experiece"
-                  icon={<Icon as={FiEdit3} />}
-                />
-              </Flex>
-              <Spacer />
-              <Box h={"100%"} w={"100%"}>
-                {" "}
-                <LearningItems style={"black"} />
-              </Box>
-            </Flex>
-          </GridItem>
-
-          <GridItem
-            gridArea={"Foot"}
-            colSpan={24}
-            borderTop={"solid gray 0.01px"}
-            pt={5}
-          >
-            <Box
-              pt={3}
-              p={2}
-              backgroundPosition="center"
-              backgroundRepeat="no-repeat"
-              bgSize={"cover"}
-              bgImage={"url('/images/home/Group 17.png')"}
-              borderTopRadius={"md"}
-              height={"100%"}
-              w={"100%"}
-            ></Box>
           </GridItem>
         </Grid>
       </Flex>

@@ -6,7 +6,7 @@ import theme from "../lib/theme";
 import { Button } from "@chakra-ui/react";
 import { UserProvider } from "../context/user-context";
 import ProgressLayout from "../components/layout/progres-layout";
-
+import ProfileLayout from "../components/layout/profile-layout";
 import "../styles/globals.css";
 import "../styles/datepicker.css";
 
@@ -50,6 +50,17 @@ export default function myApp({ Component, pageProps, router }) {
           <ProgressLayout>
             <Component {...pageProps} />
           </ProgressLayout>
+        </UserProvider>
+      </ChakraProvider>
+    );
+  } else if (router.pathname.startsWith("/profile/")) {
+    return (
+      <ChakraProvider theme={theme}>
+        <HeadTags />
+        <UserProvider>
+          <ProfileLayout>
+            <Component {...pageProps} />
+          </ProfileLayout>
         </UserProvider>
       </ChakraProvider>
     );

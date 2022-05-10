@@ -56,7 +56,10 @@ export default function PersonalInfo() {
         initialValues={industryInfo}
         enableReinitialize
         validationSchema={Yup.object({
-          profesionalBg: Yup.string().max(100, "Must be 45 characters or less"),
+          profesionalBg: Yup.string().max(
+            200,
+            "Must be 100 characters or less"
+          ),
           /* .required("Required"), */
         })}
         onSubmit={onSubmit}

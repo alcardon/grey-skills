@@ -28,11 +28,11 @@ import futuristicLoader from "../../public/lottie/95274-futuristic-loader.json";
 export default function Minting() {
   const router = useRouter();
 
-  useEffect(() => {}, []);
-
-  setTimeout(() => {
-    router.push("/processing-skills/minting-suc");
-  }, 7000);
+  useEffect(() => {
+    setTimeout(() => {
+      router.push("/processing-skills/minting-suc");
+    }, 3000);
+  }, []);
 
   const defaultOptions = {
     loop: true,
