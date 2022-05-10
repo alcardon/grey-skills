@@ -184,7 +184,7 @@ export default function LearningWorkExp() {
                         fontSize={"2xl"}
                         color={"white"}
                       >
-                        Your Resume
+                        Your Skills Identity
                       </Heading>
                     </Flex>
                   </GridItem>
@@ -363,7 +363,7 @@ export default function LearningWorkExp() {
                       color={"gray.500"}
                       width={"92%"}
                     >
-                      {industryInfo.profesionalBg} Hola mundo
+                      {industryInfo.profesionalBg}
                     </Text>
                   </GridItem>
                 </Grid>
