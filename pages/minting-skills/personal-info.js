@@ -105,7 +105,7 @@ export default function PersonalInfo() {
                       fontFamily={"Roboto"}
                       fontWeight={"regular"}
                     >
-                      Create a username
+                      Create a username*
                     </FormLabel>
 
                     <InputGroup>

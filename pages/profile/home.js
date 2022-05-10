@@ -260,6 +260,9 @@ export default function LearningWorkExp() {
                       fontSize={{ base: "md", md: "md" }}
                       fontWeight={"normal"}
                     >
+                      {industryInfo.industry
+                        ? industryInfo.industry + " | "
+                        : ""}
                       {industryInfo.industryRole !== ""
                         ? industryInfo.industryRole
                         : industryInfo.industryRole}{" "}

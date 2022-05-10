@@ -271,8 +271,7 @@ export default function LearningWorkExp() {
                   color={"gray.500"}
                   width={"90%"}
                 >
-                  Add learning experiences associated with this skill (courses /
-                  certificates / workshops / etc.)
+                  Add learning experiences associated with this skill (courses/certificates/workshops/etc.)
                 </Text>
               </GridItem>
             </Grid>
@@ -335,8 +334,7 @@ export default function LearningWorkExp() {
                   color={"gray.500"}
                   width={"90%"}
                 >
-                  Add work experience associated with this skill (jobs /
-                  projects / freelance gigs / etc.)
+                  Add work experience associated with this skill (jobs/projects/freelance gigs/etc.)
                 </Text>
               </GridItem>
             </Grid>

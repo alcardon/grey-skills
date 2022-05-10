@@ -181,7 +181,7 @@ export default function LearnModal({ initialRef, onClose }) {
                           fontFamily={"Roboto"}
                           fontWeight={"regular"}
                         >
-                          Name of institution/Platform
+                          Name of Institution/Platform
                         </FormLabel>
 
                         <InputGroup>
@@ -255,7 +255,7 @@ export default function LearnModal({ initialRef, onClose }) {
                             size={"sm"}
                             borderRadius={"md"}
                             type="text"
-                            placeholder="Type here"
+                            placeholder="Enter credentials/link"
                             _placeholder={{ color: "gray.500" }}
                             bgColor={"white"}
                             color={"gray.800"}

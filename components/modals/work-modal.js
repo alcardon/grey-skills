@@ -131,7 +131,7 @@ export default function WorkModal({ initialRef, onClose }) {
                           fontFamily={"Roboto"}
                           fontWeight={"regular"}
                         >
-                          Name of Organization/Proyect
+                          Name of Organization/Project
                         </FormLabel>
 
                         <InputGroup>
@@ -217,7 +217,7 @@ export default function WorkModal({ initialRef, onClose }) {
                           fontFamily={"Roboto"}
                           color={"gray.400"}
                         >
-                          ((highlight your tasks and perfomance in this role))
+                          (highlight your tasks and perfomance in this role)
                         </FormLabel>
 
                         <InputGroup>
