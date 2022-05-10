@@ -139,7 +139,11 @@ export default function PersonalInfo() {
                 justify={"flex-start"}
                 direction={"column"}
               >
-                <Heading color={"white"} fontSize={{ base: "lg", md: "md" }}>
+                <Heading
+                  color={"white"}
+                  fontSize={{ base: "lg", md: "md" }}
+                  fontWeight={"normal"}
+                >
                   {userInfo.name !== "" ? userInfo.name : userInfo.userName}
                 </Heading>
                 <Spacer />

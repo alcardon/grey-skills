@@ -257,7 +257,7 @@ export default function LearningWorkExp() {
                     <Spacer />
                     <Heading
                       color={"white"}
-                      fontSize={{ base: "md", md: "md" }}
+                      fontSize={{ base: "15", md: "15" }}
                       fontWeight={"normal"}
                     >
                       {industryInfo.industry
@@ -276,7 +276,7 @@ export default function LearningWorkExp() {
             gridArea={"Main"}
             colSpan={24}
             overflow={"auto"}
-            pt={{ base: 5, md: 0 }}
+            pt={{ base: 5, md: 3 }}
             borderBottomRadius={"md"}
           >
             <Grid
