@@ -181,7 +181,7 @@ export default function LearningWorkExp() {
                         verticalAlign="middle"
                         fontFamily={"kanit"}
                         fontWeight={"regular"}
-                        fontSize={"2xl"}
+                        fontSize={{ base: "2xl", md: "22" }}
                         color={"white"}
                       >
                         Your Skills Identity
