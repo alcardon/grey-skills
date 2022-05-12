@@ -164,7 +164,7 @@ export default function Minting() {
             fontFamily={"Roboto"}
             fontSize="13"
           >
-            Mint, add and own your skills as dynamic NFTs that grow with
+            Mint, add and own your skills as dynamic assets that grow with
             reputational value stored on the blockchain.
           </Text>
         </GridItem>

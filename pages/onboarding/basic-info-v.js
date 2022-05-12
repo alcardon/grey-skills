@@ -198,7 +198,7 @@ export default function BasicInfo() {
             fontFamily={"Roboto"}
             fontSize="13"
           >
-            Mint, add and own your skills as dynamic NFTs that grow with
+            Mint, add and own your skills as dynamic assets that grow with
             reputational value stored on the blockchain.
           </Text>
         </GridItem>
@@ -234,8 +234,8 @@ export default function BasicInfo() {
             fontFamily={"Roboto"}
             fontSize="13"
           >
-            Access and create professional learning experiences to enhance and
-            grow current and new skills.
+            Access and create professional learning assets to enhance and grow
+            current and new skills.
           </Text>
         </GridItem>
         <GridItem
@@ -253,7 +253,7 @@ export default function BasicInfo() {
             fontSize="13"
           >
             Manage your skills growth, reputation, and opportunities through
-            your Grey Skill Wallet.
+            your Grey Skills Wallet.
           </Text>
         </GridItem>
         <GridItem
@@ -270,8 +270,8 @@ export default function BasicInfo() {
             color={"whiteAlpha.800"}
             fontSize="13"
           >
-            Document verifiable skills and related experiences on a Digital
-            Resume.
+            Document verifiable skills and related experiences on a Skills
+            Identity.
           </Text>
         </GridItem>
         <GridItem

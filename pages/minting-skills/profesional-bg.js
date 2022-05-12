@@ -227,7 +227,7 @@ export default function PersonalInfo() {
                       fontFamily={"Roboto"}
                       color={"gray.400"}
                     >
-                      (this will appear at the top of your on-chain resume)
+                      (this will appear at the top of your on-chain identity)
                     </FormLabel>
 
                     <InputGroup>

@@ -145,7 +145,7 @@ export default function LearningWorkExp() {
                   fontWeight={"light"}
                 >
                   Add relevent experience to your skill to gain reputational
-                  value for this Skill NFT
+                  value for this Skill Asset
                 </Text>
               </GridItem>{" "}
               <GridItem rowSpan={{ base: 1 }} zIndex={7}>
@@ -271,7 +271,8 @@ export default function LearningWorkExp() {
                   color={"gray.500"}
                   width={"90%"}
                 >
-                  Add learning experiences associated with this skill (courses/certificates/workshops/etc.)
+                  Add learning experiences associated with this skill
+                  (courses/certificates/workshops/etc.)
                 </Text>
               </GridItem>
             </Grid>
@@ -334,7 +335,8 @@ export default function LearningWorkExp() {
                   color={"gray.500"}
                   width={"90%"}
                 >
-                  Add work experience associated with this skill (jobs/projects/freelance gigs/etc.)
+                  Add work experience associated with this skill
+                  (jobs/projects/freelance gigs/etc.)
                 </Text>
               </GridItem>
             </Grid>
