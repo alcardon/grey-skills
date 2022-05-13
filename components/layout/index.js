@@ -1,8 +1,5 @@
 import { Box, Image, Container, Flex, Center } from "@chakra-ui/react";
 
-import Footer from "./footer";
-import Header from "./header";
-
 const Layout = ({ children }) => {
   return (
     <Flex h={"100%"} w={"100%"} justify={"center"} align={"center"}>
@@ -30,19 +27,17 @@ const Layout = ({ children }) => {
           alt={"mobile battery"}
           display={{ base: "none", md: "inline-block" }}
         ></Image>
-        {/*  <Header /> */}
-        {/*   <Image
-        src={"/images/general/cover.png"}
-        position={"absolute"}
-        objectFit="cover"
-        alt="cover"
-        w={"100%"}
-        height={"100%"}
-        zIndex={5}
-      ></Image> */}
-        {children}
 
-        {/*  <Footer /> */}
+        <Image
+          src={"/images/general/cover.png"}
+          position={"absolute"}
+          objectFit="cover"
+          alt="cover"
+          w={"100%"}
+          height={"100%"}
+          zIndex={5}
+        ></Image>
+        {children}
       </Box>
     </Flex>
   );
