@@ -23,9 +23,9 @@ import {
 
 import { useRouter } from "next/router";
 import ButtonGradient from "../../components/general/gradient-button";
+import Connection from "../../components/integration/connection";
 
 export default function BasicInfo() {
-  const router = useRouter();
   /* setTimeout(() => {
     router.push("/minting-skills/personal-info");
   }, 2000); */
@@ -64,7 +64,6 @@ export default function BasicInfo() {
             minHeight={"80%"}
           ></Image>
         </GridItem>
-
         <GridItem
           rowSpan={{ base: 14 /* , md: 2, lg: 3, xl: 3, "2xl": 3 */ }}
           colSpan={{ base: 17 /*  md: 2, lg: 2, xl: 2, "2xl": 2 */ }}
@@ -73,7 +72,7 @@ export default function BasicInfo() {
           display={"flex"}
           alignItems={"center"}
           justify={"center"}
-          zIndex={4}
+          zIndex={5}
         >
           <Image
             src="/images/connect/polkadot.png"
@@ -99,7 +98,6 @@ export default function BasicInfo() {
             pt={2}
           ></Image>
         </GridItem>
-
         <GridItem
           rowSpan={{ base: 7 /* , md: 2, lg: 3, xl: 3, "2xl": 3 */ }}
           colSpan={{ base: 18 /*  md: 2, lg: 2, xl: 2, "2xl": 2 */ }}
@@ -126,24 +124,7 @@ export default function BasicInfo() {
             </Text>
           </Box>
         </GridItem>
-        <GridItem
-          rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
-          colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
-          rowEnd={{ base: 46 /* , md: 19, lg: 28 */ }}
-          colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
-          zIndex={7}
-        >
-          <Box>
-            <ButtonGradient
-              label={"Connect your wallet"}
-              size="md"
-              onClick={() => {
-                router.push("/minting-skills/personal-info");
-                console.log("hola mundo");
-              }}
-            />
-          </Box>
-        </GridItem>
+        {Connection()}
       </Grid>
     </>
   );
