@@ -23,7 +23,7 @@ const Layout = ({ children }) => {
           w={"100%"}
           top={0}
           height={"40px"}
-          zIndex={5}
+          zIndex={6}
           alt={"mobile battery"}
           display={{ base: "none", md: "inline-block" }}
         ></Image>
