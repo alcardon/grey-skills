@@ -1,3 +1,4 @@
+import { useSubstrateState, useSubstrate } from "../../context/substrate-context";
 import Illustration from "../../components/ilustrations/illustration";
 
 import "@fontsource/kanit/500.css";
@@ -25,10 +26,24 @@ import { useRouter } from "next/router";
 import ButtonGradient from "../../components/general/gradient-button";
 
 export default function BasicInfo() {
+  const { apiState, apiError } = useSubstrateState();
+  const { connect } = useSubstrate();
   const router = useRouter();
-  /* setTimeout(() => {
-    router.push("/minting-skills/personal-info");
-  }, 2000); */
+
+  const renderConnectionState = () => {
+    switch (apiState) {
+      case 'CONNECT_INIT':
+        return "Initializing connection to Grey chain..."
+      case 'CONNECTING':
+        return "Connecting to Grey chain..."
+      case 'READY':
+        return "Connected to Grey chain."
+      case 'ERROR':
+        return "ERROR: Connecting to Grey chain failed."
+      default:
+        return "Connection status: unknown"
+    }
+  }
 
   return (
     <>
@@ -87,7 +102,7 @@ export default function BasicInfo() {
           rowSpan={{ base: 3 /* , md: 2, lg: 3, xl: 3, "2xl": 3 */ }}
           colSpan={{ base: 13 /*  md: 2, lg: 2, xl: 2, "2xl": 2 */ }}
           colStart={{ base: 3 /* , md: 2, lg: 4, xl: 4, "2xl": 4  */ }}
-          rowEnd={{ base: 22 /* , md: 4, lg: 8, xl: 8, "2xl": 8 */ }}
+          rowEnd={{ base: 20 /* , md: 4, lg: 8, xl: 8, "2xl": 8 */ }}
           zIndex={8}
         >
           {" "}
@@ -124,6 +139,9 @@ export default function BasicInfo() {
               Begin building your professional reputation and start owning your
               skills.
             </Text>
+            <Text color="gray.500" textAlign={"left"} fontSize={15} pt={6}>
+              {renderConnectionState()}
+            </Text>
           </Box>
         </GridItem>
         <GridItem
@@ -137,9 +155,9 @@ export default function BasicInfo() {
             <ButtonGradient
               label={"Connect your wallet"}
               size="md"
+              disabled={apiState !== 'READY'}
               onClick={() => {
                 router.push("/minting-skills/personal-info");
-                console.log("hola mundo");
               }}
             />
           </Box>

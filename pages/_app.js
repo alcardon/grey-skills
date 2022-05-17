@@ -5,6 +5,7 @@ import "antd/dist/antd.css";
 import theme from "../lib/theme";
 import { Button } from "@chakra-ui/react";
 import { UserProvider } from "../context/user-context";
+import { SubstrateContextProvider } from "../context/substrate-context";
 import ProgressLayout from "../components/layout/progres-layout";
 import ProfileLayout from "../components/layout/profile-layout";
 import "../styles/globals.css";
@@ -46,33 +47,39 @@ export default function myApp({ Component, pageProps, router }) {
     return (
       <ChakraProvider theme={theme}>
         <HeadTags />
-        <UserProvider>
-          <ProgressLayout>
-            <Component {...pageProps} />
-          </ProgressLayout>
-        </UserProvider>
+        <SubstrateContextProvider>
+          <UserProvider>
+            <ProgressLayout>
+              <Component {...pageProps} />
+            </ProgressLayout>
+          </UserProvider>
+        </SubstrateContextProvider>
       </ChakraProvider>
     );
   } else if (router.pathname.startsWith("/profile/")) {
     return (
       <ChakraProvider theme={theme}>
         <HeadTags />
-        <UserProvider>
-          <ProfileLayout>
-            <Component {...pageProps} />
-          </ProfileLayout>
-        </UserProvider>
+        <SubstrateContextProvider>
+          <UserProvider>
+            <ProfileLayout>
+              <Component {...pageProps} />
+            </ProfileLayout>
+          </UserProvider>
+        </SubstrateContextProvider>
       </ChakraProvider>
     );
   } else {
     return (
       <ChakraProvider theme={theme}>
         <HeadTags />
-        <UserProvider>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </UserProvider>
+        <SubstrateContextProvider>
+          <UserProvider>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </UserProvider>
+        </SubstrateContextProvider>
       </ChakraProvider>
     );
   }
