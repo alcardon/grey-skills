@@ -1,3 +1,5 @@
+import React, { useEffect, useState } from 'react'
+
 import { useSubstrateState, useSubstrate } from "../../context/substrate-context";
 import Illustration from "../../components/ilustrations/illustration";
 
@@ -25,10 +27,33 @@ import {
 import { useRouter } from "next/router";
 import ButtonGradient from "../../components/general/gradient-button";
 
+const parseAddress = address => {
+  return address.slice(0,8) + "..." + address.slice(-8)
+}
+
 export default function BasicInfo() {
-  const { apiState, apiError } = useSubstrateState();
-  const { connect } = useSubstrate();
+  const {
+    apiState, apiError, keyring, keyringState, accounts, currentAccount
+  } = useSubstrateState();
+  const { setAccounts, setCurrentAccount } = useSubstrate();
   const router = useRouter();
+
+  useEffect(() => {
+    if(!keyring) return
+
+    // Get the list of accounts we possess the private key for
+    const keyringOptions = keyring.getPairs().map(account => ({
+      address: account.address,
+      name: account.meta.name,
+    }))
+
+    setAccounts(keyringOptions)
+  }, [keyring])
+
+  useEffect(() => {
+    if(!accounts?.length) return
+    setCurrentAccount(keyring.getPair(accounts[0].address))
+  }, [accounts])
 
   const renderConnectionState = () => {
     switch (apiState) {
@@ -44,6 +69,32 @@ export default function BasicInfo() {
         return "Connection status: unknown"
     }
   }
+
+  const renderKeyringState = () => {
+    switch (keyringState) {
+      case 'LOADING':
+        return "Loading accounts (please install Polkadot-JS " +
+          "Extension or review any extension's authorization)"
+      case 'READY':
+        return renderAccounts()
+      case 'ERROR':
+        return "ERROR: Loading accounts failed."
+      default:
+        return "Keyring status: unknown"
+    }
+  }
+
+  const renderAccounts = () => {
+    if(!accounts?.length)
+      return "No accounts found. Create an account with Polkadot-JS Extension"
+    return currentAccount
+      ? "Account: " + currentAccount.meta.name
+        + " " + parseAddress(currentAccount.address)
+      : null
+  }
+
+  const isButtonDisabled = () =>
+    apiState !== 'READY' || keyringState !== 'READY' || !accounts?.length
 
   return (
     <>
@@ -102,7 +153,7 @@ export default function BasicInfo() {
           rowSpan={{ base: 3 /* , md: 2, lg: 3, xl: 3, "2xl": 3 */ }}
           colSpan={{ base: 13 /*  md: 2, lg: 2, xl: 2, "2xl": 2 */ }}
           colStart={{ base: 3 /* , md: 2, lg: 4, xl: 4, "2xl": 4  */ }}
-          rowEnd={{ base: 20 /* , md: 4, lg: 8, xl: 8, "2xl": 8 */ }}
+          rowEnd={{ base: 17 /* , md: 4, lg: 8, xl: 8, "2xl": 8 */ }}
           zIndex={8}
         >
           {" "}
@@ -142,6 +193,9 @@ export default function BasicInfo() {
             <Text color="gray.500" textAlign={"left"} fontSize={15} pt={6}>
               {renderConnectionState()}
             </Text>
+            <Text color="gray.500" textAlign={"left"} fontSize={15} pt={6}>
+              {apiState === 'READY' ? renderKeyringState() : null}
+            </Text>
           </Box>
         </GridItem>
         <GridItem
@@ -155,7 +209,7 @@ export default function BasicInfo() {
             <ButtonGradient
               label={"Connect your wallet"}
               size="md"
-              disabled={apiState !== 'READY'}
+              disabled={isButtonDisabled()}
               onClick={() => {
                 router.push("/minting-skills/personal-info");
               }}

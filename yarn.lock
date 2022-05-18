@@ -935,7 +935,7 @@
     "@polkadot/util-crypto" "^9.2.1"
     "rxjs" "^7.5.5"
 
-"@polkadot/api@^8.4.2", "@polkadot/api@8.4.2":
+"@polkadot/api@*", "@polkadot/api@^8.4.2", "@polkadot/api@8.4.2":
   "integrity" "sha512-MGWanyQgGfFTXHU9zUwv7bwuh2K6D27XpksEcSNffxXqlc9T5elBS5wccIm+nOYCXWB/USdgm2cwpI7hhTqtdg=="
   "resolved" "https://registry.npmjs.org/@polkadot/api/-/api-8.4.2.tgz"
   "version" "8.4.2"
@@ -957,6 +957,28 @@
     "@polkadot/util-crypto" "^9.2.1"
     "eventemitter3" "^4.0.7"
     "rxjs" "^7.5.5"
+
+"@polkadot/extension-dapp@^0.43.2":
+  "integrity" "sha512-4T5EgdIG34/RfWfqpBziHjIDbf6flrcZAnDnqsZZs/FOI2LgPGKkLwna5msHZXK7r+7vUfs2yg/KIKWAlNvYZQ=="
+  "resolved" "https://registry.npmjs.org/@polkadot/extension-dapp/-/extension-dapp-0.43.2.tgz"
+  "version" "0.43.2"
+  dependencies:
+    "@babel/runtime" "^7.17.9"
+    "@polkadot/extension-inject" "^0.43.2"
+    "@polkadot/util" "^9.2.1"
+    "@polkadot/util-crypto" "^9.2.1"
+
+"@polkadot/extension-inject@^0.43.2":
+  "integrity" "sha512-rl5sHyEKXaLyOeohDu5t8rdict/y790WPhapdNyrHDYOm55HM8p+K5AokdX1OCmBoad/crpAfRF2L1yevXHJww=="
+  "resolved" "https://registry.npmjs.org/@polkadot/extension-inject/-/extension-inject-0.43.2.tgz"
+  "version" "0.43.2"
+  dependencies:
+    "@babel/runtime" "^7.17.9"
+    "@polkadot/rpc-provider" "^8.4.2"
+    "@polkadot/types" "^8.4.2"
+    "@polkadot/util" "^9.2.1"
+    "@polkadot/util-crypto" "^9.2.1"
+    "@polkadot/x-global" "^9.2.1"
 
 "@polkadot/keyring@^9.2.1":
   "integrity" "sha512-6TxcVX5ABtqYb7aJmWdeCLWx11i6MoDX5pKbGqlCuLRzSKWRjgVpBEsKOfDBClBFuMJfTOgkmuyeXdBrGIsH4w=="
@@ -999,7 +1021,7 @@
     "@polkadot/util" "^9.2.1"
     "rxjs" "^7.5.5"
 
-"@polkadot/rpc-provider@8.4.2":
+"@polkadot/rpc-provider@^8.4.2", "@polkadot/rpc-provider@8.4.2":
   "integrity" "sha512-qBAixyfxbpr5ZJUhUgtY6caVlyUerZ02r8hug7ycPtD1YUnT4vPQmPdNwLTLRNScbQ+eKqLJxjRn0vCHKG9FFw=="
   "resolved" "https://registry.npmjs.org/@polkadot/rpc-provider/-/rpc-provider-8.4.2.tgz"
   "version" "8.4.2"
@@ -1065,7 +1087,7 @@
     "@babel/runtime" "^7.17.9"
     "@polkadot/util" "^9.2.1"
 
-"@polkadot/types@8.4.2":
+"@polkadot/types@^8.4.2", "@polkadot/types@8.4.2":
   "integrity" "sha512-RPYVaKBampu9EKlR0vowBC7ZXRfe2+xSz8Rn0qNUQ6Tp5NOvD9Jzltml7LqeipVL7FAkuSHwpj50ztARxPLDsw=="
   "resolved" "https://registry.npmjs.org/@polkadot/types/-/types-8.4.2.tgz"
   "version" "8.4.2"
@@ -1078,6 +1100,31 @@
     "@polkadot/util" "^9.2.1"
     "@polkadot/util-crypto" "^9.2.1"
     "rxjs" "^7.5.5"
+
+"@polkadot/ui-keyring@^2.2.1":
+  "integrity" "sha512-l/OGRow0VHiVSK8RhMG8i2NxTzaQO/0fQuTx0vBYrrGLBjHP+LbxJD1cPckGa4vctJfjHQmO3thfFrcwbE7C7g=="
+  "resolved" "https://registry.npmjs.org/@polkadot/ui-keyring/-/ui-keyring-2.2.1.tgz"
+  "version" "2.2.1"
+  dependencies:
+    "@babel/runtime" "^7.17.9"
+    "@polkadot/keyring" "^9.2.1"
+    "@polkadot/ui-settings" "2.2.1"
+    "@polkadot/util" "^9.2.1"
+    "@polkadot/util-crypto" "^9.2.1"
+    "mkdirp" "^1.0.4"
+    "rxjs" "^7.5.5"
+    "store" "^2.0.12"
+
+"@polkadot/ui-settings@2.2.1":
+  "integrity" "sha512-RF/ovZkNoNrNODtjXykczoQ3BpGZuEbVQ6f8l/xbSpT5puPaC/H1EnMYioL3BIasrfQmNqETT1/h2Vhw8sv0KQ=="
+  "resolved" "https://registry.npmjs.org/@polkadot/ui-settings/-/ui-settings-2.2.1.tgz"
+  "version" "2.2.1"
+  dependencies:
+    "@babel/runtime" "^7.17.9"
+    "@polkadot/networks" "^9.2.1"
+    "@polkadot/util" "^9.2.1"
+    "eventemitter3" "^4.0.7"
+    "store" "^2.0.12"
 
 "@polkadot/util-crypto@^9.2.1", "@polkadot/util-crypto@9.2.1":
   "integrity" "sha512-vAao00qNq6zv5UbDCn5+TN4DlWtYdru2gJBGroxzLHH6JzxWrCPGu3iDW+o3CE8v4XJGI42W4nDDGjdxyzVN7Q=="
@@ -2872,6 +2919,11 @@
   "resolved" "https://registry.npmjs.org/minimist/-/minimist-1.2.6.tgz"
   "version" "1.2.6"
 
+"mkdirp@^1.0.4":
+  "integrity" "sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw=="
+  "resolved" "https://registry.npmjs.org/mkdirp/-/mkdirp-1.0.4.tgz"
+  "version" "1.0.4"
+
 "mock-socket@^9.1.3":
   "integrity" "sha512-uz8lx8c5wuJYJ21f5UtovqpV0+KJuVwE7cVOLNhrl2QW/CvmstOLRfjXnLSbfFHZtJtiaSGQu0oCJA8SmRcK6A=="
   "resolved" "https://registry.npmjs.org/mock-socket/-/mock-socket-9.1.3.tgz"
@@ -3864,6 +3916,11 @@
   "integrity" "sha1-igOdLRAh0i0eoUyA2OpGi6LvP8w="
   "resolved" "https://registry.npmjs.org/source-map/-/source-map-0.5.7.tgz"
   "version" "0.5.7"
+
+"store@^2.0.12":
+  "integrity" "sha1-jFNOKguDH3K3X8XxEZhXxE711ZM="
+  "resolved" "https://registry.npmjs.org/store/-/store-2.0.12.tgz"
+  "version" "2.0.12"
 
 "string-convert@^0.2.0":
   "integrity" "sha1-aYLMMEn7tM2F+LJFaLnZvznu/5c="
