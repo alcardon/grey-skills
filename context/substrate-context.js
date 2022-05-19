@@ -17,6 +17,7 @@ const initialState = {
   socket: RPC_SOCKET,
   accounts: null,
   currentAccount: null,
+  mintingStatus: null,
 }
 
 const reducer = (state, action) => {
@@ -39,6 +40,8 @@ const reducer = (state, action) => {
       return { ...state, accounts: action.payload }
     case 'SET_CURRENT_ACCOUNT':
       return { ...state, currentAccount: action.payload }
+    case 'SET_MINTING_STATUS':
+      return { ...state, mintingStatus: action.payload }
     default:
       throw new Error(`Unknown type: ${action.type}`)
   }
@@ -128,9 +131,13 @@ const SubstrateContextProvider = ({children}) => {
     dispatch({ type: 'SET_CURRENT_ACCOUNT', payload: acct })
   }
 
+  function setMintingStatus(newStatus) {
+    dispatch({ type: 'SET_MINTING_STATUS', payload: newStatus })
+  }
+
   return (
     <SubstrateContext.Provider
-      value={{ state, setAccounts, setCurrentAccount }}
+      value={{ state, setAccounts, setCurrentAccount, setMintingStatus }}
     >
       {children}
     </SubstrateContext.Provider>
