@@ -133,7 +133,7 @@ export default function Browser() {
           >
             <Box height={"100%"} w="100%">
               <Image
-                src={itemSelected.imgLink}
+                src={itemSelected.imgLink ? itemSelected.imgLink : ""}
                 alt={"logotype"}
                 borderRadius={"md"}
               ></Image>
