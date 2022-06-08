@@ -60,9 +60,6 @@ function HomeAvatar({ skillName, skillLevel, props }) {
         borderRadius={"lg"}
         position={"relative"}
         {...getCheckboxProps()}
-        onChange={() => {
-          console.log(`${skillName} is checked`);
-        }}
       >
         <input {...getInputProps()} hidden />
         {state.isChecked && <Box w={2} h={2} bg="green.500" zIndex={12} />}
@@ -113,8 +110,6 @@ export default function YourSkills({
       items: 2,
     },
   };
-
-  console.log(skillInfo);
 
   return (
     <>

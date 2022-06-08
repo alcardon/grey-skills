@@ -63,7 +63,7 @@ export const UserProvider = ({ children }) => {
   /**GREY Skills Level */
 
   const [GSLevel, setGSLevel] = useState(70);
-  console.log(GSLevel);
+
   /**Learning experience */
 
   const [learnInfo, setLearnInfo] = useState([]);

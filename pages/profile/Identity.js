@@ -61,7 +61,6 @@ export default function Identity() {
           result = skill.skillLevel;
         });
       } else if (skillInfo.length > 1) {
-        console.log(skillInfo);
         skillInfo.map((skill) => {
           result += skill.skillLevel;
         });

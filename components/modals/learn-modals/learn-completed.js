@@ -20,7 +20,7 @@ export default function LearnCompleted({
   link,
 }) {
   const { setModalStep, GSLevel, setGSLevel } = useUserInfo();
-  console.log(GSLevel);
+
   return (
     <>
       <Box
@@ -42,7 +42,6 @@ export default function LearnCompleted({
         <ModalFooter>
           <Button
             onClick={() => {
-              console.log(GSLevel);
               setGSLevel(GSLevel + 5);
               setModalStep("value-increased");
             }}
