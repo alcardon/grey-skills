@@ -1,84 +1,84 @@
 import {
   Box,
-  FormControl,
-  FormLabel,
   Heading,
-  FormErrorMessage,
   Grid,
   Center,
   GridItem,
-  Button,
   Text,
-  Circle,
   Icon,
   Flex,
-  VStack,
   Spacer,
   IconButton,
-  Link,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalFooter,
-  ModalCloseButton,
-  useDisclosure,
-  Container,
+  Button,
   Image,
+  useDisclosure,
   HStack,
 } from "@chakra-ui/react";
 
 import { MdGraphicEq } from "react-icons/md";
-import { SettingsIcon } from "@chakra-ui/icons";
-import { Formik, Form, Field } from "formik";
-import * as Yup from "yup";
+import { AddIcon, SettingsIcon } from "@chakra-ui/icons";
+
 import { useRouter } from "next/router";
 
 import { BiRocket } from "react-icons/bi";
 import NextLink from "next/link";
 
-import WorkModal from "../../components/modals/work-modal";
-import LearnModal from "../../components/modals/learn-modal";
-import ButtonGradient from "../../components/general/gradient-button";
 import { useUserInfo } from "../../context/user-context";
 import { useEffect, useState, useRef } from "react";
 import { chakraStyles } from "../../components/styles/react-select";
-import { Select } from "chakra-react-select";
-import ThumbNailImage from "../../components/general/thumbnail-avatar";
 import LearningItems from "../../components/general/learning-items";
 import WorkItems from "../../components/general/work-items";
 import { Progress } from "antd";
 import HomeAvatar from "../../components/general/home-avatar";
-
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 import { FiEdit3, FiUpload } from "react-icons/fi";
 
-export default function LearningWorkExp() {
-  const { userInfo, skillInfo, industryInfo } = useUserInfo();
+export default function Identity() {
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+    },
 
-  const [modalType, setModalType] = useState(null);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 3,
+    },
+  };
+
+  const { userInfo, skillInfo, industryInfo, GSLevel, setGSLevel } =
+    useUserInfo();
 
   const router = useRouter();
   const initialRef = useRef();
 
-  const ModalRender = () => {
-    if (modalType == "work") {
-      return <WorkModal initialRef={initialRef} onClose={onClose}></WorkModal>;
-    } else if (modalType == "learn") {
-      return (
-        <LearnModal initialRef={initialRef} onClose={onClose}></LearnModal>
-      );
-    }
-  };
+  useEffect(() => {
+    var result = 0;
+    if (skillInfo !== []) {
+      if (skillInfo.length === 1) {
+        skillInfo.map((skill) => {
+          result = skill.skillLevel;
+        });
+      } else if (skillInfo.length > 1) {
+        console.log(skillInfo);
+        skillInfo.map((skill) => {
+          result += skill.skillLevel;
+        });
+        result /= skillInfo.length;
+      }
 
-  const handleChange = (value) => setValue(value);
+      setGSLevel(result);
+    }
+  }, [skillInfo, GSLevel]);
 
   return (
     <>
-      <Flex height={{ base: "100vh", md: "760px" }} position={"relative"}>
+      <GridItem gridArea={"Body"} colSpan={24} borderBottomRadius={"md"}>
         <Grid
           templateRows={{
-            base: "32%  1fr",
-            md: "32%  1fr",
+            base: "40%  1fr",
+            md: "40%  1fr",
           }}
           templateColumns="1fr"
           templateAreas={"'Head' 'Main'"}
@@ -86,20 +86,8 @@ export default function LearningWorkExp() {
           w={"100%"}
           borderBottomRadius={"lg"}
           position={"relative"}
-          gap={4}
+          h={"100%"}
         >
-          <Image
-            src={"/images/home/iPhone 13.png"}
-            position={"absolute"}
-            w={"100%"}
-            top={0}
-            left={0}
-            height={"40px"}
-            zIndex={10}
-            alt={"mobile battery"}
-            display={{ base: "none", md: "inline-block" }}
-            borderTopRadius={"md"}
-          ></Image>
           <GridItem
             gridArea={"Head"}
             colSpan={24}
@@ -139,8 +127,8 @@ export default function LearningWorkExp() {
                   <Image
                     src="/images/general/logo-white.png"
                     alt={"logotype"}
-                    height={"24px"}
-                    width={"165px"}
+                    height={"23px"}
+                    width={"150px"}
                     mb={2}
                   ></Image>
                   <IconButton
@@ -226,14 +214,14 @@ export default function LearningWorkExp() {
                 width={"100%"}
               >
                 {" "}
-                <HStack px={7} height={"100%"}>
+                <HStack px={7} height={"100%"} pb={"10px"}>
                   <Flex h={"100%"} align={"center"}>
                     {" "}
                     <Image
                       src={"/images/home/avatar.png"}
                       alt={"avatar"}
-                      w={"65px"}
-                      h={"65px"}
+                      w={"60px"}
+                      h={"60px"}
                     ></Image>
                   </Flex>
                   <Flex
@@ -274,24 +262,25 @@ export default function LearningWorkExp() {
             gridArea={"Main"}
             colSpan={24}
             overflow={"auto"}
-            pt={{ base: 5, md: 3 }}
+            pt={{ base: 5, md: "30px" }}
+            mb={{ base: 5, md: 5 }}
             borderBottomRadius={"md"}
           >
             <Grid
               templateRows={{
-                base: "1fr 38% 20% 1fr 1fr 20%",
+                base: "1fr 1fr 1fr 1fr 1fr",
               }}
               templateColumns={{
                 base: "repeat(1, 1fr)",
               }}
               templateAreas={
-                "'About' 'Wallet' 'Reputation''Learn-experience' 'work-experience' 'Foot'"
+                "'About' 'Wallet' 'Reputation''Learn-experience' 'work-experience'"
               }
               zIndex={8}
               w={"100%"}
               h={"100%"}
               alignItems={"center"}
-              gap={5}
+              gap={"30px"}
               borderBottomRadius={"md"}
             >
               <GridItem gridArea={"About"} colSpan={24} px={7} pt={2}>
@@ -332,7 +321,7 @@ export default function LearningWorkExp() {
                           <Heading
                             fontSize={{
                               base: "22px",
-                              md: "22px",
+                              md: "20px",
                             }}
                             color={"white"}
                             fontWeight={"normal"}
@@ -394,14 +383,14 @@ export default function LearningWorkExp() {
                       <Flex
                         width={"100%"}
                         height={"100%"}
-                        align={"flex-end"}
+                        align={"center"}
                         justifyContent={"space-between"}
                       >
                         <Center h={"100%"}>
                           <Heading
                             fontSize={{
                               base: "22px",
-                              md: "22px",
+                              md: "20px",
                             }}
                             color={"white"}
                             fontWeight={"normal"}
@@ -409,6 +398,16 @@ export default function LearningWorkExp() {
                             Skills Wallet
                           </Heading>
                         </Center>
+                        <IconButton
+                          size={"md"}
+                          variant={"ghost"}
+                          color="white"
+                          aria-label="Add Work experiece"
+                          icon={<AddIcon />}
+                          onClick={() => {
+                            router.push("/minting-skills/skills-info");
+                          }}
+                        />
                       </Flex>
                     </Flex>
                   </GridItem>{" "}
@@ -416,11 +415,26 @@ export default function LearningWorkExp() {
                     rowSpan={{ base: 1 }}
                     zIndex={7}
                     alignSelf={"center"}
+                    maxW={{ base: "100%", md: "290px" }}
                   >
-                    {" "}
-                    <Box h={"125px"} w="140px">
-                      <HomeAvatar skillName={skillInfo.skillName}></HomeAvatar>
-                    </Box>
+                    <Carousel responsive={responsive}>
+                      {skillInfo.map((skill) => {
+                        return (
+                          <Box
+                            key={skill}
+                            height={"135px"}
+                            width={"105px"}
+                            px={"8px"}
+                          >
+                            <HomeAvatar
+                              key={skill}
+                              skillName={skill.skillName}
+                              skillLevel={skill.skillLevel}
+                            ></HomeAvatar>
+                          </Box>
+                        );
+                      })}
+                    </Carousel>
                   </GridItem>
                 </Grid>
               </GridItem>
@@ -477,9 +491,10 @@ export default function LearningWorkExp() {
                             "100%": "#fd9193",
                           }}
                           trailColor={"#535152"}
-                          percent={skillInfo.skillLevel}
+                          percent={GSLevel}
                           zIndex={8}
                         />
+                        <Text color="white">{GSLevel}%</Text>
                       </HStack>
                     </Flex>
                   </GridItem>
@@ -583,26 +598,10 @@ export default function LearningWorkExp() {
                   </Box>
                 </Flex>
               </GridItem>
-              <GridItem
-                gridArea={"Foot"}
-                colSpan={24}
-                pt={5}
-                borderBottomRadius={"md"}
-              >
-                <Image
-                  src={"/images/home/Group 17.png"}
-                  w={"100%"}
-                  top={0}
-                  left={0}
-                  zIndex={8}
-                  alt={"footer"}
-                  display={{ base: "inline-block" }}
-                ></Image>
-              </GridItem>
             </Grid>
           </GridItem>
         </Grid>
-      </Flex>
+      </GridItem>
     </>
   );
 }

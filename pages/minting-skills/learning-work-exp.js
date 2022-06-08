@@ -34,8 +34,8 @@ import { useRouter } from "next/router";
 import { BiRocket } from "react-icons/bi";
 import NextLink from "next/link";
 
-import WorkModal from "../../components/modals/work-modal";
-import LearnModal from "../../components/modals/learn-modal";
+import WorkModal from "../../components/modals/minting-skills-modals/work-modal";
+import LearnModal from "../../components/modals/minting-skills-modals/learn-modal";
 import ButtonGradient from "../../components/general/gradient-button";
 import { useUserInfo } from "../../context/user-context";
 import { useEffect, useState, useRef } from "react";
@@ -47,7 +47,7 @@ import WorkItems from "../../components/general/work-items";
 
 export default function LearningWorkExp() {
   const { userInfo, skillInfo, createUser, setProgress } = useUserInfo();
-
+  const [skillName, setSkillName] = useState(null);
   const [modalType, setModalType] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -64,12 +64,14 @@ export default function LearningWorkExp() {
     }
   };
 
-  const handleChange = (value) => setValue(value);
   useEffect(() => {
     setProgress(80);
-  }, [setProgress]);
+    if (skillInfo.length >= 1) {
+      let skill = skillInfo.at(-1);
 
-  console.log("SkillInfo: ", skillInfo);
+      setSkillName(skill.skillName);
+    }
+  }, [setProgress, skillInfo]);
 
   return (
     <>
@@ -170,7 +172,7 @@ export default function LearningWorkExp() {
                     {" "}
                     <Flex align={"center"} h={"100%"} justify={"flex-start"}>
                       {" "}
-                      <ThumbNailImage skillName={skillInfo.skillName} />
+                      <ThumbNailImage skillName={skillName} />
                     </Flex>
                   </GridItem>
                   <GridItem
@@ -187,7 +189,7 @@ export default function LearningWorkExp() {
                         fontSize={"15"}
                         color={"white"}
                       >
-                        {skillInfo.skillName}
+                        {skillName}
                       </Heading>
                     </Flex>
                   </GridItem>

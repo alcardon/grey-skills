@@ -3,7 +3,6 @@ import styles from "../styles/global.module.css";
 import "@fontsource/inter";
 
 function GetFirstLetter(skillName) {
-  console.log(skillName);
   let result;
   if (skillName) {
     result = skillName.match(/\b(\w)/g);

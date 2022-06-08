@@ -78,7 +78,14 @@ const ProgressLayout = ({ children }) => {
                   <IconButton
                     variant={"ghost"}
                     aria-label={"back"}
-                    onClick={() => router.back()}
+                    onClick={() => {
+                      /* if (router.pathname.endsWith == "learning-work-exp") {
+                        if (skillInfo.length >= 1) {
+                          skillInfo.pop();
+                        }
+                      } */
+                      router.back();
+                    }}
                     icon={<ArrowBackIcon boxSize={"27px"} />}
                     zIndex={8}
                   />

@@ -36,8 +36,6 @@ export default function PersonalInfo() {
 
   const router = useRouter();
 
-  console.log("User info: ", userInfo);
-
   return (
     <MainBox>
       <Formik
@@ -231,7 +229,6 @@ export default function PersonalInfo() {
                   size="lg"
                   onClick={() => {
                     router.push("/minting-skills/profesional-bg");
-                    console.log("hola mundo");
                   }}
                 />
               </Box>

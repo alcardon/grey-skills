@@ -158,7 +158,6 @@ export default function BasicInfo() {
               size="md"
               onClick={() => {
                 router.push("/onboarding/connect");
-                console.log("hola mundo");
               }}
             />
           </Box>

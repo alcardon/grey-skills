@@ -18,8 +18,6 @@ import {
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 
-import MainBox from "../../components/layout/app-box";
-
 import ButtonGradient from "../../components/general/gradient-button";
 import { useUserInfo } from "../../context/user-context";
 import { useRouter } from "next/router";
@@ -27,7 +25,7 @@ import { useState, useEffect } from "react";
 import CustomSelect from "../../components/general/CustoSelect";
 import { industries, roles } from "../../components/options-data/options";
 
-export default function PersonalInfo() {
+export default function ProfesionalBg() {
   const { setProgress, userInfo, industryInfo, createIndustryUser } =
     useUserInfo();
   useEffect(() => {
@@ -35,8 +33,6 @@ export default function PersonalInfo() {
   }, [setProgress]);
 
   const router = useRouter();
-
-  console.log("User info: ", industryInfo);
 
   const onSubmit = (values, actions) => {
     setTimeout(() => {

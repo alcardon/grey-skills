@@ -73,8 +73,6 @@ export default function LearningItems({ style }) {
     setLearnItems(learnInfo);
   }, [learnInfo]);
 
-  console.log(learnInfo);
-
   return (
     <>
       {learnItems

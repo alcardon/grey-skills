@@ -67,13 +67,11 @@ function Item({ id, nameWork, role, style }) {
 
 export default function WorkItems({ style }) {
   const { workInfo } = useUserInfo();
-  console.log(workInfo);
+
   const [workItems, setWorkItems] = useState(null);
   useEffect(() => {
     setWorkItems(workInfo);
   }, [workInfo]);
-
-  console.log(workInfo);
 
   return (
     <>

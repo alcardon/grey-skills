@@ -27,8 +27,6 @@ export default function PersonalInfo() {
 
   const router = useRouter();
 
-  console.log("User info: ", userInfo);
-
   return (
     <Flex height={{ base: "90vh", md: "660px" }}>
       <Formik

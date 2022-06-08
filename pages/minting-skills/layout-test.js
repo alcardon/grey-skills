@@ -65,8 +65,6 @@ export default function LearningWorkExp() {
     setProgress(80);
   }, [setProgress]);
 
-  console.log("SkillInfo: ", skillInfo);
-
   return (
     <>
       <Flex height={{ base: "90vh", md: "660px" }} position={"relative"}>

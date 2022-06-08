@@ -1,8 +1,8 @@
-import { Box, Circle, Flex, Heading, Text, Image } from "@chakra-ui/react";
+import { Circle, Flex, Heading, Text } from "@chakra-ui/react";
 import styles from "../styles/global.module.css";
 import "@fontsource/inter";
+
 function GetFirstLetter(skillName) {
-  console.log(skillName);
   let result;
   if (skillName) {
     result = skillName.match(/\b(\w)/g);
@@ -21,34 +21,26 @@ function GetFirstLetter(skillName) {
   );
 }
 
-export default function HomeAvatar({ skillName }) {
+export default function HomeAvatar({ skillName, skillLevel }) {
   return (
     <Flex
+      direction={"column"}
       height={"100%"}
-      w={"80%"}
+      w={"100%"}
       align={"center"}
       justify={"center"}
       zIndex={7}
-      position={"relative"}
+      bgColor="black"
+      bgImage={"url('/images/home/Rectangle 276.png')"}
+      backgroundPosition="center"
+      bgSize={"cover"}
+      borderRadius={"lg"}
     >
-      <Image
-        src={"/images/home/Rectangle 276.png"}
-        position={"absolute"}
-        height={"140"}
-        w={"119"}
-        top={0}
-        left={0}
-        zIndex={8}
-        alt={"mobile battery"}
-        display={{ base: "inline-block" }}
-        borderTopRadius={"md"}
-      ></Image>
       <Circle
         bgColor={"blue"}
-        boxSize={"59"}
+        boxSize={"50"}
         zIndex={9}
         className={styles.innerCircleGradient}
-        position={"absolute"}
         top={"5"}
       >
         {GetFirstLetter(skillName)}
@@ -56,12 +48,12 @@ export default function HomeAvatar({ skillName }) {
       <Text
         top={"83px"}
         zIndex={10}
-        position={"absolute"}
         textAlign={"center"}
         fontFamily={"kanit"}
         fontSize={"13"}
         fontWeight={"normal"}
-        px={"2"}
+        px={"5"}
+        pt={2}
       >
         {skillName}
       </Text>

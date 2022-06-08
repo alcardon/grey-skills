@@ -21,7 +21,7 @@ import {
 import { useRouter } from "next/router";
 import Lottie from "react-lottie";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import BigAvatar from "../../components/general/big-Avatar";
 import { useUserInfo } from "../../context/user-context";
 import ButtonGradient from "../../components/general/gradient-button";
@@ -29,6 +29,16 @@ import ButtonGradient from "../../components/general/gradient-button";
 export default function MintingSuccesfull() {
   const { skillInfo } = useUserInfo();
   const router = useRouter();
+
+  const [skillName, setSkillName] = useState(null);
+
+  useEffect(() => {
+    if (skillInfo.length >= 1) {
+      let skill = skillInfo.at(-1);
+
+      setSkillName(skill.skillName);
+    }
+  }, [skillInfo]);
 
   return (
     <>
@@ -66,7 +76,7 @@ export default function MintingSuccesfull() {
             fontWeight={"normal"}
             width={"100%"}
           >
-            Minting your Skill
+            {/*   Minting your Skill */}
           </Heading>
         </GridItem>
 
@@ -80,7 +90,7 @@ export default function MintingSuccesfull() {
           justify={"center"}
           zIndex={7}
         >
-          <BigAvatar skillName={skillInfo.skillName}></BigAvatar>
+          <BigAvatar skillName={skillName}></BigAvatar>
         </GridItem>
 
         <GridItem
@@ -102,7 +112,7 @@ export default function MintingSuccesfull() {
             fontWeight={"normal"}
             width={"100%"}
           >
-            {skillInfo.skillName}
+            {skillName}
           </Heading>
         </GridItem>
         <GridItem
@@ -140,7 +150,7 @@ export default function MintingSuccesfull() {
               label={"Start your journey with Grey!"}
               size="md"
               onClick={() => {
-                router.push("/profile/home");
+                router.push("/profile/Identity");
               }}
             />
           </Box>

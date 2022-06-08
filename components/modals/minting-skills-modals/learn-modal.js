@@ -15,19 +15,29 @@ import {
   Heading,
   InputGroup,
   FormErrorMessage,
-  Text,
-  Textarea,
 } from "@chakra-ui/react";
 
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, useField, useFormikContext } from "formik";
 import * as Yup from "yup";
 
-import ButtonGradient from "../../components/general/gradient-button";
-import { useUserInfo } from "../../context/user-context";
+import ButtonGradient from "../../../components/general/gradient-button";
+import { useUserInfo } from "../../../context/user-context";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
+import DatePickerField from "../../general/date-picker";
 
-export default function WorkModal({ initialRef, onClose }) {
-  const { createWorkInfo } = useUserInfo();
+import format from "date-fns/format";
+import parseISO from "date-fns/parseISO";
+import parse from "date-fns/parse";
+
+function ConvertDate(date) {
+  let result = format(date, "dd-MM-yyyy");
+
+  return result;
+}
+
+export default function LearnModal({ initialRef, onClose }) {
+  const { learnInfo, createLearnInfo } = useUserInfo();
 
   return (
     <>
@@ -61,17 +71,16 @@ export default function WorkModal({ initialRef, onClose }) {
           ></Image>
           <Formik
             initialValues={{}}
-            validationSchema={Yup.object({
-              nameWork: Yup.string()
-                .max(20, "Must be 20 characters or less")
-                .required("Required"),
-              role: Yup.string()
-                .max(20, "Must be 50 characters or less")
-                .required("Required"),
-            })}
             onSubmit={(values, { setSubmitting }) => {
               setTimeout(() => {
-                createWorkInfo(values.nameWork, values.role, values.summary);
+                createLearnInfo(
+                  values.nameLearn,
+                  values.provider,
+                  ConvertDate(values.startDate),
+                  ConvertDate(values.endDate),
+                  values.active,
+                  values.credentials
+                );
                 onClose();
                 setSubmitting(false);
               }, 400);
@@ -89,14 +98,14 @@ export default function WorkModal({ initialRef, onClose }) {
     md: "repeat(20, 1fr)",
     lg: "repeat(48, 1fr)", */,
                 }}
-                height={{ base: "90vh", md: "700px" }}
+                height={{ base: "89vh", md: "700px" }}
                 width={"100%"}
                 gap={0}
               >
                 <GridItem
                   rowSpan={{ base: 3 /* , md: 6, lg: 25 */ }}
                   colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
-                  rowEnd={{ base: 7 /* , md: 19, lg: 28 */ }}
+                  rowEnd={{ base: 6 /* , md: 19, lg: 28 */ }}
                   colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
                   zIndex={7}
                 >
@@ -109,17 +118,17 @@ export default function WorkModal({ initialRef, onClose }) {
                     }}
                     color={"white"}
                   >
-                    Add Work Experience.
+                    Add Learning Experience.
                   </Heading>
                 </GridItem>
                 <GridItem
                   rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
                   colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
-                  rowEnd={{ base: 12 /* , md: 19, lg: 28 */ }}
+                  rowEnd={{ base: 11 /* , md: 19, lg: 28 */ }}
                   colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
                   zIndex={7}
                 >
-                  <Field name="nameWork">
+                  <Field name="nameLearn">
                     {({
                       field, // { name, value, onChange, onBlur }
                       form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
@@ -131,7 +140,7 @@ export default function WorkModal({ initialRef, onClose }) {
                           fontFamily={"Roboto"}
                           fontWeight={"regular"}
                         >
-                          Name of Organization/Project
+                          Name of the course
                         </FormLabel>
 
                         <InputGroup>
@@ -156,11 +165,11 @@ export default function WorkModal({ initialRef, onClose }) {
                 <GridItem
                   rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
                   colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
-                  rowEnd={{ base: 18 /* , md: 19, lg: 28 */ }}
+                  rowEnd={{ base: 17 /* , md: 19, lg: 28 */ }}
                   colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
                   zIndex={7}
                 >
-                  <Field name="role">
+                  <Field name="provider">
                     {({
                       field, // { name, value, onChange, onBlur }
                       form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
@@ -172,11 +181,13 @@ export default function WorkModal({ initialRef, onClose }) {
                           fontFamily={"Roboto"}
                           fontWeight={"regular"}
                         >
-                          What was/is your role?
+                          Name of Institution/Platform
                         </FormLabel>
 
                         <InputGroup>
                           <Input
+                            size={"md"}
+                            borderRadius={"md"}
                             type="text"
                             placeholder="Type here"
                             _placeholder={{ color: "gray.500" }}
@@ -194,11 +205,37 @@ export default function WorkModal({ initialRef, onClose }) {
                 <GridItem
                   rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
                   colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
-                  rowEnd={{ base: 24 /* , md: 19, lg: 28 */ }}
+                  rowEnd={{ base: 23 /* , md: 19, lg: 28 */ }}
                   colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
-                  zIndex={6}
+                  zIndex={11}
                 >
-                  <Field name="summary">
+                  <DatePickerField
+                    name={"startDate"}
+                    label={"Start Date"}
+                  ></DatePickerField>
+                </GridItem>
+                <GridItem
+                  rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
+                  colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
+                  rowEnd={{ base: 29 /* , md: 19, lg: 28 */ }}
+                  colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+                  zIndex={10}
+                >
+                  {" "}
+                  <DatePickerField
+                    name={"endDate"}
+                    label={"End Date"}
+                  ></DatePickerField>
+                </GridItem>
+
+                <GridItem
+                  rowSpan={{ base: 4 /* , md: 6, lg: 25 */ }}
+                  colSpan={{ base: 20 /* , md: 20, lg: 48  */ }}
+                  rowEnd={{ base: 38 /* , md: 19, lg: 28 */ }}
+                  colStart={{ base: 3 /* , md: 1, lg: 1 */ }}
+                  zIndex={7}
+                >
+                  <Field name="credentials">
                     {({
                       field, // { name, value, onChange, onBlur }
                       form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
@@ -210,33 +247,21 @@ export default function WorkModal({ initialRef, onClose }) {
                           fontFamily={"Roboto"}
                           fontWeight={"regular"}
                         >
-                          Project/Job Summary
-                        </FormLabel>
-                        <FormLabel
-                          fontSize="xs"
-                          fontFamily={"Roboto"}
-                          color={"gray.400"}
-                        >
-                          (highlight your tasks and perfomance in this role)
+                          Enter your course credentials here for verification
                         </FormLabel>
 
                         <InputGroup>
-                          <Textarea
-                            placeholder="Add details here"
-                            {...field}
+                          <Input
+                            size={"sm"}
+                            borderRadius={"md"}
+                            type="text"
+                            placeholder="Enter credentials/link"
                             _placeholder={{ color: "gray.500" }}
                             bgColor={"white"}
-                            color={"black"}
+                            color={"gray.800"}
+                            {...field}
                           />
                         </InputGroup>
-                        <Text
-                          pt={3}
-                          fontSize="xs"
-                          fontFamily={"Roboto"}
-                          color={"gray.500"}
-                        >
-                          Maximum words: 100
-                        </Text>
                         <FormErrorMessage>{meta.error}</FormErrorMessage>
                       </FormControl>
                     )}
@@ -254,7 +279,7 @@ export default function WorkModal({ initialRef, onClose }) {
                 >
                   <Box>
                     <ButtonGradient
-                      label={"Add Work Experience"}
+                      label={"Add Learning Experience"}
                       size="md"
                       type="submit"
                     />

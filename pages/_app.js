@@ -36,7 +36,7 @@ export function HeadTags() {
       <meta property="og:site_name" content="Grey Skills" />
       <meta property="og:type" content="website" />
       <meta property="og:image" content="/card.png" />
-      <title>Grey skills</title>
+      <title>Grey Skills | App prototype</title>
     </Head>
   );
 }

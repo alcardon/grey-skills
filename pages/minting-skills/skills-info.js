@@ -45,19 +45,27 @@ import SmallAvatar from "../../components/general/small-avatar";
 export default function PersonalInfo() {
   const { skillInfo, createSkillInfo, setProgress, industryInfo } =
     useUserInfo();
-  const [skillName, setSkillName] = useState(
-    skillInfo.skillName ? skillInfo.skillName : ""
-  );
-  const [skillLevel, setSkillLevel] = useState(skillInfo.skillLevel);
+  const [skillName, setSkillName] = useState("");
+  const [skillLevel, setSkillLevel] = useState(70);
   const [isSliderDisabled, setIsSliderDisabled] = useState(true);
   const handleChange = (value) => setSkillLevel(value);
 
   useEffect(() => {
     setProgress(60);
-    if (skillInfo.skillName !== "") {
+    if (skillInfo.length >= 1) {
+      let skill = skillInfo.at(-1);
+
+      setSkillLevel(skill.skillLevel);
+      setSkillName(skill.skillName);
       setIsSliderDisabled(false);
     }
-  }, [skillInfo, setProgress, setIsSliderDisabled]);
+  }, [
+    skillInfo,
+    setProgress,
+    setIsSliderDisabled,
+    setSkillLevel,
+    setSkillName,
+  ]);
 
   const router = useRouter();
 

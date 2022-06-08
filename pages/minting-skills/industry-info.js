@@ -38,7 +38,6 @@ import { useRouter } from "next/router";
 export default function IndustryInfo() {
   const router = useRouter();
   const { userInfo } = useUserInfo();
-  console.log(userInfo);
 
   return (
     <MainBox>

@@ -1,5 +1,6 @@
-import { Children, createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
+
 export const UserContext = createContext();
 
 export const useUserInfo = () => useContext(UserContext);
@@ -43,22 +44,26 @@ export const UserProvider = ({ children }) => {
 
   /**Skill */
 
-  const [skillInfo, setSkillInfo] = useState({
-    skillName: "",
-    skillLevel: 70,
-  });
+  const [skillInfo, setSkillInfo] = useState([]);
 
   const createSkillInfo = (skillName, skillLevel) => {
-    setSkillInfo({
+    let newSkill = {
+      id: uuidv4(),
       skillName: skillName,
       skillLevel: skillLevel,
-    });
+    };
+    setSkillInfo((prev) => [...prev, newSkill]);
   };
 
-  /*----------------------*/
+  const levelUpSkill = (id, addLevel) => {
+    let skillIndex = skillInfo.findIndex((data) => data.id == id);
+    skillInfo[skillIndex].level += addLevel;
+  };
 
-  const [skillId, setSkillId] = useState(0);
+  /**GREY Skills Level */
 
+  const [GSLevel, setGSLevel] = useState(70);
+  console.log(GSLevel);
   /**Learning experience */
 
   const [learnInfo, setLearnInfo] = useState([]);
@@ -74,7 +79,6 @@ export const UserProvider = ({ children }) => {
     let newLearn = {
       id: uuidv4(),
       type: "LEARNING",
-      skillId: skillId,
       nameLearn: nameLearn,
       provider: provider,
       startDate: startDate,
@@ -89,7 +93,6 @@ export const UserProvider = ({ children }) => {
   const deleteLearnInfo = (id) => {
     let result = learnInfo.filter((data) => data.id != id);
     setLearnInfo(result);
-    console.log(result);
   };
 
   const addLearnExp = () => {};
@@ -104,7 +107,6 @@ export const UserProvider = ({ children }) => {
     let newWork = {
       id: uuidv4(),
       type: "WORK",
-      skillId: skillId,
       nameWork: nameWork,
       role: role,
       summary: summary,
@@ -116,10 +118,15 @@ export const UserProvider = ({ children }) => {
   const deleteWorkInfo = (id) => {
     let result = workInfo.filter((data) => data.id != id);
     setWorkInfo(result);
-    console.log(result);
   };
 
   /*----------------------*/
+
+  /** Browser Context */
+  const [itemSelected, setItemSelected] = useState(null);
+  const [modalStep, setModalStep] = useState(null);
+
+  /*------------------------ */
 
   return (
     <UserContext.Provider
@@ -131,6 +138,9 @@ export const UserProvider = ({ children }) => {
         skillInfo,
         setSkillInfo,
         createSkillInfo,
+        levelUpSkill,
+        GSLevel,
+        setGSLevel,
         learnInfo,
         createLearnInfo,
         deleteLearnInfo,
@@ -139,6 +149,10 @@ export const UserProvider = ({ children }) => {
         deleteWorkInfo,
         progress,
         setProgress,
+        itemSelected,
+        setItemSelected,
+        modalStep,
+        setModalStep,
       }}
     >
       {children}

@@ -68,11 +68,11 @@ export default function BasicInfo() {
           <Box>
             {" "}
             <Heading
-              fontSize={{ base: "28", md: "28" }}
+              fontSize={{ base: "24", md: "24" }}
               lineHeight="107%"
               textAlign={"left"}
               color={"white"}
-              fontWeight={"semibold"}
+              fontWeight={"normal"}
             >
               Create your <br></br> Grey Skills Identity
             </Heading>
@@ -287,7 +287,6 @@ export default function BasicInfo() {
               size="md"
               onClick={() => {
                 router.push("/onboarding/video");
-                console.log("hola mundo");
               }}
             />
           </Box>
